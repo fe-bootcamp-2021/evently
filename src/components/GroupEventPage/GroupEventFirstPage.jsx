@@ -2,6 +2,7 @@ import EventColors from "../EventColors/EventColors";
 import InputCKEditor from "../InputCKEditor/InputCKEditor";
 import classNames from "classnames/bind";
 
+
 const containerOneOnOne = classNames([
   "min-h-screen",
   "bg-gray-100",
@@ -90,7 +91,8 @@ const maxInvites = classNames([
   "border border-red-500",
   "rounded",
   "py-3",
-  "px-4",
+  "px-3",
+  "w-24",
   "mb-3",
   "leading-tight",
   "focus:outline-none",
@@ -169,7 +171,7 @@ export default function GroupEventFirstPage() {
           <label className="flex items-center">
             <input type="checkbox" className="form-checkbox" />
             <span className="ml-2">
-            Display remaining spots on booking page
+              Display remaining spots on booking page
             </span>
           </label>
         </div>

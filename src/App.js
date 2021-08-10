@@ -1,9 +1,9 @@
-import GroupEventFirstPage from "./components/GroupEventPage/GroupEvent";
+import GroupEventSecondPage from "./components/GroupEventPage/GroupEventSecondPage";
 
 
 function App() {
   return <div className="App">
-    <GroupEventFirstPage/>
+    <GroupEventSecondPage/>
   </div>;
 }
 

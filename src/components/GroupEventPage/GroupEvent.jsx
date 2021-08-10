@@ -1,7 +1,6 @@
 import EventColors from "../EventColors/EventColors";
 import InputCKEditor from "../InputCKEditor/InputCKEditor";
-
-let classNames = require("classnames");
+import classNames from "classnames/bind";
 
 const containerOneOnOne = classNames([
   "min-h-screen",
@@ -83,13 +82,28 @@ const button = classNames([
   "focus:outline-none",
 ]);
 
+const maxInvites = classNames([
+  "appearance-none",
+  "block",
+  "bg-gray-200",
+  "text-gray-700",
+  "border border-red-500",
+  "rounded",
+  "py-3",
+  "px-4",
+  "mb-3",
+  "leading-tight",
+  "focus:outline-none",
+  "focus:bg-white",
+]);
+
 const description = classNames(["mt-2"]);
 
 export default function GroupEventFirstPage() {
   return (
     <div className={containerOneOnOne}>
       <div className={card}>
-        <h2 className={title}>Add One-on-One Event</h2>
+        <h2 className={title}>Add Group Event</h2>
         <div className={eventItems}>
           <label className={label}>Event name *</label>
           <input
@@ -137,6 +151,28 @@ export default function GroupEventFirstPage() {
             <InputCKEditor />
           </div>
         </div>
+        <div className={eventItems}>
+          <label className={label}>Max invitees in a spot *</label>
+          <input
+            type="number"
+            name="name"
+            placeholder=" "
+            required
+            className={maxInvites}
+          />
+          <span className={errorMessage} id="error">
+            Can`t be blank
+          </span>
+        </div>
+
+        <div className="flex mt-6">
+          <label className="flex items-center">
+            <input type="checkbox" className="form-checkbox" />
+            <span className="ml-2">
+            Display remaining spots on booking page
+            </span>
+          </label>
+        </div>
 
         <div className={eventItems}>
           <label className={label}>Event color *</label>
@@ -147,6 +183,9 @@ export default function GroupEventFirstPage() {
         </div>
 
         <div className={buttonContainer}>
+          <button id="button" type="button" className={button}>
+            Cancel {">>"}
+          </button>
           <button id="button" type="button" className={button}>
             Next {">>"}
           </button>

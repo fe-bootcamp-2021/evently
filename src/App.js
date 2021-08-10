@@ -1,11 +1,5 @@
-import EventColors from "./components/EventColors/EventColors";
-
 function App() {
-  return (
-    <div className="App">
-      <EventColors/>
-    </div>
-  );
+  return <div className="App"></div>;
 }
 
 export default App;

@@ -2,12 +2,13 @@ import EventColors from "../EventColors/EventColors";
 import InputCKEditor from "../InputCKEditor/InputCKEditor";
 import classNames from "classnames/bind";
 import DataRange from "../DaveRange/DateRange";
+import  Duration  from "../Duration/Duration";
 
 const containerOneOnOne = classNames([
   "min-h-screen",
   "bg-gray-100",
   "p-0",
-  "sm:p-12",
+  "sm:p-12"
 ]);
 
 const card = classNames([
@@ -19,6 +20,8 @@ const card = classNames([
   "border-0",
   "shadow-lg",
   "sm:rounded-3xl",
+  'divide-y',
+  'divide-green-500'
 ]);
 
 const title = classNames([
@@ -92,13 +95,12 @@ export default function GroupEventSecondPage() {
         <h2 className={title}>When can people book this event?</h2>
         <div className={eventItems}>
           <DataRange />
-          <input
-            type="text"
-            name="name"
-            placeholder=" "
-            required
-            className={input}
-          />
+          <span className={errorMessage} id="error">
+            Event name is required
+          </span>
+        </div>
+        <div className={eventItems}>
+          <Duration />
           <span className={errorMessage} id="error">
             Event name is required
           </span>

@@ -1,8 +1,9 @@
-import OneOnOne from "./components/OneOnOne/OneOnOne";
+import GroupEventFirstPage from "./components/GroupEventPage/GroupEvent";
+
 
 function App() {
   return <div className="App">
-    <OneOnOne/>
+    <GroupEventFirstPage/>
   </div>;
 }
 

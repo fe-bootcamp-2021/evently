@@ -7,12 +7,14 @@ const containerRadioBtn = classNames(["flex"]);
 
 const radio = classNames([
   "form-radio",
-  "h-9",
-  "w-9",
+  "lg:h-9",
+  "lg:w-9",
   "m-1",
   "border-none",
   "checked:border-transparent",
   "cursor-pointer",
+  "h-4",
+  "w-4",
 ]);
 
 export default function EventColors() {

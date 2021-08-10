@@ -9,7 +9,6 @@ const buttonContainer = classNames([
 ]);
 
 const button = classNames([
-  "w-1/4",
   "px-6",
   "py-3",
   "mt-3",
@@ -32,7 +31,7 @@ const Button = (props) => {
   return (
     <div className={buttonContainer}>
       <button id="button" type="button" className={button}>
-        {props.name} {">>"}
+        {props.name}
       </button>
     </div>
   );

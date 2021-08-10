@@ -3,6 +3,7 @@ import InputCKEditor from "../InputCKEditor/InputCKEditor";
 import classNames from "classnames/bind";
 import DataRange from "../DaveRange/DateRange";
 import  Duration  from "../Duration/Duration";
+import EventTypeAvailability from "../EventTypeAvailability/EventTypeAvailability";
 
 const containerOneOnOne = classNames([
   "min-h-screen",
@@ -101,6 +102,12 @@ export default function GroupEventSecondPage() {
         </div>
         <div className={eventItems}>
           <Duration />
+          <span className={errorMessage} id="error">
+            Event name is required
+          </span>
+        </div>
+        <div className={eventItems}>
+          <EventTypeAvailability />
           <span className={errorMessage} id="error">
             Event name is required
           </span>

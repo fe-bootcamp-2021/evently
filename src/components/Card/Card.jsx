@@ -1,4 +1,4 @@
-export default function HomeCard() {
+export default function Card() {
     return (
         <div className="px-10 py-3">
           <div className="bg-white w-96 max-w-xl rounded-2xl border-t-8 border-blue-600 px-10 py-8 shadow-lg hover:shadow-2xl transition duration-500">

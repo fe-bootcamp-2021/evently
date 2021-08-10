@@ -1,10 +1,10 @@
 // import "./App.css";
+import HomeCard from "./components/HomeCard/HomeCard";
 
 function App() {
   return (
     <div className="App">
-      <p className="text-red-500 text-5xl">hello</p>
-      <p className="text-5xl">hello</p>
+      <HomeCard />
     </div>
   );
 }

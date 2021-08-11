@@ -1,89 +1,17 @@
 import EventColors from "../EventColors/EventColors";
 import InputCKEditor from "../InputCKEditor/InputCKEditor";
-
-let classNames = require("classnames");
-
-const containerOneOnOne = classNames([
-  "min-h-screen",
-  "bg-gray-100",
-  "p-0",
-  "sm:p-12",
-]);
-
-const card = classNames([
-  "mx-auto",
-  "w-2/3",
-  "px-6",
-  "py-12",
-  "bg-custom-gray-1",
-  "border-0",
-  "shadow-lg",
-  "sm:rounded-3xl",
-]);
-
-const title = classNames([
-  "w-full",
-  "flex",
-  "justify-center",
-  "text-2xl",
-  "font-bold",
-  "text-custom-purple-1",
-  "mb-8",
-]);
-
-const eventItems = classNames(["relative", "z-0", "w-full", "mb-5"]);
-
-const label = classNames(["text-gray-500"]);
-
-const errorMessage = classNames(["text-sm", "text-red-600", "hidden"]);
-
-const input = classNames([
-  "pt-3",
-  "pb-2",
-  "block",
-  "w-full",
-  "px-0",
-  "mt-0",
-  "border-gray-500",
-  "bg-transparent",
-  "border-0",
-  "border-b-2",
-  "appearance-none",
-  "focus:outline-none",
-  "focus:ring-0",
-  "focus:border-black",
-  "border-gray-200",
-]);
-
-const buttonContainer = classNames([
-  "flex",
-  "justify-end",
-  "z-0",
-  "w-full",
-  "mb-5",
-]);
-
-const button = classNames([
-  "w-1/4",
-  "px-6",
-  "py-3",
-  "mt-3",
-  "lg:text-lg",
-  "text-sm",
-  "text-white",
-  "transition-all",
-  "duration-150",
-  "ease-linear",
-  "rounded-lg",
-  "shadow",
-  "outline-none",
-  "bg-custom-purple-1",
-  "hover:bg-pink-600",
-  "hover:shadow-lg",
-  "focus:outline-none",
-]);
-
-const description = classNames(["mt-2"]);
+import {
+  containerOneOnOne,
+  card,
+  title,
+  eventItems,
+  label,
+  input,
+  errorMessage,
+  description,
+  buttonContainer,
+  button,
+} from "./OneOnOne.style";
 
 export default function OneOnOne() {
   return (

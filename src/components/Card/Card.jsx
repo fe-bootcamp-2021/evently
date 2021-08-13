@@ -1,7 +1,7 @@
 export default function Card() {
     return (
-        <div className="px-10 py-3">
-          <div className="bg-white w-96 max-w-xl rounded-2xl border-t-8 border-blue-600 px-10 py-8 shadow-lg hover:shadow-2xl transition duration-500">
+        <div>
+          <div className="bg-white w-96 max-w-xl rounded-2xl border-t-8 border-blue-800 px-10 py-8 shadow-lg hover:shadow-2xl transition duration-500">
             <div className="flex justify-between items-center">
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
                 <button><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -15,7 +15,7 @@ export default function Card() {
                 <hr className="mt-8 py-3" />
                 <div className=" flex justify-between items-center">
                     <button className="text-sm font-semibold text-blue-700">Copy Link</button>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Share</button>  
+                    <button className="bg-blue-800 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">Share</button>  
                 </div>
             </div>
           </div>

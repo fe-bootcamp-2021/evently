@@ -1,5 +1,3 @@
-import EventColors from "../EventColors/EventColors";
-import InputCKEditor from "../InputCKEditor/InputCKEditor";
 import DataRange from "../DaveRange/DateRange";
 import Duration from "../Duration/Duration";
 import EventTypeAvailability from "../EventTypeAvailability/EventTypeAvailability";
@@ -9,10 +7,7 @@ import {
   card,
   title,
   eventItems,
-  label,
-  input,
   errorMessage,
-  description,
   buttonContainer,
   button,
 } from "./GroupEventPage.style";
@@ -40,65 +35,6 @@ export default function GroupEventSecondPage() {
             Event name is required
           </span>
         </div>
-
-        <div className={eventItems}>
-          <label className={label}>Location *</label>
-          <select name="select" value="" className={input}>
-            <option value=""></option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-          </select>
-
-          <span className={errorMessage} id="error">
-            Option has to be selected
-          </span>
-        </div>
-
-        <div className={eventItems}>
-          <label className={label}>Event link *</label>
-          <input
-            type="text"
-            name="name"
-            placeholder=" "
-            required
-            className={input}
-          />
-          <span className={errorMessage} id="error">
-            Event link is required
-          </span>
-        </div>
-
-        <div className={eventItems}>
-          <label className={label}>Description/Instructions</label>
-          <div className={description}>
-            <InputCKEditor />
-          </div>
-        </div>
-        <div className={eventItems}>
-          <label className={label}>Max invitees in a spot *</label>
-          <input type="number" name="name" placeholder=" " required />
-          <span className={errorMessage} id="error">
-            Can`t be blank
-          </span>
-        </div>
-
-        <div className="flex mt-6">
-          <label className="flex items-center">
-            <input type="checkbox" className="form-checkbox" />
-            <span className="ml-2">
-              Display remaining spots on booking page
-            </span>
-          </label>
-        </div>
-
-        <div className={eventItems}>
-          <label className={label}>Event color *</label>
-          <EventColors />
-          <span className={errorMessage} id="error">
-            Option has to be selected
-          </span>
-        </div>
-
         <div className={buttonContainer}>
           <button id="button" type="button" className={button}>
             Cancel {">>"}

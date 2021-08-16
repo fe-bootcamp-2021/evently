@@ -1,14 +1,15 @@
-
 import React from "react";
-import MyMonthlyCalendar from "./components/MyMonthlyCalendar/MyMonthlyCalendar"
+import { BrowserRouter as Router } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
+import Main from "./components/Main/Main";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <MyMonthlyCalendar/> 
-     </div>
+      <Router>
+        <Navbar />  
+        <Main/>    
+      </Router>
+    </div>
   );
-
 }
-
-export default App;

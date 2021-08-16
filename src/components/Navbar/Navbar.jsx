@@ -1,18 +1,18 @@
-import React from "react";
-import { useEffect } from "react";
-import { useHistory } from "react-router";
+import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 export default function Navbar() {
   const [value, setValue] = React.useState("recents");
   const history = useHistory();
+
+  useEffect(() => {
+    if (value.includes("home")) history.push("/home");
+    if (value === "account") history.push("/account");
+  }, [value, history]);
+
   const handleChange = (ev) => {
     setValue(ev.target.value);
   };
-
-  useEffect(() => {
-    if (value.includes("home") ) history.push("/home");
-    if (value === "account") history.push("/account");
-  },[value,history]);
 
   return (
     <nav

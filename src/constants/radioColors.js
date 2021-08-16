@@ -1,68 +1,58 @@
 const RadioColors = () => {
-  const colorData = [
+  const radioColors = [
     {
-      id: 1 + Math.random(),
+      id: 1,
       name: "colors",
-      color: "bg-custom-orange-1",
-      value: 1,
+      classNames: "bg-custom-orange-1",
     },
     {
-      id: 2 + Math.random(),
+      id: 2,
       name: "colors",
-      color: "bg-custom-pink",
-      value: 2,
+      classNames: "bg-custom-pink",
     },
     {
-      id: 3 + Math.random(),
+      id: 3,
       name: "colors",
-      color: "bg-custom-purple",
-      value: 3,
+      classNames: "bg-custom-purple",
     },
     {
-      id: 4 + Math.random(),
+      id: 4,
       name: "colors",
-      color: "bg-custom-blue-1",
-      value: 4,
+      classNames: "bg-custom-blue-1",
     },
     {
-      id: 5 + Math.random(),
+      id: 5,
       name: "colors",
-      color: "bg-custom-blue-2",
-      value: 5,
+      classNames: "bg-custom-blue-2",
     },
     {
-      id: 6 + Math.random(),
+      id: 6,
       name: "colors",
-      color: "bg-custom-blue-3",
-      value: 6,
+      classNames: "bg-custom-blue-3",
     },
     {
-      id: 7 + Math.random(),
+      id: 7,
       name: "colors",
-      color: "bg-custom-green-1",
-      value: 7,
+      classNames: "bg-custom-green-1",
     },
     {
-      id: 8 + Math.random(),
+      id: 8,
       name: "colors",
-      color: "bg-custom-green-2",
-      value: 8,
+      classNames: "bg-custom-green-2",
     },
     {
-      id: 9 + Math.random(),
+      id: 9,
       name: "colors",
-      color: "bg-custom-yellow",
-      value: 9,
+      classNames: "bg-custom-yellow",
     },
     {
-      id: 10 + Math.random(),
+      id: 10,
       name: "colors",
-      color: "bg-custom-orange-2",
-      value: 10,
+      classNames: "bg-custom-orange-2",
     },
   ];
 
-  return colorData;
+  return radioColors;
 };
 
 export default RadioColors;

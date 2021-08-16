@@ -26,10 +26,6 @@ export default function Home() {
                     <div className="flex justify-between items-center mt-8 mb-4">
                         <h1 className="text-2xl text-blue-900">My Meetings</h1>
                         <button className="bg-blue-800 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">+ Create</button>
-                        {/* <div className="">
-                            <a href="">One on One</a>
-                            <a href="">Group</a>
-                        </div> */}
                     </div>
 
                     <ul className="flex mb-4">

@@ -1,22 +1,9 @@
 import React, { useState } from "react";
 import RadioColors from "../../constants/radioColors";
-
-let classNames = require("classnames");
-
-const containerRadioBtn = classNames(["flex"]);
-
-const radio = classNames([
-  "form-radio",
-  "h-9",
-  "w-9",
-  "m-1",
-  "border-none",
-  "checked:border-transparent",
-  "cursor-pointer",
-]);
+import { containerRadioBtn, radio } from "./EventColors.style";
 
 export default function EventColors() {
-  const [isChecked, setIsChecked] = useState(1);
+  const [isChecked, setIsChecked] = useState(RadioColors()[0].id);
 
   const handleChange = (ev) => {
     setIsChecked(Number(ev.target.value));
@@ -24,17 +11,17 @@ export default function EventColors() {
 
   return (
     <div className={containerRadioBtn}>
-      {RadioColors().map((el) => {
-        const checked = isChecked === el.value ? "checked" : "";
+      {RadioColors().map(({ id, name, classNames }) => {
+        const checked = isChecked === id ? "checked" : "";
         return (
           <input
-            key={Math.random()}
+            key={id}
             type="radio"
-            name={el?.name}
-            value={el?.value}
-            className={`${radio} ${el?.color} checked:${el?.color}`}
+            name={name}
+            value={id}
+            className={`${radio} ${classNames} checked:${classNames}`}
             onChange={handleChange}
-            {...{ checked }}
+            checked={checked}
           />
         );
       })}

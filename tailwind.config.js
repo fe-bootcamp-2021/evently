@@ -15,6 +15,8 @@ module.exports = {
           "green-2": "rgb(204, 240, 0)",
           yellow: "rgb(248, 228, 54)",
           "orange-2": "rgb(255, 166, 0)",
+          "gray-1": "rgb(235, 235, 224)",
+          "purple-1": "rgb(213, 128, 255)",
         },
       },
     },
@@ -27,3 +29,4 @@ module.exports = {
   },
   plugins: [require("@tailwindcss/forms")],
 };
+

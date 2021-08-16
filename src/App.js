@@ -1,9 +1,9 @@
 import React from "react";
-import Login from "./components/Login/Login"
+import LoginSign from "./components/Login-Sign/Login-Sign.jsx"
 
 function App() {
   return <div className="App">
-    <Login/>
+    <LoginSign/>
   </div>;
 }
 

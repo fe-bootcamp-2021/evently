@@ -6,6 +6,7 @@
     "@ckeditor/ckeditor5-build-classic": "^29.1.0",
     "@ckeditor/ckeditor5-react": "^3.0.2",
     "@craco/craco": "^6.2.0",
+    "@heroicons/react": "^1.0.3",
     "@tailwindcss/forms": "^0.3.3",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",

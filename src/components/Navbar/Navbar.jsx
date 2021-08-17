@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useHistory } from "react-router";
-
+import { Routes } from "../../constants/routes";
 export default function Navbar() {
   const [value, setValue] = React.useState("recents");
   const history = useHistory();
@@ -10,9 +10,20 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    if (value.includes("home") ) history.push("/home");
-    if (value === "account") history.push("/account");
-  },[value,history]);
+    // switch (value) {
+    //   case "home":
+    //     history.push(Routes.home().path);
+    //     break;
+    //   case "account":
+    //     history.push(Routes.account().path);
+    //     break;
+    //   default:
+    //     history.push(Routes.error().path);
+    // }
+    if (value.includes("home") ) history.push(Routes.home().path);
+    if (value === "account") history.push(Routes.account().path);
+    if (value === "*") history.push(Routes.error().path);
+  }, [value, history]);
 
   return (
     <nav

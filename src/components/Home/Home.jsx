@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import Card from "../Card/Card";
 import Dropdown from "../Dropdown/Dropdown";
 import Logo from "../Logo/Logo";
@@ -10,32 +12,21 @@ export default function Home() {
                 <div className="w-9/12">
                     <div className="mt-4 flex justify-between">
                         <Logo />
-                        <div>
-                            <ul className="flex justify-between items-center">
-                                <li className="mr-6">
-                                  <a className="text-blue-900 hover:text-purple-800 hover:font-extrabold" href="#">Home</a>
-                                </li>
-                                <li className="mr-6">
-                                  <a className="text-blue-900 hover:text-purple-800 hover:font-extrabold" href="#">Help</a>
-                                </li>
-                                <li className="mr-6">
-                                  <a className="text-blue-900 hover:text-purple-800 hover:font-extrabold" href="#">Log Out</a>
-                                </li>
-                            </ul>
+                        <div className="flex justify-between items-center">
+                            <Router>
+                                <Link to="#" className="mr-4 text-blue-900 hover:text-purple-800 hover:font-extrabold">Home</Link> 
+                                <Link to="#" className="mr-4 text-blue-900 hover:text-purple-800 hover:font-extrabold">Help</Link>
+                                <Link to="#" className="text-blue-900 hover:text-purple-800 hover:font-extrabold">Log Out</Link> 
+                            </Router>
                         </div>
                     </div>
                     <div className="flex justify-between items-center  mt-8 mb-4">
                         <div className="flex flex-col justify-between items-left mt-4 mb-4">
                             <h1 className="text-2xl text-blue-900 mb-4">My Meetings</h1>
-                            {/* <button className="bg-blue-800 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">+ Create</button> */}
-                            <ul className="flex mb-6">
-                                <li className="mr-6">
-                                  <a className="text-blue-800 hover:text-blue-600" href="#">Event Types</a>
-                                </li>
-                                <li className="mr-6">
-                                  <a className="text-blue-800 hover:text-blue-600" href="#">Scheduled Events</a>
-                                </li>
-                            </ul>
+                            <div className="flex mb-6">
+                                <Button name="Event Types" style="text-sm mr-4 font-semibold text-blue-700" />
+                                <Button name="Scheduled Events" style="text-sm mr-4 font-semibold text-blue-700" />
+                            </div>
                         </div>
                     
                         <div className="h-36">

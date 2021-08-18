@@ -1,7 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Button from "../LoginSignButtons.jsx/LoginSignButtons";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import Button from "../Button/Button";
 import Input from "../Inputs/Input";
+import { logIn, signUp } from "../../constants/constants";
 import {
   titleLogin,
   inputWrapper,
@@ -9,29 +10,36 @@ import {
   emailPassword,
   emailPassStyle,
   emailPassLabel,
-} from "./Login.style";
+} from "./LoginSign.style";
 
 export let Child = () => {
-  let login = false;
-  let name = null;
+  const history = useHistory();
+  const [login, setLogin] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
+  const [name, setName] = useState(signUp);
+
   function handleLogin() {
-    name = "Login";
-    login = true;
+    setName(logIn);
+    setLogin(true);
   }
   function handleSign() {
-    name = "Sign Up";
-    login = false;
+    setName(signUp);
+    setLogin(false);
   }
+
+  const handleLoginSignIn = () => {
+    setIsAuth(true);
+  };
 
   return (
     <>
       {login ? (
         <div>
-          <h1 className={titleLogin}>Sign Up</h1>
+          <h2 className={titleLogin}>{signUp}</h2>
         </div>
       ) : (
         <div>
-          <h1 className={titleLogin}>Login</h1>
+          <h2 className={titleLogin}>{logIn}</h2>
         </div>
       )}
       <div className={inputWrapper}>
@@ -62,16 +70,19 @@ export let Child = () => {
               Password
             </label>
           </div>
-
           {login ? (
             <div className={emailPassword}>
-              <Button onclick={handleSign}>{name}</Button>
-              <span onclick={handleLogin}>{name}</span>
+              <span className="underline" onClick={handleSign}>
+                {name}
+              </span>
+              <Button onClick={handleLoginSignIn} name={signUp} />
             </div>
           ) : (
             <div className={emailPassword}>
-              <Button onclick={handleLogin}>{name}</Button>
-              <span onclick={handleSign}>{name}</span>
+              <span className="underline" onClick={handleLogin}>
+                {name}
+              </span>
+              <Button onClick={handleLoginSignIn} name={logIn} />
             </div>
           )}
         </div>

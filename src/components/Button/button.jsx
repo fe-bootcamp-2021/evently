@@ -8,14 +8,20 @@ const buttonContainer = classNames([
   "mb-5",
 ]);
 
-const button = classNames([
-  "bg-blue-800 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full",
+const buttonStyle = classNames([
+  "bg-blue-800",
+  "hover:bg-blue-600",
+  "text-white",
+  "font-bold",
+  "py-2",
+  "px-4",
+  "rounded-full",
 ]);
 
-const Button = ({name}) => {
+const Button = ({ name, onClick }) => {
   return (
     <div className={buttonContainer}>
-      <button id="button" type="button" className={button}>
+      <button type="button" className={buttonStyle} onClick={onClick}>
         {name}
       </button>
     </div>

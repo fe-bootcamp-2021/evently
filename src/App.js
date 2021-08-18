@@ -1,10 +1,10 @@
 import React from "react";
-import LoginSign from "./components/Login-Sign/Login-Sign.jsx"
-
+import Login from "./components/LoginSign/LoginSign";
 
 export default function App() {
-  return <div className="App">
-    <LoginSign/>
-  </div>;
-
+  return (
+    <div className="App">
+      <Login />
+    </div>
+  );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import Button from "../Button/Button";
+import Button from "../Button/Button"
 import Input from "../Inputs/Input";
 import { logIn, signUp } from "../../constants/constants";
 import {

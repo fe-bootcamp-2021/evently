@@ -1,11 +1,12 @@
 import React from "react";
-import Demo from './components/Availability/ListView'
+import Evently from "./components/Availability/ListView";
+import MyMonthlyCalendar from "./components/MyMonthlyCalendar/MyMonthlyCalendar";
 // import Login from "./components/Login/Login";
 
 function App() {
   return (
     <div className="App">
-      <Demo />
+      <Evently />
     </div>
   );
 }

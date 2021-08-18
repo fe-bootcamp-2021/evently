@@ -17,7 +17,9 @@ import {
 import { owners } from "./data/tasks";
 import { appointments, resourcesData } from "./data/resourses";
 
-export default class Demo extends React.PureComponent {
+
+
+export default class Evently extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -67,7 +69,7 @@ export default class Demo extends React.PureComponent {
     const { data, resources, date } = this.state;
 
     return (
-      <Paper>
+      <Paper >
         <Scheduler data={data}>
           <ViewState defaultCurrentDate={date} />
           <MonthView />

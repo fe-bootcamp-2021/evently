@@ -9,29 +9,14 @@ const buttonContainer = classNames([
 ]);
 
 const button = classNames([
-  "px-6",
-  "py-3",
-  "mt-3",
-  "lg:text-lg",
-  "text-sm",
-  "text-white",
-  "transition-all",
-  "duration-150",
-  "ease-linear",
-  "rounded-lg",
-  "shadow",
-  "outline-none",
-  "bg-custom-purple-1",
-  "hover:bg-pink-600",
-  "hover:shadow-lg",
-  "focus:outline-none",
+  "bg-blue-800 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full",
 ]);
 
-const Button = (props) => {
+const Button = ({name}) => {
   return (
     <div className={buttonContainer}>
       <button id="button" type="button" className={button}>
-        {props.name}
+        {name}
       </button>
     </div>
   );

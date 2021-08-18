@@ -19,9 +19,9 @@ const Button = ({ name, onClick, style = buttonStyle }) => {
   );
 };
 
-
 Button.protoTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func.isRequired,
 };
+
 export default Button;

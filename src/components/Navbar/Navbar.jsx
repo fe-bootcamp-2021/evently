@@ -1,6 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
-import { useHistory } from "react-router";
 import { Routes } from "../../constants/routes";
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import {titleHome} from "./Navbar.style"

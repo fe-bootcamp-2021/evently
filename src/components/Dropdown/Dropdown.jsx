@@ -32,8 +32,8 @@ export default function Dropdown() {
         </button>
 
         <div className={dropDownMenu}> 
-          <Link href="#" className="block px-4 py-2 rounded-t-lg text-gray-800 hover:bg-blue-600 hover:text-white">One-on-One</Link> 
-          <Link href="#" className="block px-4 py-2 rounded-b-lg text-gray-800 hover:bg-blue-600 hover:text-white">Group Meeting</Link> 
+          <Link to="#" className="block px-4 py-2 rounded-t-lg text-gray-800 hover:bg-blue-600 hover:text-white">One-on-One</Link> 
+          <Link to="#" className="block px-4 py-2 rounded-b-lg text-gray-800 hover:bg-blue-600 hover:text-white">Group Meeting</Link> 
         </div>
       </div>
     </div>

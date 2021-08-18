@@ -1,5 +1,7 @@
 import EventColors from "../EventColors/EventColors";
 import InputCKEditor from "../InputCKEditor/InputCKEditor";
+import Button from "../Button/Button";
+
 import {
   containerOneOnOne,
   card,
@@ -75,9 +77,7 @@ export default function OneOnOne() {
         </div>
 
         <div className={buttonContainer}>
-          <button id="button" type="button" className={button}>
-            Next {">>"}
-          </button>
+          <Button name={`Next >>`}/>
         </div>
       </div>
     </div>

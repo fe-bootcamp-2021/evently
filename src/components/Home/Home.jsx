@@ -26,8 +26,7 @@ export default function Home() {
                 </li>
                 <li className="mr-6">
                   <Link to="#" className="text-blue-900 hover:text-blue-600">
-                    {" "}
-                    Log Out
+                    {"Log Out"}
                   </Link>
                 </li>
               </ul>
@@ -69,4 +68,3 @@ export default function Home() {
     </div>
   );
 }
-

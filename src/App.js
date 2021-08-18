@@ -1,15 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
-import Main from "./components/Main/Main";
+import Login from "./components/LoginSign/LoginSign";
+import OneOnOne from "./components/OneOnOne/OneOnOne";
+import Evently from "./components/Availability/ListView";
 
 export default function App() {
   return (
     <div className="App">
-      <Router>
-        <Navbar />
-        <Main />
-      </Router>
+      <Login />
+      <OneOnOne />
+      <Evently />
     </div>
   );
 }

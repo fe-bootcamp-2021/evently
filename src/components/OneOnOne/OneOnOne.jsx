@@ -77,7 +77,7 @@ export default function OneOnOne() {
         </div>
 
         <div className={buttonContainer}>
-          <Button name={`Next >>`}/>
+          <Button name={`Next >>`} onClick={console.log(1)}/>
         </div>
       </div>
     </div>

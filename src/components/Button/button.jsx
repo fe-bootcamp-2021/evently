@@ -1,12 +1,5 @@
 import classNames from "classnames/bind";
-
-const buttonContainer = classNames([
-  "flex",
-  "justify-end",
-  "z-0",
-  "w-full",
-  "mb-5",
-]);
+import PropTypes from "prop-types";
 
 const buttonStyle = classNames([
   "bg-blue-800",
@@ -18,14 +11,17 @@ const buttonStyle = classNames([
   "rounded-full",
 ]);
 
-const Button = ({ name, onClick }) => {
+const Button = ({ name, onClick, style = buttonStyle }) => {
   return (
-    <div className={buttonContainer}>
-      <button type="button" className={buttonStyle} onClick={onClick}>
-        {name}
-      </button>
-    </div>
+    <button type="button" className={style} onClick={onClick}>
+      {name}
+    </button>
   );
 };
 
+
+Button.protoTypes = {
+  className: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
+};
 export default Button;

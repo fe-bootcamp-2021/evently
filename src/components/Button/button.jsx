@@ -1,25 +1,27 @@
 import classNames from "classnames/bind";
+import PropTypes from "prop-types";
 
-const buttonContainer = classNames([
-  "flex",
-  "justify-end",
-  "z-0",
-  "w-full",
-  "mb-5",
+const buttonStyle = classNames([
+  "bg-blue-800",
+  "hover:bg-blue-600",
+  "text-white",
+  "font-bold",
+  "py-2",
+  "px-4",
+  "rounded-full",
 ]);
 
-const button = classNames([
-  "bg-blue-800 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full",
-]);
-
-const Button = ({name}) => {
+const Button = ({ name, onClick, style = buttonStyle }) => {
   return (
-    <div className={buttonContainer}>
-      <button id="button" type="button" className={button}>
-        {name}
-      </button>
-    </div>
+    <button type="button" className={style} onClick={onClick}>
+      {name}
+    </button>
   );
+};
+
+Button.protoTypes = {
+  className: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Button;

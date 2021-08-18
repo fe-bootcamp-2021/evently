@@ -81,7 +81,7 @@ export const emailPassLabel = classNames([
   "peer-focus:text-gray-600",
   "peer-focus:text-sm",
 ]);
-export const signButton = classNames([
+export const signStyle = classNames([
   "bg-blue-500",
   "text-white",
   "rounded-md",

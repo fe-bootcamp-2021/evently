@@ -1,12 +1,10 @@
 import React from "react";
+import LoginSign from "./components/Login-Sign/Login-Sign.jsx"
 
-import Navbar from "./components/Navbar/Navbar"
 
-function App() {
-  return (<div className="App">
-    <Navbar/>
-  </div>);
+export default function App() {
+  return <div className="App">
+    <LoginSign/>
+  </div>;
 
 }
-
-export default App;

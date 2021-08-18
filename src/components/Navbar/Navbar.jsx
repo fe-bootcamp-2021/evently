@@ -1,9 +1,23 @@
-import React from "react";
-import { Routes } from "../../constants/routes";
+import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
+import { Routes } from "../../constants/routes";
 import {titleHome} from "./Navbar.style"
 
 export default function Navbar() {
+  const [value, setValue] = React.useState("recents");
+  const history = useHistory();
+
+  useEffect(() => {
+    if (value.includes("home")) history.push("/home");
+    if (value === "account") history.push("/account");
+  }, [value, history]);
+
+  const handleChange = (ev) => {
+    setValue(ev.target.value);
+  };
+
+
   return (
     <Router>       
       <nav

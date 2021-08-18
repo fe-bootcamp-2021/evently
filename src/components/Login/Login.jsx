@@ -56,7 +56,7 @@ export default function Login() {
                 </div>
                 <div className={emailPassword}>
                   <button className={signButton}>Login</button>
-                <Link  to="/SignUp">Users</Link>
+                {/* <Link  to="/SignUp">Users</Link> */}
                 </div>
               </div>
             </div>

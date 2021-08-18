@@ -7,8 +7,8 @@ export default function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar />  
-        <Main/>    
+        <Navbar />
+        <Main />
       </Router>
     </div>
   );

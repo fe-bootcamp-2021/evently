@@ -1,10 +1,10 @@
 import React from "react";
-import Login from "./components/LoginSign/LoginSign";
+import Evently from "./components/Availability/ListView";
 
 export default function App() {
   return (
     <div className="App">
-      <Login />
+      <Evently />
     </div>
   );
 }

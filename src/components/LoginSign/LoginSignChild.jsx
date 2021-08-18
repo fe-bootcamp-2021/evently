@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import Button from "../Button/Button"
+import Button from "../Button/Button";
 import Input from "../Inputs/Input";
 import { logIn, signUp } from "../../constants/constants";
 import {
@@ -12,10 +11,11 @@ import {
   emailPassLabel,
 } from "./LoginSign.style";
 
-export let Child = () => {
-  const history = useHistory();
+export let Child = (props) => {
+  console.log(props);
+
+  let { setIsLoggedIn } = props;
   const [login, setLogin] = useState(false);
-  const [isAuth, setIsAuth] = useState(false);
   const [name, setName] = useState(signUp);
 
   function handleLogin() {
@@ -28,7 +28,7 @@ export let Child = () => {
   }
 
   const handleLoginSignIn = () => {
-    setIsAuth(true);
+    setIsLoggedIn(true);
   };
 
   return (

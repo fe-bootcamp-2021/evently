@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 import Card from "../Card/Card";
 import Dropdown from "../Dropdown/Dropdown";
 import Logo from "../Logo/Logo";
@@ -10,27 +10,6 @@ export default function Home() {
         <div className="w-9/12">
           <div className="mt-4 flex justify-between">
             <Logo />
-            <div>
-              <ul className="flex mb-4">
-                <li className="mr-6">
-                  <Link to="#" className="text-blue-900 hover:text-blue-600">
-                    {" "}
-                    Home
-                  </Link>
-                </li>
-                <li className="mr-6">
-                  <Link to="#" className="text-blue-900 hover:text-blue-600">
-                    {" "}
-                    Help
-                  </Link>
-                </li>
-                <li className="mr-6">
-                  <Link to="#" className="text-blue-900 hover:text-blue-600">
-                    {"Log Out"}
-                  </Link>
-                </li>
-              </ul>
-            </div>
           </div>
           <div className="flex justify-between items-center mt-8 mb-4">
             <h1 className="text-2xl text-blue-900">My Meetings</h1>
@@ -41,16 +20,16 @@ export default function Home() {
 
           <ul className="flex mb-4">
             <li className="mr-6">
-              <Link to="#" className="text-blue-900 hover:text-blue-600">
+              {/* <Link to="#" className="text-blue-900 hover:text-blue-600"> */}
                 {" "}
                 Event Types
-              </Link>
+              {/* </Link> */}
             </li>
             <li className="mr-6">
-              <Link to="#" className="text-blue-900 hover:text-blue-600">
+              {/* <Link to="#" className="text-blue-900 hover:text-blue-600"> */}
                 {" "}
                 Scheduled Events
-              </Link>
+              {/* </Link> */}
             </li>
           </ul>
         </div>
@@ -68,4 +47,3 @@ export default function Home() {
     </div>
   );
 }
-

@@ -1,5 +1,6 @@
 import EventColors from "../EventColors/EventColors";
 import InputCKEditor from "../InputCKEditor/InputCKEditor";
+import Button from "../Button/Button";
 import {
   containerOneOnOne,
   card,
@@ -11,7 +12,6 @@ import {
   description,
   maxInvites,
   buttonContainer,
-  button,
 } from "./GroupEventPage.style";
 
 export default function GroupEventFirstPage() {
@@ -98,12 +98,8 @@ export default function GroupEventFirstPage() {
         </div>
 
         <div className={buttonContainer}>
-          <button id="button" type="button" className={button}>
-            Cancel {">>"}
-          </button>
-          <button id="button" type="button" className={button}>
-            Next {">>"}
-          </button>
+          <Button name={`Cancel `} onClick={console.log(1)}/>
+          <Button name={`Next >>`} onClick={console.log(1)}/>
         </div>
       </div>
     </div>

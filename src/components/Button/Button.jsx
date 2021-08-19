@@ -9,6 +9,7 @@ const buttonStyle = classNames([
   "py-2",
   "px-4",
   "rounded-full",
+  "m-1"
 ]);
 
 const Button = ({ name, onClick, style = buttonStyle }) => {

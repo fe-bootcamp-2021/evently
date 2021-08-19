@@ -1,7 +1,6 @@
 import EventColors from "../EventColors/EventColors";
 import InputCKEditor from "../InputCKEditor/InputCKEditor";
 import Button from "../Button/Button";
-
 import {
   containerOneOnOne,
   card,
@@ -12,7 +11,6 @@ import {
   errorMessage,
   description,
   buttonContainer,
-  button,
 } from "./OneOnOne.style";
 
 export default function OneOnOne() {

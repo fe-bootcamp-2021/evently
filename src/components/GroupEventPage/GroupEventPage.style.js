@@ -4,28 +4,32 @@ export const containerOneOnOne = classNames([
   "min-h-screen",
   "bg-gray-100",
   "p-0",
-  "sm:p-12",
 ]);
 
 export const card = classNames([
   "mx-auto",
   "w-2/3",
-  "px-6",
-  "py-12",
-  "bg-custom-gray-1",
-  "border-0",
+  "bg-white",
+  "max-w-5xl",
+  "rounded-2xl",
+  "border-t-8",
+  "border-blue-800",
+  "px-10",
+  "py-8",
   "shadow-lg",
-  "sm:rounded-3xl",
+  "hover:shadow-2xl",
+  "transition",
+  "duration-500",
 ]);
 
 export const title = classNames([
   "w-full",
   "flex",
   "justify-center",
-  "text-2xl",
   "font-bold",
-  "text-custom-purple-1",
   "mb-8",
+  "text-2xl",
+  "text-blue-900",
 ]);
 
 export const eventItems = classNames(["relative", "z-0", "w-full", "mb-5"]);
@@ -58,26 +62,6 @@ export const buttonContainer = classNames([
   "z-0",
   "w-full",
   "mb-5",
-]);
-
-export const button = classNames([
-  "w-1/4",
-  "px-6",
-  "py-3",
-  "mt-3",
-  "lg:text-lg",
-  "text-sm",
-  "text-white",
-  "transition-all",
-  "duration-150",
-  "ease-linear",
-  "rounded-lg",
-  "shadow",
-  "outline-none",
-  "bg-custom-purple-1",
-  "hover:bg-pink-600",
-  "hover:shadow-lg",
-  "focus:outline-none",
 ]);
 
 export const maxInvites = classNames([

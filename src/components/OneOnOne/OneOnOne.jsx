@@ -12,13 +12,12 @@ import {
   errorMessage,
   description,
   buttonContainer,
-  button,
 } from "./OneOnOne.style";
 
 export default function OneOnOne() {
   return (
     <div className={containerOneOnOne}>
-      <div className={card}>
+      <div className={`${card} px-10`}>
         <h2 className={title}>Add One-on-One Event</h2>
         <div className={eventItems}>
           <label className={label}>Event name *</label>

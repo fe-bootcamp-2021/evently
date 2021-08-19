@@ -1,4 +1,4 @@
-import DataRange from "../DaveRange/DateRange";
+import DataRange from "../DateRange/DateRange";
 import Duration from "../Duration/Duration";
 import EventTypeAvailability from "../EventTypeAvailability/EventTypeAvailability";
 

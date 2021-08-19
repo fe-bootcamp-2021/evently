@@ -10,7 +10,6 @@ export const card = classNames([
   "rounded-2xl",
   "border-t-8",
   "border-blue-800",
-  "px-10",
   "py-8",
   "shadow-lg",
   "hover:shadow-2xl",

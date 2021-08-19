@@ -17,7 +17,7 @@ import {
 export default function GroupEventFirstPage() {
   return (
     <div className={containerOneOnOne}>
-      <div className={card}>
+      <div className={`${card} px-10`}>
         <h2 className={title}>Add Group Event</h2>
         <div className={eventItems}>
           <label className={label}>Event name *</label>

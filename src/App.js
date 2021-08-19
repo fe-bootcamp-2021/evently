@@ -1,12 +1,10 @@
 import React from "react";
+import Login from "../src/components/LoginSign/LoginSign";
 
-import Navbar from "./components/Navbar/Navbar"
-
-function App() {
-  return (<div className="App">
-    <Navbar/>
-  </div>);
-
+export default function App() {
+  return (
+    <div className="App">
+      <Login />
+    </div>
+  );
 }
-
-export default App;

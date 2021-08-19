@@ -1,7 +1,5 @@
 import EventColors from "../EventColors/EventColors";
 import InputCKEditor from "../InputCKEditor/InputCKEditor";
-import Button from "../Button/Button";
-
 import {
   containerOneOnOne,
   card,
@@ -11,15 +9,16 @@ import {
   input,
   errorMessage,
   description,
+  maxInvites,
   buttonContainer,
   button,
-} from "./OneOnOne.style";
+} from "./GroupEventPage.style";
 
-export default function OneOnOne() {
+export default function GroupEventFirstPage() {
   return (
     <div className={containerOneOnOne}>
       <div className={card}>
-        <h2 className={title}>Add One-on-One Event</h2>
+        <h2 className={title}>Add Group Event</h2>
         <div className={eventItems}>
           <label className={label}>Event name *</label>
           <input
@@ -67,6 +66,28 @@ export default function OneOnOne() {
             <InputCKEditor />
           </div>
         </div>
+        <div className={eventItems}>
+          <label className={label}>Max invitees in a spot *</label>
+          <input
+            type="number"
+            name="name"
+            placeholder=" "
+            required
+            className={maxInvites}
+          />
+          <span className={errorMessage} id="error">
+            Can`t be blank
+          </span>
+        </div>
+
+        <div className="flex mt-6">
+          <label className="flex items-center">
+            <input type="checkbox" className="form-checkbox" />
+            <span className="ml-2">
+              Display remaining spots on booking page
+            </span>
+          </label>
+        </div>
 
         <div className={eventItems}>
           <label className={label}>Event color *</label>
@@ -77,7 +98,12 @@ export default function OneOnOne() {
         </div>
 
         <div className={buttonContainer}>
-          <Button name={`Next >>`} onClick={console.log(1)}/>
+          <button id="button" type="button" className={button}>
+            Cancel {">>"}
+          </button>
+          <button id="button" type="button" className={button}>
+            Next {">>"}
+          </button>
         </div>
       </div>
     </div>

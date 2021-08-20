@@ -1,48 +1,39 @@
 import DataRange from "../DateRange/DateRange";
 import Duration from "../Duration/Duration";
+import Button from "../Button/Button";
 import EventTypeAvailability from "../EventTypeAvailability/EventTypeAvailability";
 
 import {
   containerOneOnOne,
   card,
-  title,
   eventItems,
   errorMessage,
   buttonContainer,
-  button,
 } from "./GroupEventPage.style";
 
 export default function GroupEventSecondPage() {
   return (
     <div className={containerOneOnOne}>
       <div className={card}>
-        <h2 className={title}>When can people book this event?</h2>
-        <div className={eventItems}>
+        <section className="my-10 px-10">
           <DataRange />
-          <span className={errorMessage} id="error">
-            Event name is required
-          </span>
-        </div>
-        <div className={eventItems}>
+        </section>
+        <section className="my-10 px-10 pt-10 border-t-2 border-fuchsia-600">
           <Duration />
-          <span className={errorMessage} id="error">
-            Event name is required
-          </span>
-        </div>
-        <div className={eventItems}>
+        </section>
+        <section className="my-10 px-10 pt-10 border-t-2 border-fuchsia-600">
           <EventTypeAvailability />
-          <span className={errorMessage} id="error">
-            Event name is required
-          </span>
-        </div>
-        <div className={buttonContainer}>
-          <button id="button" type="button" className={button}>
-            Cancel {">>"}
-          </button>
-          <button id="button" type="button" className={button}>
-            Next {">>"}
-          </button>
-        </div>
+        </section>
+        <section className="my-10 px-10 pt-10 border-t-2 border-fuchsia-600">
+          <div className={buttonContainer}>
+            <Button name={`Cancel`} onClick={console.log(1)} />
+            <Button
+              name={`Next >>`}
+              className="ml-3"
+              onClick={console.log(1)}
+            />
+          </div>
+        </section>
       </div>
     </div>
   );

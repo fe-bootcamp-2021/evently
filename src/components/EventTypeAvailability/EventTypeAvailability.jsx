@@ -1,4 +1,5 @@
 import Button from "../Button/Button";
+import WeeklyHours from "../WeeklyHours/WeeklyHours";
 
 const EventTypeAvailability = () => {
   return (
@@ -27,7 +28,7 @@ const EventTypeAvailability = () => {
         </div>
       </div>
       <div className="w-full flex justify-center">
-        
+       <WeeklyHours/>
       </div>
     </div>
   );

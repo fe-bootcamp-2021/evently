@@ -5,6 +5,8 @@ import Dropdown from "../Dropdown/Dropdown";
 import Logo from "../Logo/Logo";
 import Button from "../Button/Button"
 import Input from "../Input/Input"
+import Image from "../../images/Ellipse96.svg"
+import Image2 from "../../images/Ellipse97.svg"
 
 export default function Main() {
     return (
@@ -35,23 +37,36 @@ export default function Main() {
                 </div>
 
                 <div className="flex items-center justify-center">
-                    <div className="rounded-full relative border border-blue-900 w-144 h-144">
-                        
+                    <div className="rounded-full relative border border-purple-900 w-144 h-144">
+                        <div className="rounded-full absolute bg-purple-900 ring-4 ring-purple-200 w-7 h-7 bottom-14 right-20"></div>
                     </div>
-                    <div className="rounded-full absolute border border-blue-900 w-108 h-108">
-                        <div className="rounded-full absolute border border-blue-900 w-14 h-14 -inset-4"></div>
-                        <div className="rounded-full absolute border border-blue-900 w-14 h-14 top-5 right-12"></div>
-                        <div className="rounded-full absolute border border-blue-900 w-14 h-14 inset-x-10 bottom-7"></div>
+                    <div className="rounded-full absolute border border-purple-900 w-108 h-108">
+                    <div className="rounded-full absolute bg-purple-900 ring-4 ring-purple-200 w-7 h-7 top-0 right-0"></div>
+                    <div className="rounded-full absolute bg-purple-900 ring-4 ring-purple-200 w-7 h-7 inset-x-6 top-20"></div>
+                        <div className="rounded-full absolute w-14 h-14 -inset-4">
+                            <img src={Image} className="-inset-4" />
+                        </div>
+                        <div className="rounded-full absolute w-14 h-14 top-5 right-12">
+                            <img src={Image2} className="top-5 right-12" />
+                        </div>
+                        <div className="rounded-full absolute w-14 h-14 inset-x-10 bottom-7">
+                            <img src={Image} className="inset-x-10 bottom-7" />
+                        </div>
                     </div>
-                    <div className="rounded-full absolute border border-blue-900 w-72 h-72">
-                        <div className="rounded-full absolute border border-blue-900 w-14 h-14 bottom-5 right-2"></div>
+                    <div className="rounded-full absolute border border-purple-900 w-72 h-72">
+                        <div className="rounded-full absolute bg-purple-900 ring-4 ring-purple-200 w-7 h-7 bottom-10 left-4"></div>
+                        <div className="rounded-full absolute bottom-5 right-2">
+                            <img src={Image2} className="w-14 h-14" />
+                        </div>
                     </div>
-                    <div className="rounded-full absolute border border-blue-900 w-40 h-40"></div>
-                    <div className="rounded-full absolute border border-blue-900 w-28 h-28"></div>
+                    <div className="rounded-full absolute border border-purple-900"></div>
+                    <div className="rounded-full absolute w-28 h-28">
+                        <img src={Image} className="w-28 h-28" />
+                    </div>
                     
                 </div>
             </div>
-
+            
             
         </div>
     )

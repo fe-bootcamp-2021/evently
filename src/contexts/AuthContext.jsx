@@ -11,7 +11,14 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
 
   function userSignUp(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password);
+    return auth.createUserWithEmailAndPassword(email, password)
+    .then((response) => {
+      response.user.sendEmailVerification();
+      // addUser({ email, password, uid: response.user.uid });
+      // setUser(response.user);
+      // return response.user;
+    });
+    
   }
 
   function verifyUser(email) {

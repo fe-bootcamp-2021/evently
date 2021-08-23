@@ -1,5 +1,4 @@
 export default function Input({
-  autocomplete,
   id,
   name,
   type,
@@ -10,7 +9,6 @@ export default function Input({
   return (
     <div>
       <input
-        autocomplete={autocomplete}
         id={id}
         name={name}
         type={type}

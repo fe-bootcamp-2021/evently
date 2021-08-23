@@ -18,7 +18,7 @@ export let Child = (props) => {
   const [name, setName] = useState(signUp);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const { userSignUp, currentUser } = useAuth();
+  const { userSignUp, verifyUser, currentUser } = useAuth();
 
   function handleLogin(event) {
     event.stopPropagation();
@@ -32,7 +32,6 @@ export let Child = (props) => {
   }
 
   async function handleSubmit() {
-    console.log(1)
     // event.preventDefault();
     setIsLoggedIn(true);
 
@@ -42,9 +41,8 @@ export let Child = (props) => {
 
     try {
       // setError("");
-     
-      console.log(email, password);
       await userSignUp(email, password);
+      await verifyUser(email)
     } catch {
       // setError("Failed to create an account");
       console.log('error')

@@ -10,26 +10,54 @@ import {
   emailPassStyle,
   emailPassLabel,
 } from "./LoginSign.style";
+import { useAuth } from "../../contexts/AuthContext";
 
 export let Child = (props) => {
-  console.log(props);
-
   let { setIsLoggedIn } = props;
   const [login, setLogin] = useState(false);
   const [name, setName] = useState(signUp);
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const { userSignUp, currentUser } = useAuth();
 
-  function handleLogin() {
+  function handleLogin(event) {
+    event.stopPropagation();
     setName(logIn);
     setLogin(true);
   }
-  function handleSign() {
+  function handleSign(event) {
+    event.stopPropagation();
     setName(signUp);
     setLogin(false);
   }
 
-  const handleLoginSignIn = () => {
+  async function handleSubmit() {
+    console.log(1)
+    // event.preventDefault();
     setIsLoggedIn(true);
-  };
+
+    // if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+    //   return setError("Passwords do not match");
+    // }
+
+    try {
+      // setError("");
+     
+      console.log(email, password);
+      await userSignUp(email, password);
+    } catch {
+      // setError("Failed to create an account");
+      console.log('error')
+    }
+    // setLoading(false);
+  }
+
+  function handleEmail(event) {
+    setEmail(event.target.value);
+  }
+  function handlePassword(event) {
+    setPassword(event.target.value);
+  }
 
   return (
     <>
@@ -46,7 +74,7 @@ export let Child = (props) => {
         <div className={emailInput}>
           <div className={emailPassword}>
             <Input
-              autocomplete="off"
+              onChange={handleEmail}
               id="email"
               name="email"
               type="text"
@@ -59,7 +87,7 @@ export let Child = (props) => {
           </div>
           <div className={emailPassword}>
             <Input
-              autocomplete="off"
+              onChange={handlePassword}
               id="password"
               name="password"
               type="password"
@@ -72,17 +100,17 @@ export let Child = (props) => {
           </div>
           {login ? (
             <div className={emailPassword}>
-              <span className="underline" onClick={handleSign}>
+              {/* <span className="underline" onClick={handleSign}>
                 {name}
-              </span>
-              <Button onClick={handleLoginSignIn} name={signUp} />
+              </span> */}
+              <Button onClick={handleSubmit} name={signUp} />
             </div>
           ) : (
             <div className={emailPassword}>
-              <span className="underline" onClick={handleLogin}>
+              {/* <span className="underline" onClick={handleLogin}>
                 {name}
-              </span>
-              <Button onClick={handleLoginSignIn} name={logIn} />
+              </span> */}
+              <Button onClick={handleSubmit} name={logIn} />
             </div>
           )}
         </div>

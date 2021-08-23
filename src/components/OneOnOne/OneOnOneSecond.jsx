@@ -2,16 +2,9 @@ import DataRange from "../DateRange/DateRange";
 import Duration from "../Duration/Duration";
 import Button from "../Button/Button";
 import EventTypeAvailability from "../EventTypeAvailability/EventTypeAvailability";
+import { containerOneOnOne, card, buttonContainer } from "./OneOnOne.style";
 
-import {
-  containerOneOnOne,
-  card,
-  eventItems,
-  errorMessage,
-  buttonContainer,
-} from "./GroupEventPage.style";
-
-export default function GroupEventSecondPage() {
+export default function OneOnOne() {
   return (
     <div className={containerOneOnOne}>
       <div className={card}>

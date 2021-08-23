@@ -1,8 +1,9 @@
-import { Switch, Route } from "react-router-dom";
-import Home from "./../Home/Home";
+import Login from "../LoginSign/LoginSign";
+import { useAuth } from "../../contexts/AuthContext";
+import Home from "../Navbar/Navbar";
 
-export default function Main(props) {
-  return (
-    <Switch>{<Route exact path={"/home"} component={() => <Home />} />}</Switch>
-  );
+export default function Main() {
+  const auth = useAuth();
+
+  return <>{auth.user ? <Home /> : <Login />}</>;
 }

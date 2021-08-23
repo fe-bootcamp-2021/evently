@@ -26,9 +26,16 @@ const buttonOutline = classNames([
   "hover:text-white",
 ]);
 
-const Button = ({ name, onClick,className, classNameType = buttonStyle}) => {
+
+const Button = ({ name, onClick, className, classNameType = buttonStyle }) => {
   return (
-    <button type="button" className={`${className} ${classNameType === "buttonOutline"? buttonOutline:classNameType}`} onClick={onClick}>
+    <button
+      type="button"
+      className={`${className} ${
+        classNameType === "buttonOutline" ? buttonOutline : classNameType
+      }`}
+      onClick={onClick}
+    >
       {name}
     </button>
   );

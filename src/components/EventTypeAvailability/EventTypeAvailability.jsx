@@ -9,12 +9,12 @@ const EventTypeAvailability = () => {
           <p>How do you want to offer your availability for this event type?</p>
           <Button
             name={"Use an existing schedule"}
-            classNameType="buttonOutline"
+            variant="buttonOutline"
           />
           <Button
             name={"Set custom hours"}
             className="ml-3"
-            classNameType="buttonOutline"
+            variant="buttonOutline"
           />
           <p className="mt-8 mb-4"> Which schedule do you want to use?</p>
 

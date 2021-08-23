@@ -1,42 +1,25 @@
-import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
-import { Routes } from "../../constants/routes";
-import {titleHome} from "./Navbar.style"
+import React from "react";
+import {BrowserRouter as Router , useHistory } from "react-router-dom";
+import { nanoid } from "nanoid";
+import { NavRoutes } from "../../constants/routes";
+import Logo from "../Logo/Logo";
+import { titleHome } from "./Navbar.style";
 
 export default function Navbar() {
-  const [value, setValue] = React.useState("recents");
   const history = useHistory();
 
-  useEffect(() => {
-    if (value.includes("home")) history.push("/home");
-    if (value === "account") history.push("/account");
-  }, [value, history]);
-
-  const handleChange = (ev) => {
-    setValue(ev.target.value);
+  const handleNav = (path) => (ev) => {
+    history.push(path);
   };
 
-
   return (
-    <Router>       
+    <Router>
       <nav
-        className="flex items-center justify-between flex-wrap bg-blue-500 p-6"
+        className="flex items-center justify-between flex-wrap p-6 border-b-2 border-blue-800"
         onClick={() => window.scroll(0, 0)}
       >
-        <div className="flex items-center flex-shrink-0 text-white mr-6">
-          <svg
-            className="fill-current h-8 w-8 mr-2"
-            width="54"
-            height="54"
-            viewBox="0 0 54 54"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
-          </svg>
-          <span className="font-semibold text-xl tracking-tight text-2xl">
-            LetsMeet
-          </span>
+        <div className="flex items-center flex-shrink-0 mr-6 cursor-pointer" onClick={handleNav(NavRoutes.home().path)}>
+        <Logo />
         </div>
         <div className="block lg:hidden">
           <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
@@ -51,42 +34,26 @@ export default function Navbar() {
           </button>
         </div>
         <ul className="w-full block flex-grow lg:flex lg:items-center lg:w-auto no-underline">
-          <div className="text-sm lg:flex-grow no-underline ">
-            <li className={titleHome} key={Math.random().toString()}>
-              <Link
-              style={{textDecoration: "none"}}
-                to={Routes.home().path}
-              >
-                {Routes.home().text}{" "}
-              </Link>
+          <div className="lg:flex-grow no-underline ">
+            <li
+              className={titleHome}
+              key={nanoid()}
+              onClick={handleNav(NavRoutes.home().path)}
+            >
+              {NavRoutes.home().text}{" "}
             </li>
           </div>
           <div>
-            <li className={titleHome} key={Math.random().toString()}>
-              <Link
-                to={Routes.account().path}
-                style={{ textDecoration: "none", flex: 3 }}
-              >
-                {Routes.account().text}{" "}
-              </Link>
+            <li
+              className={titleHome}
+              key={nanoid()}
+              onClick={handleNav(NavRoutes.account().path)}
+            >
+              {NavRoutes.account().text}
             </li>
           </div>
         </ul>
-          </nav>
-        <Switch>
-          {Object.values(Routes).map((fn) => {
-            const { path, component } = fn();
-
-            return (
-              <Route
-                exact
-                path={path}
-                component={component}
-                key={Math.random().toString()}
-              />
-            );
-          })}
-        </Switch>
+      </nav>
     </Router>
   );
 }

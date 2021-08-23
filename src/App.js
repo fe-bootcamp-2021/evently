@@ -1,13 +1,10 @@
 import React from "react";
-import Login from "../src/components/LoginSign/LoginSign";
-import { AuthProvider } from "./contexts/AuthContext";
+import Main from "../src/components/LoginSign/LoginSign";
 
 export default function App() {
   return (
-    <AuthProvider>
       <div className="App">
-        <Login />
+        <Main />
       </div>
-    </AuthProvider>
   );
 }

@@ -1,32 +1,36 @@
+import React, { useState } from "react";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import Card from "../Card/Card";
 import Dropdown from "../Dropdown/Dropdown";
+import Logo from "../Logo/Logo";
+import Button from "../Button/Button";
 import Navbar from "../Navbar/Navbar";
 
 export default function Home() {
   return (
     <div>
-      <Navbar />
-      <div className="max-w-lm inline-block flex flex-col mx-auto bg-white shadow-md items-center ">
+      <div className="max-w-lm h-48 inline-block flex flex-col mx-auto bg-white shadow-md items-center ">
         <div className="w-9/12">
-          <div className="flex justify-between items-center mt-8 mb-4">
-            <h1 className="text-2xl text-blue-900">My Meetings</h1>
-            <button className="bg-blue-800 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">
-              + Create
-            </button>
-          </div>
+          <Navbar />
+          <div className="flex justify-between items-center  mt-8 mb-4">
+            <div className="flex flex-col justify-between items-left mb-4">
+              <h1 className="text-2xl text-blue-900 mb-4">My Meetings</h1>
+              <div className="flex mb-6">
+                <Button
+                  name="Event Types"
+                  style="text-sm mr-4 font-semibold text-blue-700 hover:text-purple-700"
+                />
+                <Button
+                  name="Scheduled Events"
+                  style="text-sm mr-4 font-semibold text-blue-700 hover:text-purple-700"
+                />
+              </div>
+            </div>
 
-          <ul className="flex mb-4">
-            <li className="mr-6">
-              {/* <Link to="#" className="text-blue-900 hover:text-blue-600"> */}{" "}
-              Event Types
-              {/* </Link> */}
-            </li>
-            <li className="mr-6">
-              {/* <Link to="#" className="text-blue-900 hover:text-blue-600"> */}{" "}
-              Scheduled Events
-              {/* </Link> */}
-            </li>
-          </ul>
+            <div className="h-36">
+              <Dropdown buttonName="Create +" />
+            </div>
+          </div>
         </div>
       </div>
 
@@ -36,8 +40,6 @@ export default function Home() {
           <Card />
           <Card />
         </div>
-
-        <Dropdown />
       </div>
     </div>
   );

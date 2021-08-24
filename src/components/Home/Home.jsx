@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import React from "react";
 import Card from "../Card/Card";
 import Dropdown from "../Dropdown/Dropdown";
-import Logo from "../Logo/Logo";
 import Button from "../Button/Button";
 import Navbar from "../Navbar/Navbar";
 

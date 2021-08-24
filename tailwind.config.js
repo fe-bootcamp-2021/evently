@@ -9,6 +9,9 @@ module.exports = {
         132: "33rem",
         144: "36rem",
       },
+      animation: {
+        "spin-slow": "spin 5s linear infinite",
+      },
       colors: {
         custom: {
           "orange-1": "rgb(255, 79, 0)",

@@ -32,19 +32,14 @@ export let Child = (props) => {
   }
 
   async function handleSubmit() {
-    
     setIsLoggedIn(true);
 
-
     try {
-      // setError("");
       await userSignUp(email, password);
-      await verifyUser(email)
+      await verifyUser(email);
     } catch {
-      // setError("Failed to create an account");
-      console.log('error')
+      console.log("error");
     }
-    // setLoading(false);
   }
 
   function handleEmail(event) {
@@ -95,16 +90,16 @@ export let Child = (props) => {
           </div>
           {login ? (
             <div className={emailPassword}>
-              {/* <span className="underline" onClick={handleSign}>
+              <span className="underline" onClick={handleSign}>
                 {name}
-              </span> */}
+              </span>
               <Button onClick={handleSubmit} name={signUp} />
             </div>
           ) : (
             <div className={emailPassword}>
-              {/* <span className="underline" onClick={handleLogin}>
+              <span className="underline" onClick={handleLogin}>
                 {name}
-              </span> */}
+              </span>
               <Button onClick={handleSubmit} name={logIn} />
             </div>
           )}

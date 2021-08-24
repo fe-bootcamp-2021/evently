@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "../Button/Button";
+import  Button  from "../Button/Button"
 import Input from "../Inputs/Input";
 import { logIn, signUp } from "../../constants/constants";
 import {
@@ -18,7 +18,7 @@ export let Child = (props) => {
   const [name, setName] = useState(signUp);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const { userSignUp, verifyUser, currentUser } = useAuth();
+  const { userSignUp, currentUser } = useAuth();
 
   function handleLogin(event) {
     event.stopPropagation();
@@ -36,7 +36,6 @@ export let Child = (props) => {
 
     try {
       await userSignUp(email, password);
-      await verifyUser(email);
     } catch {
       console.log("error");
     }

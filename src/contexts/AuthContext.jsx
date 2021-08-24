@@ -22,6 +22,7 @@ export function AuthProvider({ children }) {
     return auth
       .createUserWithEmailAndPassword(email, password)
       .then((response) => {
+        console.log(response)
         response.user.sendEmailVerification();
         addUser({ email, password, uid: response.user.uid });
         setCurrentUser(response.user);

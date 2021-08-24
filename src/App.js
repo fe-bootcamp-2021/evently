@@ -1,11 +1,10 @@
-import UnAuthenticatedApp from "./components/UnAuthenticatedApp/UnAuthenticatedApp";
-import Home from "./components/Home/Home";
+import React from "react";
+import Main from "../src/components/LoginSign/LoginSign";
 
 export default function App() {
   return (
-    <div className="App">
-      <UnAuthenticatedApp />
-      {/* <Home /> */}
-    </div>
+      <div className="App">
+        <Main />
+      </div>
   );
 }

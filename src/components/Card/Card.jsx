@@ -29,7 +29,6 @@ export default function Card() {
                 />
               </svg>
             }
-            style="none"
           />
         </div>
         <div className="mt-4">

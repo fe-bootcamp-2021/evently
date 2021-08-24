@@ -32,7 +32,8 @@ export default function Dropdown({buttonName}) {
         <Button
           name={buttonName}
           onClick={showFn}
-          style="mt-4 border-0 block bg-blue-800 hover:bg-blue-600 text-white font-bold rounded-full px-11 py-3 overflow-hidden focus:outline-none focus:border-white"
+          variant=""
+          className="mt-4 border-0 block bg-blue-800 hover:bg-blue-600 text-white font-bold rounded-full px-11 py-3 overflow-hidden focus:outline-none focus:border-white"
         />
 
         <div className={dropDownMenu}>

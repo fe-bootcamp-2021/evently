@@ -1,27 +1,24 @@
-import classNames from "classnames/bind";
 import PropTypes from "prop-types";
+import { buttonStyle, buttonOutline } from "./Button.style";
 
-const buttonStyle = classNames([
-  "bg-blue-800",
-  "hover:bg-blue-600",
-  "text-white",
-  "font-bold",
-  "py-2",
-  "px-4",
-  "rounded-full",
-]);
+const Button = ({ name, onClick, className, variant = buttonStyle }) => {
+  let styleBtn = buttonStyle;
+  if (variant === "buttonOutline") styleBtn = buttonOutline;
 
-const Button = ({ name, onClick, style = buttonStyle }) => {
   return (
-    <button type="button" className={style} onClick={onClick}>
+    <button
+      type="button"
+      className={`${className} ${styleBtn}`}
+      onClick={onClick}
+    >
       {name}
     </button>
   );
 };
 
-export default Button;
-
 Button.protoTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func.isRequired,
 };
+
+export default Button;

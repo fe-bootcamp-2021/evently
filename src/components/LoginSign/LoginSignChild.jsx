@@ -1,5 +1,6 @@
-import React, { useRef, useState } from "react";
-import Button from "../Button/Button";
+
+import React, { useState } from "react";
+import  Button  from "../Button/Button"
 import Input from "../Inputs/Input";
 import { logIn, signUp } from "../../constants/constants";
 import {
@@ -35,22 +36,14 @@ export let Child = (props) => {
   }
 
   async function handleSubmit() {
-    // event.preventDefault();
-    setIsLoggedIn(true);
-
-    // if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-    //   return setError("Passwords do not match");
-    // }
+        setIsLoggedIn(true);
 
     try {
-      // setError("");
-      setLoading(true);
-      console.log(email, password);
       await userSignUp(email, password);
     } catch {
-      // setError("Failed to create an account");
+      console.log("error");
     }
-    setLoading(false);
+
   }
 
   function handleEmail(event) {
@@ -77,7 +70,8 @@ export let Child = (props) => {
           <div className={emailPassword}>
             <Input
               onChange={handleEmail}
-              autocomplete="off"
+
+
               id="email"
               name="email"
               type="text"
@@ -91,7 +85,7 @@ export let Child = (props) => {
           <div className={emailPassword}>
             <Input
               onChange={handlePassword}
-              autocomplete="off"
+
               id="password"
               name="password"
               type="password"
@@ -106,14 +100,18 @@ export let Child = (props) => {
             <div className={emailPassword}>
               {/* <span className="underline" onClick={handleSign}>
                 {name}
+
               </span> */}
+
               <Button onClick={handleSubmit} name={signUp} />
             </div>
           ) : (
             <div className={emailPassword}>
               {/* <span className="underline" onClick={handleLogin}>
                 {name}
+
               </span> */}
+
               <Button onClick={handleSubmit} name={logIn} />
             </div>
           )}

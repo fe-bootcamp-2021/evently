@@ -1,9 +1,9 @@
 import React from "react";
-import {BrowserRouter as Router , useHistory } from "react-router-dom";
+import { BrowserRouter as Router, useHistory } from "react-router-dom";
 import { nanoid } from "nanoid";
 import { NavRoutes } from "../../constants/routes";
 import Logo from "../Logo/Logo";
-import { titleHome } from "./Navbar.style";
+import { titleHome, navContainer, logoContainer, menu } from "./Navbar.style";
 
 export default function Navbar() {
   const history = useHistory();
@@ -14,12 +14,12 @@ export default function Navbar() {
 
   return (
     <Router>
-      <nav
-        className="flex items-center justify-between flex-wrap p-6 border-b-2 border-blue-800"
-        onClick={() => window.scroll(0, 0)}
-      >
-        <div className="flex items-center flex-shrink-0 mr-6 cursor-pointer" onClick={handleNav(NavRoutes.home().path)}>
-        <Logo />
+      <nav className={navContainer} onClick={() => window.scroll(0, 0)}>
+        <div
+          className={logoContainer}
+          onClick={handleNav(NavRoutes.home().path)}
+        >
+          <Logo />
         </div>
         <div className="block lg:hidden">
           <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
@@ -33,7 +33,7 @@ export default function Navbar() {
             </svg>
           </button>
         </div>
-        <ul className="w-full block flex-grow lg:flex lg:items-center lg:w-auto no-underline">
+        <ul className={menu}>
           <div className="lg:flex-grow no-underline ">
             <li
               className={titleHome}

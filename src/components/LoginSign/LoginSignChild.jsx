@@ -32,12 +32,9 @@ export let Child = (props) => {
   }
 
   async function handleSubmit() {
-    // event.preventDefault();
+    
     setIsLoggedIn(true);
 
-    // if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-    //   return setError("Passwords do not match");
-    // }
 
     try {
       // setError("");

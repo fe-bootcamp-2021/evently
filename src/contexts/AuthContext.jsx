@@ -14,9 +14,6 @@ export function AuthProvider({ children }) {
     return auth.createUserWithEmailAndPassword(email, password)
     .then((response) => {
       response.user.sendEmailVerification();
-      // addUser({ email, password, uid: response.user.uid });
-      // setUser(response.user);
-      // return response.user;
     });
     
   }
@@ -27,7 +24,11 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user);
+      if (user) {
+        setCurrentUser(user);
+      } else {
+        setCurrentUser(false);
+      }
     });
 
     return unsubscribe;

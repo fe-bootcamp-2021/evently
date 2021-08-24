@@ -11,7 +11,7 @@ export const Routes = {
   login: () => ({
     path: "/",
     text: "Login",
-    component: Login,
+    component: "",
   }),
   home: () => ({
     path: "/home",

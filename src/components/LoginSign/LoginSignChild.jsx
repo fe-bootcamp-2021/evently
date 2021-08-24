@@ -61,7 +61,7 @@ export let Child = (props) => {
   }
 
   return (
-    <>
+    <>{console.log("sdssf")}
       {login ? (
         <div>
           <h2 className={titleLogin}>{signUp}</h2>

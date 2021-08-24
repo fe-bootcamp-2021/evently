@@ -23,3 +23,13 @@ export const buttonOutline = classNames([
   "hover:bg-blue-800",
   "hover:text-white",
 ]);
+
+export const buttonLink = classNames([
+  "text-sm",
+  "mr-4",
+  "font-semibold",
+  "text-blue-700",
+  "hover:text-purple-700",
+]);
+
+export const buttonLink1 = classNames(["mt-4", "text-md", "text-blue-700"]);

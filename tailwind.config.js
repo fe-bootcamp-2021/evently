@@ -8,6 +8,7 @@ module.exports = {
         120: "30rem",
         132: "33rem",
         144: "36rem",
+      },
       colors: {
         custom: {
           "orange-1": "rgb(255, 79, 0)",

@@ -11,19 +11,15 @@ export default function Home() {
     <div>
       <div className="max-w-lm h-48 inline-block flex flex-col mx-auto bg-white shadow-md items-center ">
         <div className="w-9/12">
-          <Navbar />
+          <div className="mt-5 flex justify-between">
+            <Navbar />
+          </div>
           <div className="flex justify-between items-center  mt-8 mb-4">
             <div className="flex flex-col justify-between items-left mb-4">
               <h1 className="text-2xl text-blue-900 mb-4">My Meetings</h1>
               <div className="flex mb-6">
-                <Button
-                  name="Event Types"
-                  style="text-sm mr-4 font-semibold text-blue-700 hover:text-purple-700"
-                />
-                <Button
-                  name="Scheduled Events"
-                  style="text-sm mr-4 font-semibold text-blue-700 hover:text-purple-700"
-                />
+                <Button name="Event Types" variant="link" />
+                <Button name="Scheduled Events" variant="link" />
               </div>
             </div>
 

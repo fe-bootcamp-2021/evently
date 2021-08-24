@@ -5,7 +5,7 @@ import Button from "../Button/Button";
 import { Routes } from "../../constants/routes";
 import { li } from "./Dropdown.style";
 
-export default function Dropdown() {
+export default function Dropdown({buttonName}) {
   const history = useHistory();
   const [show, setShow] = useState(false);
   let showFn = () => {

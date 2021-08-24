@@ -1,5 +1,4 @@
 import Home from "../components/Home/Home";
-import Login from "../components/LoginSign/LoginSign";
 import Account from "../components/Account/Account";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import OneOnOne from "../components/OneOnOne/OneOnOne";
@@ -8,11 +7,6 @@ import GroupEventFirstPage from "../components/GroupEventPage/GroupEventFirstPag
 import GroupEventSecondPage from "../components/GroupEventPage/GroupEventSecondPage";
 
 export const Routes = {
-  login: () => ({
-    path: "/",
-    text: "Login",
-    component: "",
-  }),
   home: () => ({
     path: "/home",
     text: "Home",

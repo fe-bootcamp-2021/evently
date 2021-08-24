@@ -62,12 +62,9 @@ export default function Main() {
                     <div className="rounded-full absolute border border-purple-900"></div>
                     <div className="rounded-full absolute w-28 h-28">
                         <img src={Image} className="w-28 h-28" />
-                    </div>
-                    
+                    </div>  
                 </div>
             </div>
-            
-            
         </div>
     )
 }

@@ -25,6 +25,8 @@ module.exports = {
     extend: {
       backgroundColor: ["checked"],
       borderColor: ["checked"],
+      flexWrap: ['hover', 'focus'],
+      overflow: ['hover', 'focus'],
     },
   },
   plugins: [require("@tailwindcss/forms")],

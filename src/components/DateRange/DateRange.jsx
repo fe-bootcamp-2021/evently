@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { convertDateToString } from "../../helpers/date";
@@ -14,8 +14,27 @@ export default function DataRange({ setDateRange }) {
   });
   const [calendarType, setCalendarType] = useState(1);
   const [days, setDays] = useState(60);
-  const [rangeType, setRangeType] = useState(1);
+  const [rangeType, setRangeType] = useState("1");
   const [eventDayType, setEventDayType] = useState(1);
+
+  useEffect(()=>{console.log(7777)
+    let dateRangeValues = {};
+    dateRangeValues.type = rangeType;
+
+    if (rangeType === "1") {      
+      dateRangeValues.value = { days, type: eventDayType };
+
+      setIsShowRange(false);
+    } else if (rangeType === "2") {
+      dateRangeValues.value = { start:startValue,end:endValue};
+      
+      setIsShowRange(true);
+    } else if (rangeType === "3") {
+      setIsShowRange(false);
+    }
+
+    setDateRange(dateRangeValues)
+  },[rangeType,days,setDateRange,eventDayType,startValue,endValue])
 
   const handleDate = (date) => {
     calendarType === 1
@@ -26,18 +45,7 @@ export default function DataRange({ setDateRange }) {
 
   const handleDateRange = (ev) => {
     setIsShowCalendar(false);
-    setRangeType(ev.target.value);
-    // let dateRangeValues = {};
-    // dateRangeValues.type = 1;
-    // dateRangeValues.value = { days, type: eventDayType };
-    // console.log(dateRangeValues)
-    if (ev.target.value === "1") {
-      setIsShowRange(false);
-    } else if (ev.target.value === "2") {
-      setIsShowRange(true);
-    } else if (ev.target.value === "3") {
-      setIsShowRange(false);
-    }
+    setRangeType(ev.target.value);    
   };
 
   const handleRange = (val) => (ev) => {
@@ -78,11 +86,11 @@ export default function DataRange({ setDateRange }) {
                 />
                 <div className="ml-2">
                   <label className="block">
-                    <select className="form-select block w-60 rounded">
-                      <option onClick={() => setEventDayType(1)}>
+                    <select className="form-select block w-60 rounded" onChange={(ev) => setEventDayType(ev.target.value)}>
+                      <option value="1">
                         Calendar days
                       </option>
-                      <option onClick={() => setEventDayType(2)}>
+                      <option value="2">
                         Business days
                       </option>
                     </select>

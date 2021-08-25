@@ -20,6 +20,8 @@ import {
   buttonContainer,
 } from "./OneOnOne.style";
 
+
+
 export default function OneOnOne() {
   const history = useHistory();
   const [eventName, setEventName] = useState("");
@@ -28,7 +30,6 @@ export default function OneOnOne() {
   const [description, setDescription] = useState("");
   const [eventColor, setEventColor] = useState(RadioColors()[0].id);
 
-  const [dateRange, setDateRange] = useState(0);
 
 
 

@@ -6,7 +6,7 @@ export default function DataRange() {
           <p>Date range</p>
           <p>Invitees can schedule...</p>
           <div className="mt-2">
-            <div>
+            <div className="mt-2">
               <label className="inline-flex items-center">
                 <input
                   type="radio"
@@ -33,7 +33,7 @@ export default function DataRange() {
                 <span className="ml-2">into the future</span>
               </label>
             </div>
-            <div>
+            <div className="mt-2">
               <label className="inline-flex items-center">
                 <input
                   type="radio"
@@ -44,7 +44,7 @@ export default function DataRange() {
                 <span className="ml-2">Within a date range</span>
               </label>
             </div>
-            <div>
+            <div className="mt-2">
               <label className="inline-flex items-center">
                 <input
                   type="radio"

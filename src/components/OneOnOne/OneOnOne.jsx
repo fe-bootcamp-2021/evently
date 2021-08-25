@@ -1,5 +1,10 @@
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { nanoid } from "nanoid";
 import { Routes } from "../../constants/routes";
+import { isValidEventName, isValidEventLink, isValidAddress } from "../../helpers/validations";
+import RadioColors from "../../constants/radioColors";
+import { addEvent } from "../../services/event.services";
 import EventColors from "../EventColors/EventColors";
 import InputCKEditor from "../InputCKEditor/InputCKEditor";
 import Button from "../Button/Button";
@@ -12,12 +17,37 @@ import {
   label,
   input,
   errorMessage,
-  description,
   buttonContainer,
 } from "./OneOnOne.style";
 
 export default function OneOnOne() {
   const history = useHistory();
+  const [eventName, setEventName] = useState("");
+  const [eventLink, setEventLink] = useState("");
+  const [location, setLocation] = useState("");
+  const [description, setDescription] = useState("");
+  const [eventColor, setEventColor] = useState(RadioColors()[0].id);
+
+  const [dateRange, setDateRange] = useState(0);
+
+
+
+  const handleNext = () => {
+    console.log(111111111111);
+    if (isValidEventName(eventName) && isValidEventLink(eventLink) && isValidAddress(location)) {
+    //   const eventId = nanoid();
+    //   const eventInfo = {
+    //     eventId,
+    //     description,
+    //     location,
+    //     title: eventName,
+    //     link: eventLink,
+    //     color: eventColor,
+    //   };
+    //   addEvent(eventInfo);
+    return history.push(Routes.oneOnOne1().path);
+    }
+  };
 
   return (
     <>
@@ -33,6 +63,7 @@ export default function OneOnOne() {
               placeholder=" "
               required
               className={input}
+              onChange={(ev) => setEventName(ev.target.value)}
             />
             <span className={errorMessage} id="error">
               Event name is required
@@ -41,12 +72,14 @@ export default function OneOnOne() {
 
           <div className={eventItems}>
             <label className={label}>Location *</label>
-            <select name="select" value="" className={input}>
-              <option value=""></option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-            </select>
-
+            <input
+              type="text"
+              name="location"
+              placeholder=" "
+              required
+              className={input}
+              onChange={(ev) => setLocation(ev.target.value)}
+            />
             <span className={errorMessage} id="error">
               Option has to be selected
             </span>
@@ -60,6 +93,7 @@ export default function OneOnOne() {
               placeholder=" "
               required
               className={input}
+              onChange={(ev) => setEventLink(ev.target.value)}
             />
             <span className={errorMessage} id="error">
               Event link is required
@@ -69,20 +103,23 @@ export default function OneOnOne() {
           <div className={eventItems}>
             <label className={label}>Description/Instructions</label>
             <div className={description}>
-              <InputCKEditor />
+              <InputCKEditor setDescription={setDescription} />
             </div>
           </div>
 
           <div className={eventItems}>
             <label className={label}>Event color *</label>
-            <EventColors />
+            <EventColors selected={eventColor} setSelected={setEventColor} />
             <span className={errorMessage} id="error">
               Option has to be selected
             </span>
           </div>
 
           <div className={buttonContainer}>
-            <Button name={`Next >>`} onClick={()=>{return history.push(Routes.oneOnOne1().path)}} />
+            <Button
+              name={`Next >>`}
+              onClick={handleNext}
+            />
           </div>
         </div>
       </div>

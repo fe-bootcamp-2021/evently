@@ -1,3 +1,16 @@
-import { db } from "../libs/firebase.libs";
+import {db} from "../services/base";
 
-export const addUser = () => {};
+export function addEvent({eventId, title, location, link, description,color}) {
+    console.log(eventId, title, location, link, description,color)
+  try {
+     db.ref(`/event/${eventId}`).set({
+        title,
+        location,
+        link,
+        description,
+        color
+      });
+  } catch (err) {
+    console.log(err);
+  }
+}

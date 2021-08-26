@@ -2,7 +2,7 @@ export default function Duration({ minutes, setMinutes }) {
   return (
     <div className="flex flex-wrap w-full">
       <div className="w-2/3">
-        <span classNameName="mt-2">Duration</span>
+        <span className="mt-2">Duration</span>
         <label className="block mt-2">
           <input
             type="number"

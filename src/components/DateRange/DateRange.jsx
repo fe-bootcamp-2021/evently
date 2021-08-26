@@ -4,7 +4,7 @@ import "react-calendar/dist/Calendar.css";
 import { convertDateToString } from "../../helpers/date";
 import Button from "../Button/Button";
 
-export default function DataRange({ setDateRange }) {
+export default function DataRange({ setDateRangeInfo }) {
   const [isShowRange, setIsShowRange] = useState(false);
   const [startValue, setStartValue] = useState({ selectedDate: new Date() });
   const [endValue, setEndValue] = useState({ selectedDate: new Date() });
@@ -17,7 +17,12 @@ export default function DataRange({ setDateRange }) {
   const [rangeType, setRangeType] = useState("1");
   const [eventDayType, setEventDayType] = useState(1);
 
-  useEffect(()=>{console.log(7777)
+  useEffect(()=>{
+    let dateRangeValues = { days, type: eventDayType };
+    setDateRangeInfo(dateRangeValues)
+  },[])
+  
+  useEffect(()=>{
     let dateRangeValues = {};
     dateRangeValues.type = rangeType;
 
@@ -33,8 +38,8 @@ export default function DataRange({ setDateRange }) {
       setIsShowRange(false);
     }
 
-    setDateRange(dateRangeValues)
-  },[rangeType,days,setDateRange,eventDayType,startValue,endValue])
+    setDateRangeInfo(dateRangeValues)
+  },[rangeType,days,setDateRangeInfo,eventDayType,startValue,endValue])
 
   const handleDate = (date) => {
     calendarType === 1

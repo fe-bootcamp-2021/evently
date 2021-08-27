@@ -6,7 +6,7 @@ import Navbar from "../Navbar/Navbar";
 
 export default function Home() {
   return (
-    <div>
+    <div className="h-screen">
         
       <div className="max-w-lm h-48 inline-block flex flex-col mx-auto bg-white shadow-md items-center ">
         <Navbar />
@@ -30,7 +30,6 @@ export default function Home() {
       <div className="w-9/12 mt-6 mx-auto items-center">
         <div className="grid 2xl:grid-cols-3 sm:grid-cols-2 gap-4 mt-10">
           <Card />
-          {/* <Card /> */}
           <Card />
           <Card />
         </div>

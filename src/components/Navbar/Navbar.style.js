@@ -21,8 +21,8 @@ export const logoContainer = classNames([
 
 export const menu = classNames([
   "flex",
-  "justify-between",
-  "w-full",
+  "justify-end",
+  // "w-full",
   "block",
   "flex-grow",
   "lg:flex",
@@ -41,7 +41,7 @@ export const titleHome = classNames([
 
 export const buttonOutline = classNames([
   "px-4",
-  "py-1",
+  "py-2",
   "text-xl",
   "text-blue-900",
   "transition-colors",

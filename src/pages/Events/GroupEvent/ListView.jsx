@@ -19,7 +19,7 @@ import { appointments, resourcesData } from "./data/resourses";
 
 
 
-export default class EventScheduler extends React.PureComponent {
+export default class GroupEventScheduler extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {

@@ -1,79 +1,91 @@
-import React, { useState } from 'react';
-import Paper from '@material-ui/core/Paper';
-import { EditingState } from '@devexpress/dx-react-grid';
+import { useState } from "react";
+import Button from "../../../components/Button/Button";
+import Input from "../../../components/Inputs/Input";
 import {
-  Grid,
-  Table,
-  TableHeaderRow,
-  TableEditRow,
-  TableEditColumn,
-} from '@devexpress/dx-react-grid-material-ui';
-
-import {
-  generateRows,
-  defaultColumnValues,
-} from './data/generator'
-
-const getRowId = row => row.id;
+  ADD_EVENT,
+  ADD_MEMBER,
+  DATE,
+  TIME,
+  TEXT,
+  TEL,
+  FIRST_NAME,
+  LAST_NAME,
+  PHONE_NUMBER,
+} from "../../../constants/constants";
 
 export default function OneOnOneScheduler() {
-  const [columns] = useState([
-    { name: 'name', title: 'Name' },
-    { name: 'gender', title: 'Gender' },
-    { name: 'city', title: 'City' },
-    { name: 'car', title: 'Car' },
-  ]);
-  const [rows, setRows] = useState(generateRows({
-    columnValues: { id: ({ index }) => index, ...defaultColumnValues },
-    length: 8,
-  }));
-  const [editingStateColumnExtensions] = useState([
-    { columnName: 'name', editingEnabled: false },
-  ]);
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
+  const [startTime, setStartTime] = useState();
+  const [endTime, setEndTime] = useState();
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
 
-  const commitChanges = ({ added, changed, deleted }) => {
-    let changedRows;
-    if (added) {
-      const startingAddedId = rows.length > 0 ? rows[rows.length - 1].id + 1 : 0;
-      changedRows = [
-        ...rows,
-        ...added.map((row, index) => ({
-          id: startingAddedId + index,
-          ...row,
-        })),
-      ];
+  const addEvent = () => {
+    if (
+      startDate === undefined ||
+      endDate === undefined ||
+      startTime === undefined ||
+      endTime === undefined
+    ) {
+      return;
     }
-    if (changed) {
-      changedRows = rows.map(row => (changed[row.id] ? { ...row, ...changed[row.id] } : row));
-    }
-    if (deleted) {
-      const deletedSet = new Set(deleted);
-      changedRows = rows.filter(row => !deletedSet.has(row.id));
-    }
-    setRows(changedRows);
+    console.log(startDate);
+    console.log(endDate);
+    console.log(startTime);
+    console.log(endTime);
+    console.log(firstName);
+    console.log(lastName);
+    console.log(phoneNumber);
   };
 
+  const handleStartDate = (event) => {
+    setStartDate(event.target.value);
+  };
+  const handleEndDate = (event) => {
+    setEndDate(event.target.value);
+  };
+  const handleStartTime = (event) => {
+    setStartTime(event.target.value);
+  };
+  const handleEndTime = (event) => {
+    setEndTime(event.target.value);
+  };
+  const handleFirstName = (event) => {
+    setFirstName(event.target.value);
+  };
+  const handleLastName = (event) => {
+    setLastName(event.target.value);
+  };
+  const handlePhoneNumber = (event) => {
+    setPhoneNumber(event.target.value);
+  };
   return (
-    <Paper>
-      <Grid
-        rows={rows}
-        columns={columns}
-        getRowId={getRowId}
-      >
-        <EditingState
-          onCommitChanges={commitChanges}
-          defaultEditingRowIds={[0]}
-          columnExtensions={editingStateColumnExtensions}
+    <div>
+      <p>Create Your One-on-One event</p>
+      <div>
+        <Input type={DATE} onChange={handleStartDate} />
+        <Input type={DATE} onChange={handleEndDate} />
+        <Input type={TIME} onChange={handleStartTime} />
+        <Input type={TIME} onChange={handleEndTime} />
+        <Input
+          required={false}
+          type={TEXT}
+          onChange={handleFirstName}
+          placeholder={FIRST_NAME}
         />
-        <Table />
-        <TableHeaderRow />
-        <TableEditRow />
-        <TableEditColumn
-          showAddCommand
-          showEditCommand
-          showDeleteCommand
+        <Input type={TEXT} onChange={handleLastName} placeholder={LAST_NAME} />
+        <Input
+          type={TEL}
+          onChange={handlePhoneNumber}
+          placeholder={PHONE_NUMBER}
         />
-      </Grid>
-    </Paper>
+        <Button name={ADD_MEMBER} onClick={addEvent} />
+        <div>
+          <Button name={ADD_EVENT} />
+        </div>
+      </div>
+    </div>
   );
-};
+}

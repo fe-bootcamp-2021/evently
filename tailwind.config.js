@@ -3,6 +3,11 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      screens: {
+        max: "1200",
+        mid: "900px",
+        min: "600px",
+      },
       spacing: {
         108: "27rem",
         120: "30rem",
@@ -10,7 +15,7 @@ module.exports = {
         144: "36rem",
       },
       animation: {
-        "spin-slow": "spin 5s linear infinite",
+        spin: "spin 12s linear infinite",
       },
       colors: {
         custom: {

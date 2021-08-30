@@ -14,7 +14,6 @@ export default function Dropdown({buttonName}) {
   };
 
   let dropDownMenu = classNames({
-    "w-44 ": true,
     "rounded-lg": true,
     "bg-white": true,
     "shadow-xl": true,

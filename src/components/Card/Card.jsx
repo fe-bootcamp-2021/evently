@@ -3,10 +3,10 @@ import Button from "../Button/Button";
 export default function Card() {
   return (
     <div>
-      <div className="bg-white w-96 max-w-xl rounded-2xl border-t-8 border-blue-800 px-10 py-8 shadow-lg hover:shadow-2xl transition duration-500">
+      <div className="bg-white max-w-7xl rounded-2xl border-t-8 border-blue-800 px-10 py-8 shadow-lg hover:shadow-2xl transition duration-500">
         <div className="flex justify-between items-center">
           <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-          <Button
+          <Button variant="custom"
             name={
               <svg
                 xmlns="http://www.w3.org/2000/svg"

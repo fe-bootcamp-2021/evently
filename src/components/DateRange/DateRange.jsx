@@ -4,6 +4,7 @@ import "react-calendar/dist/Calendar.css";
 import { convertDateToString } from "../../helpers/date";
 import Button from "../Button/Button";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import { formatDate } from "../../helpers/date";
 
 export default function DataRange({ setDateRangeInfo }) {
   const [isShowRange, setIsShowRange] = useState(false);
@@ -38,10 +39,10 @@ export default function DataRange({ setDateRangeInfo }) {
       dateRangeValues.value = { days, type: eventDayType };
 
       setIsShowRange(false);
-    } else if (rangeType === "2") {
+    } else if (rangeType === "2") {     
       dateRangeValues.value = {
-        start: startValue.selectedDate,
-        end: endValue.selectedDate,
+        start: formatDate(startValue.selectedDate),
+        end: formatDate(endValue.selectedDate),
       };
       setIsShowRange(true);
     } else if (rangeType === "3") {

@@ -1,11 +1,11 @@
 import classNames from "classnames/bind";
 
 export const li = classNames([
-    "block",
-    "px-4",
-    "py-2",
-    "rounded-t-lg",
-    "text-gray-800",
-    "hover:bg-blue-600",
-    "hover:text-white",
-  ]);
+  "block",
+  "px-4",
+  "py-1",
+  "rounded-t-lg",
+  "text-blue-900",
+  "cursor-pointer",
+  "hover:text-purple-600",
+]);

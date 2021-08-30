@@ -1,7 +1,7 @@
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-export default function InputCKEditor() {
+export default function InputCKEditor({setDescription}) {
   return (
     <CKEditor
       editor={ClassicEditor}
@@ -18,17 +18,18 @@ export default function InputCKEditor() {
       }}
       data="<p></p>"
       onReady={(editor) => {
-        console.log("Editor is ready to use!", editor);
+        //console.log("Editor is ready to use!", editor);
       }}
       onChange={(event, editor) => {
-        const data = editor.getData();
-        console.log({ event, editor, data });
+        //const data = editor.getData();
+        // 
+        //console.log({ event, editor, data });
       }}
       onBlur={(event, editor) => {
-        console.log("Blur.", editor);
+        setDescription(editor.getData());
       }}
       onFocus={(event, editor) => {
-        console.log("Focus.", editor);
+        //console.log("Focus.", editor);
       }}
     />
   );

@@ -14,11 +14,11 @@ import {
 } from "../../../constants/constants";
 import { addOneOnOneEvent } from "../../../services/event.services";
 import { nanoid } from "nanoid";
-import { db } from "../../../services/base";
+
 
 export default function OneOnOneScheduler() {
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
+
+  const [date, setDate] = useState();
   const [startTime, setStartTime] = useState();
   const [endTime, setEndTime] = useState();
   const [firstName, setFirstName] = useState();
@@ -29,24 +29,14 @@ export default function OneOnOneScheduler() {
 
   const addMember = () => {
     if (
-      startDate === undefined ||
-      endDate === undefined ||
+      date === undefined ||
       startTime === undefined ||
       endTime === undefined
     ) {
       return;
     }
-    console.log(startDate);
-    console.log(endDate);
-    console.log(startTime);
-    console.log(endTime);
-    console.log(firstName);
-    console.log(lastName);
-    console.log(phoneNumber);
     addOneOnOneEvent({
-      eventId,
-      startDate,
-      endDate,
+      date,
       startTime,
       endTime,
       firstName,
@@ -56,21 +46,12 @@ export default function OneOnOneScheduler() {
   };
 
   const addEvent = () => {
-    var leadsRef = db.ref("event/oneonone");
-    console.log(leadsRef)
-    leadsRef.on("value", function (snapshot) {
-      snapshot.forEach(function (childSnapshot) {
-        var childData = childSnapshot.val();
-        console.log(childData);
-      });
-    });
+    
   };
 
-  const handleStartDate = (event) => {
-    setStartDate(event.target.value);
-  };
-  const handleEndDate = (event) => {
-    setEndDate(event.target.value);
+ 
+  const handleDate = (event) => {
+    setDate(event.target.value);
   };
   const handleStartTime = (event) => {
     setStartTime(event.target.value);
@@ -91,8 +72,7 @@ export default function OneOnOneScheduler() {
     <div>
       <p>Create Your One-on-One event</p>
       <div>
-        <Input type={DATE} onChange={handleStartDate} />
-        <Input type={DATE} onChange={handleEndDate} />
+        <Input type={DATE} onChange={handleDate} />
         <Input type={TIME} onChange={handleStartTime} />
         <Input type={TIME} onChange={handleEndTime} />
         <Input

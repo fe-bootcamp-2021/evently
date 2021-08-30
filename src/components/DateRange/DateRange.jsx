@@ -1,4 +1,68 @@
-export default function DataRange() {
+import React, { useState,useEffect } from "react";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import { convertDateToString } from "../../helpers/date";
+import Button from "../Button/Button";
+
+export default function DataRange({ setDateRangeInfo }) {
+  const [isShowRange, setIsShowRange] = useState(false);
+  const [startValue, setStartValue] = useState({ selectedDate: new Date() });
+  const [endValue, setEndValue] = useState({ selectedDate: new Date() });
+  const [isShowCalendar, setIsShowCalendar] = useState(false);
+  const [calendarValue, setCalendarValue] = useState({
+    selectedDate: new Date(),
+  });
+  const [calendarType, setCalendarType] = useState(1);
+  const [days, setDays] = useState(60);
+  const [rangeType, setRangeType] = useState("1");
+  const [eventDayType, setEventDayType] = useState(1);
+
+  useEffect(()=>{
+    let dateRangeValues = { days, type: eventDayType };
+    setDateRangeInfo(dateRangeValues)
+  },[])
+  
+  useEffect(()=>{
+    let dateRangeValues = {};
+    dateRangeValues.type = rangeType;
+
+    if (rangeType === "1") {      
+      dateRangeValues.value = { days, type: eventDayType };
+
+      setIsShowRange(false);
+    } else if (rangeType === "2") {
+      dateRangeValues.value = { start:startValue,end:endValue};
+      
+      setIsShowRange(true);
+    } else if (rangeType === "3") {
+      setIsShowRange(false);
+    }
+
+    setDateRangeInfo(dateRangeValues)
+  },[rangeType,days,setDateRangeInfo,eventDayType,startValue,endValue])
+
+  const handleDate = (date) => {
+    calendarType === 1
+      ? setStartValue({ selectedDate: date })
+      : setEndValue({ selectedDate: date });
+    setIsShowCalendar(false);
+  };
+
+  const handleDateRange = (ev) => {
+    setIsShowCalendar(false);
+    setRangeType(ev.target.value);    
+  };
+
+  const handleRange = (val) => (ev) => {
+    setIsShowCalendar(true);
+    setCalendarType(val);
+    if (val === 1) {
+      setCalendarValue(startValue);
+    } else {
+      setCalendarValue(endValue);
+    }
+  };
+
   return (
     <section>
       <div className="flex w-full flex-wrap">
@@ -11,22 +75,29 @@ export default function DataRange() {
                 <input
                   type="radio"
                   className="form-radio"
-                  name="radio"
+                  name="dateRange"
                   value="1"
-                  checked
+                  onChange={handleDateRange}
+                  checked={rangeType === 1 ? "checked" : ""}
                 />
                 <input
                   type="number"
                   name="name"
                   placeholder=" "
+                  value={days}
                   required
                   className="ml-2 w-16 rounded"
+                  onChange={(ev) => setDays(ev.target.value)}
                 />
                 <div className="ml-2">
                   <label className="block">
-                    <select className="form-select block w-60 rounded">
-                      <option>Calendar days</option>
-                      <option>Business days</option>
+                    <select className="form-select block w-60 rounded" onChange={(ev) => setEventDayType(ev.target.value)}>
+                      <option value="1">
+                        Calendar days
+                      </option>
+                      <option value="2">
+                        Business days
+                      </option>
                     </select>
                   </label>
                 </div>
@@ -38,10 +109,38 @@ export default function DataRange() {
                 <input
                   type="radio"
                   className="form-radio"
-                  name="radio"
+                  name="dateRange"
                   value="2"
+                  onChange={handleDateRange}
+                  checked={rangeType === 2 ? "checked" : ""}
                 />
                 <span className="ml-2">Within a date range</span>
+                {isShowRange ? (
+                  <>
+                    <Button
+                      name={`${convertDateToString(startValue.selectedDate)}`}
+                      variant="buttonOutline"
+                      onClick={handleRange(1)}
+                      className="ml-5 mt-0 p-1"
+                    />
+                    <Button
+                      name={`${convertDateToString(endValue.selectedDate)}`}
+                      variant="buttonOutline"
+                      onClick={handleRange(2)}
+                      className="ml-5 mt-0 p-1"
+                    />
+                    {isShowCalendar ? (
+                      <Calendar
+                        onChange={handleDate}
+                        value={calendarValue.selectedDate}
+                      />
+                    ) : (
+                      <></>
+                    )}
+                  </>
+                ) : (
+                  <></>
+                )}
               </label>
             </div>
             <div className="mt-2">
@@ -49,8 +148,10 @@ export default function DataRange() {
                 <input
                   type="radio"
                   className="form-radio"
-                  name="radio"
+                  name="dateRange"
                   value="3"
+                  onChange={handleDateRange}
+                  checked={rangeType === 3 ? "checked" : ""}
                 />
                 <span className="ml-2">Indefinitely into the future</span>
               </label>

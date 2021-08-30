@@ -2,9 +2,15 @@ import Home from "../components/Home/Home";
 import Account from "../components/Account/Account";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import OneOnOne from "../components/OneOnOne/OneOnOne";
+import LoginSign from "../components/LoginSign/LoginSign";
 import GroupEventFirstPage from "../components/GroupEventPage/GroupEventFirstPage";
 
 export const Routes = {
+  login: () => ({
+    path: "/",
+    text: "Login",
+    component: LoginSign,
+  }),
   home: () => ({
     path: "/home",
     text: "Home",

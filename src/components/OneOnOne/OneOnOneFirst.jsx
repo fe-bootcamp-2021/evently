@@ -8,6 +8,7 @@ import {
 import EventColors from "../EventColors/EventColors";
 import Button from "../Button/Button";
 import InputCKEditor from "../InputCKEditor/InputCKEditor";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import RadioColors from "../../constants/radioColors";
 import {
   containerOneOnOne,
@@ -16,7 +17,6 @@ import {
   eventItems,
   label,
   input,
-  errorMessage,
   buttonContainer,
 } from "./OneOnOne.style";
 
@@ -27,12 +27,15 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
   const [description, setDescription] = useState("");
   const [eventColor, setEventColor] = useState(RadioColors()[0].id);
 
+  const [isValidEvtName, setIsValidEvtName] = useState(true);
+  const [isValidEvtLocation, setIsValidEvtLocation] = useState(true);
+  const [isValidEvtLink, setIsValidEvtLink] = useState(true);
+
   const handleNext = () => {
-    if (
-      isValidEventName(eventName) &&
-      isValidEventLink(eventLink) &&
-      isValidAddress(location)
-    ) {
+    const isValidEvtName = isValidEventName(eventName);
+    const isValidEvtLink = isValidEventLink(eventLink);
+    const isValidEvtAddress = isValidAddress(location);
+    if (isValidEvtName && isValidEvtLink && isValidEvtAddress) {
       const eventId = nanoid();
       const newEventInfo = {
         eventId,
@@ -44,7 +47,37 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
       };
       setFirstPageInfo(newEventInfo);
       setPage(2);
+    } else {
+      isValidEvtName ? setIsValidEvtName(true) : setIsValidEvtName(false);
+      isValidEvtLink ? setIsValidEvtLink(true) : setIsValidEvtLink(false);
+      isValidEvtAddress
+        ? setIsValidEvtLocation(true)
+        : setIsValidEvtLocation(false);
     }
+  };
+
+  const handleEventName = (ev) => {
+    const value = ev.target.value;
+    isValidEventName(value)
+      ? setIsValidEvtName(true)
+      : setIsValidEvtName(false);
+    setEventName(value);
+  };
+
+  const handleLocation = (ev) => {
+    const value = ev.target.value;
+    isValidAddress(value)
+      ? setIsValidEvtLocation(true)
+      : setIsValidEvtLocation(false);
+    setLocation(value);
+  };
+
+  const handleLink = (ev) => {
+    const value = ev.target.value;
+    isValidEventLink(value)
+      ? setIsValidEvtLink(true)
+      : setIsValidEvtLink(false);
+    setEventLink(value);
   };
 
   return (
@@ -60,11 +93,12 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
               placeholder=" "
               required
               className={input}
-              onChange={(ev) => setEventName(ev.target.value)}
+              onChange={handleEventName}
             />
-            <span className={errorMessage} id="error">
-              Event name is required
-            </span>
+            <ErrorMessage
+              message="Event name is required"
+              isValid={isValidEvtName}
+            />
           </div>
 
           <div className={eventItems}>
@@ -75,11 +109,12 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
               placeholder=" "
               required
               className={input}
-              onChange={(ev) => setLocation(ev.target.value)}
+              onChange={handleLocation}
             />
-            <span className={errorMessage} id="error">
-              Option has to be selected
-            </span>
+            <ErrorMessage
+              message="Event location is required"
+              isValid={isValidEvtLocation}
+            />
           </div>
 
           <div className={eventItems}>
@@ -90,11 +125,12 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
               placeholder=" "
               required
               className={input}
-              onChange={(ev) => setEventLink(ev.target.value)}
+              onChange={handleLink}
             />
-            <span className={errorMessage} id="error">
-              Event link is required
-            </span>
+            <ErrorMessage
+              message="Event link is required"
+              isValid={isValidEvtLink}
+            />
           </div>
 
           <div className={eventItems}>
@@ -107,11 +143,7 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
           <div className={eventItems}>
             <label className={label}>Event color *</label>
             <EventColors selected={eventColor} setSelected={setEventColor} />
-            <span className={errorMessage} id="error">
-              Option has to be selected
-            </span>
           </div>
-
           <div className={buttonContainer}>
             <Button name={`Next >>`} onClick={handleNext} />
           </div>

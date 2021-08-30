@@ -27,13 +27,17 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-9/12 mt-6 mx-auto items-center">
-        <div className="grid 2xl:grid-cols-3 sm:grid-cols-2 gap-4 mt-10">
-          <Card />
-          <Card />
-          <Card />
+      <div>
+        <div className="w-9/12 mt-6 mx-auto items-center">
+          <div className="grid 2xl:grid-cols-3 sm:grid-cols-2 gap-4 mt-10">
+            <Card />
+            <Card />
+            <Card />
+          </div>
         </div>
+        <div  classname="-mt-24 w-9/12"></div>
       </div>
+
     </div>
   );
 }

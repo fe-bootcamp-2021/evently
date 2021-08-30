@@ -14,7 +14,7 @@ export default function OneOnOne() {
     <>
       <Navbar />
       {page === 2 ? (
-        <OneOnOneSecond setSecondPageInfo={setSecondPageInfo} />
+        <OneOnOneSecond setSecondPageInfo={setSecondPageInfo} setFirstPageInfo={firstPageInfo} />
       ) : (
         <OneOnOneFirst setFirstPageInfo={setFirstPageInfo} setPage={setPage} />
       )}

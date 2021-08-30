@@ -4,13 +4,17 @@ import Duration from "../Duration/Duration";
 import Button from "../Button/Button";
 import EventTypeAvailability from "../EventTypeAvailability/EventTypeAvailability";
 import { containerOneOnOne, card, buttonContainer } from "./OneOnOne.style";
+import { addEvent } from "../../services/event.services";
 
-export default function OneOnOneSecond({ setSecondPageInfo }) {
+export default function OneOnOneSecond({setFirstPageInfo, setSecondPageInfo }) {
   const [dateRangeInfo, setDateRangeInfo] = useState({});
   const [minutes, setMinutes] = useState(60);
 
   const handleNext = () => {
     setSecondPageInfo({ dateRange: dateRangeInfo, minutes });
+    const eventInfo = Object.assign(setFirstPageInfo,{ dateRange: dateRangeInfo, minutes ,userId:""});
+    
+    addEvent(eventInfo);
   };
 
   return (

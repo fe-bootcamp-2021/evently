@@ -1,5 +1,6 @@
 import { db } from "../services/base";
 
+
 export function addEvent({
   userId,
   eventId,
@@ -27,3 +28,33 @@ export function addEvent({
     console.log(err);
   }
 }
+
+export function addOneOnOneEvent({
+  eventId,
+  startDate,
+  endDate,
+  startTime,
+  endTime,
+  firstName,
+  lastName,
+  phoneNumber,
+}) {
+  try {
+    db.ref(`/event/oneonone/${eventId}`).set({
+      eventId,
+      startDate,
+      endDate,
+      startTime,
+      endTime,
+      firstName: null,
+      lastName,
+      phoneNumber,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
+
+

@@ -12,6 +12,9 @@ import {
   LAST_NAME,
   PHONE_NUMBER,
 } from "../../../constants/constants";
+import { addOneOnOneEvent } from "../../../services/event.services";
+import { nanoid } from "nanoid";
+import { db } from "../../../services/base";
 
 export default function OneOnOneScheduler() {
   const [startDate, setStartDate] = useState();
@@ -22,7 +25,9 @@ export default function OneOnOneScheduler() {
   const [lastName, setLastName] = useState();
   const [phoneNumber, setPhoneNumber] = useState();
 
-  const addEvent = () => {
+  const eventId = nanoid();
+
+  const addMember = () => {
     if (
       startDate === undefined ||
       endDate === undefined ||
@@ -38,6 +43,27 @@ export default function OneOnOneScheduler() {
     console.log(firstName);
     console.log(lastName);
     console.log(phoneNumber);
+    addOneOnOneEvent({
+      eventId,
+      startDate,
+      endDate,
+      startTime,
+      endTime,
+      firstName,
+      lastName,
+      phoneNumber,
+    });
+  };
+
+  const addEvent = () => {
+    var leadsRef = db.ref("event/oneonone");
+    console.log(leadsRef)
+    leadsRef.on("value", function (snapshot) {
+      snapshot.forEach(function (childSnapshot) {
+        var childData = childSnapshot.val();
+        console.log(childData);
+      });
+    });
   };
 
   const handleStartDate = (event) => {
@@ -81,9 +107,9 @@ export default function OneOnOneScheduler() {
           onChange={handlePhoneNumber}
           placeholder={PHONE_NUMBER}
         />
-        <Button name={ADD_MEMBER} onClick={addEvent} />
+        <Button name={ADD_MEMBER} onClick={addMember} />
         <div>
-          <Button name={ADD_EVENT} />
+          <Button name={ADD_EVENT} onClick={addEvent} />
         </div>
       </div>
     </div>

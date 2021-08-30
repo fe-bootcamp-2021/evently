@@ -19,7 +19,7 @@ import { appointments, resourcesData } from "./data/resourses";
 
 
 
-export default class Evently extends React.PureComponent {
+export default class GroupEventScheduler extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -61,6 +61,7 @@ export default class Evently extends React.PureComponent {
       if (deleted !== undefined) {
         data = data.filter((appointment) => appointment.id !== deleted);
       }
+      console.log({data})
       return { data };
     });
   }
@@ -70,6 +71,7 @@ export default class Evently extends React.PureComponent {
 
     return (
       <Paper >
+        <p>Create Your Group Event</p>
         <Scheduler data={data}>
           <ViewState defaultCurrentDate={date} />
           <MonthView />

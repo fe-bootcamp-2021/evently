@@ -24,9 +24,6 @@ export const Routes = {
   }),
   group: () => ({ path: "/group", text: "Group", component: GroupEventFirstPage }),
 
-  group2: () => ({ path: "/group2", text: "Group Second", component: GroupEventSecondPage }),
-  // error: () => ({ path: "*", text: "", component: ErrorPage }),
-
   error: () => ({ path: "*", text: "", component: ErrorPage }),
 
 };

@@ -12,18 +12,19 @@ import {
   LAST_NAME,
   PHONE_NUMBER,
 } from "../../../constants/constants";
-import { addOneOnOneEvent } from "../../../services/event.services";
+import { addOneOnOneEvent } from "../../../services/OneOnOne.services/addOneOnOneEvent";
 import { nanoid } from "nanoid";
-
+import Member from "../../../components/newOneOnOne/Member";
+import { eventItems } from "../../../components/OneOnOne/OneOnOne.style";
 
 export default function OneOnOneScheduler() {
-
   const [date, setDate] = useState();
   const [startTime, setStartTime] = useState();
   const [endTime, setEndTime] = useState();
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [phoneNumber, setPhoneNumber] = useState();
+  const [members, setMembers] = useState([]);
 
   const eventId = nanoid();
 
@@ -35,21 +36,16 @@ export default function OneOnOneScheduler() {
     ) {
       return;
     }
-    addOneOnOneEvent({
-      date,
-      startTime,
-      endTime,
-      firstName,
-      lastName,
-      phoneNumber,
-    });
+    console.log(1);
+    let member = { date, startTime, endTime };
+    setMembers([...members, member]);
   };
 
   const addEvent = () => {
-    
+    console.log(members);
+    addOneOnOneEvent(members, eventId);
   };
 
- 
   const handleDate = (event) => {
     setDate(event.target.value);
   };
@@ -89,6 +85,13 @@ export default function OneOnOneScheduler() {
         />
         <Button name={ADD_MEMBER} onClick={addMember} />
         <div>
+          {members.map(({ date, startTime, endTime }) => {
+            return (
+              <>
+                <Member date={date} startTime={startTime} endTime={endTime} />
+              </>
+            );
+          })}
           <Button name={ADD_EVENT} onClick={addEvent} />
         </div>
       </div>

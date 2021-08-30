@@ -44,7 +44,7 @@ export const Routes = {
   //   // component: GroupEventSecondPage,
   // }),
 
-  error: () => ({ path: "*", text: "", component: ErrorPage }),
+  // error: () => ({ path: "*", text: "", component: ErrorPage }),
 
 };
 

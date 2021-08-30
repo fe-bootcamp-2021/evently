@@ -1,26 +1,8 @@
 import { db } from "../base";
 
-export function addOneOnOneEvent({
-    eventId,
-    startDate,
-    endDate,
-    startTime,
-    endTime,
-    firstName,
-    lastName,
-    phoneNumber,
-  }) {
+export function addOneOnOneEvent(members, eventId) {
     try {
-      db.ref(`/event/oneonone/${eventId}`).set({
-        eventId,
-        startDate,
-        endDate,
-        startTime,
-        endTime,
-        firstName,
-        lastName,
-        phoneNumber,
-      });
+      db.ref(`/event/oneonone/${eventId}`).set(members);
     } catch (err) {
       console.log(err);
     }

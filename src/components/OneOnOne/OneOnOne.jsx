@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import OneOnOneFirst from "./OneOnOneFirst";
 import OneOnOneSecond from "./OneOnOneSecond";
-import { addEvent } from "../../services/event.services.js";
 
 export default function OneOnOne() {
   const [page, setPage] = useState(1);
@@ -14,7 +13,10 @@ export default function OneOnOne() {
     <>
       <Navbar />
       {page === 2 ? (
-        <OneOnOneSecond setSecondPageInfo={setSecondPageInfo} setFirstPageInfo={firstPageInfo} />
+        <OneOnOneSecond
+          setSecondPageInfo={setSecondPageInfo}
+          setFirstPageInfo={firstPageInfo}
+        />
       ) : (
         <OneOnOneFirst setFirstPageInfo={setFirstPageInfo} setPage={setPage} />
       )}

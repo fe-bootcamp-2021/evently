@@ -31,7 +31,7 @@ export const eventItems = classNames(["relative", "z-0", "w-full", "mb-5"]);
 
 export const label = classNames(["text-gray-500"]);
 
-export const errorMessage = classNames(["text-sm", "text-red-600", "hidden"]);
+export const errorMessage = classNames(["text-sm", "text-red-600"]);
 
 export const input = classNames([
   "pt-3",

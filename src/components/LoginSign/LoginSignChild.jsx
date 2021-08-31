@@ -1,8 +1,11 @@
 
 import React, { useState } from "react";
-import  Button  from "../Button/Button"
-import Input from "../Inputs/Input";
+import { Router, useHistory } from "react-router-dom";
 import { logIn, signUp } from "../../constants/constants";
+import { useAuth } from "../../contexts/AuthContext";
+import {Routes} from "../../constants/routes";
+import Button from "../Button/Button";
+import Input from "../Inputs/Input";
 import {
   titleLogin,
   inputWrapper,
@@ -10,9 +13,8 @@ import {
   emailPassword,
   emailPassStyle,
   emailPassLabel,
+  buttonContainer,
 } from "./LoginSign.style";
-import { useAuth } from "../../contexts/AuthContext";
-import { useHistory } from "react-router-dom";
 
 export let Child = (props) => {
   let { setIsLoggedIn } = props;
@@ -33,17 +35,17 @@ export let Child = (props) => {
     event.stopPropagation();
     setName(signUp);
     setLogin(false);
+    history.push(Routes.signup().path);
   }
 
   async function handleSubmit() {
-        setIsLoggedIn(true);
+    setIsLoggedIn(true);
 
     try {
       await userSignUp(email, password);
     } catch {
       console.log("error");
     }
-
   }
 
   function handleEmail(event) {
@@ -70,31 +72,29 @@ export let Child = (props) => {
           <div className={emailPassword}>
             <Input
               onChange={handleEmail}
-
-
               id="email"
               name="email"
               type="text"
               className={emailPassStyle}
               placeholder="Email address"
             />
-            <label className={emailPassLabel}>
-              Email Address
-            </label>
+            <label className={emailPassLabel}>Email Address</label>
           </div>
           <div className={emailPassword}>
             <Input
               onChange={handlePassword}
-
               id="password"
               name="password"
               type="password"
               className={emailPassStyle}
               placeholder="Password"
             />
-            <label className={emailPassLabel}>
-              Password
-            </label>
+            <label className={emailPassLabel}>Password</label>
+          </div>
+          <div>
+            <span className="underline text-custom-current hover:text-purple-700 cursor-pointer" onClick={handleSign}>
+              {name}
+            </span>
           </div>
           {login ? (
             <div className={emailPassword}>
@@ -111,8 +111,9 @@ export let Child = (props) => {
                 {name}
 
               </span> */}
-
-              <Button onClick={handleSubmit} name={logIn} />
+              <div className={buttonContainer}>
+                <Button onClick={handleSubmit} name={logIn} />
+              </div>
             </div>
           )}
         </div>

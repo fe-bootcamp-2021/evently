@@ -35,7 +35,9 @@ export default function Home() {
             <Card />
           </div>
         </div>
-        <div  classname="-mt-24 w-9/12"></div>
+
+        <div  className="-mt-24 w-9/12"></div>
+
       </div>
 
     </div>

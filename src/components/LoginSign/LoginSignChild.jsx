@@ -78,7 +78,7 @@ export let Child = (props) => {
               className={emailPassStyle}
               placeholder="Email address"
             />
-            <label for="email" className={emailPassLabel}>
+            <label className={emailPassLabel}>
               Email Address
             </label>
           </div>
@@ -92,7 +92,7 @@ export let Child = (props) => {
               className={emailPassStyle}
               placeholder="Password"
             />
-            <label for="password" className={emailPassLabel}>
+            <label className={emailPassLabel}>
               Password
             </label>
           </div>

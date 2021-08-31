@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { auth } from "../services/base";
-import { addUser } from "../services/user.services";
+import { addUser } from "../services/user.services/user.services";
+import Home from "../components/Home/Home";
 
 const AuthContext = React.createContext();
 
@@ -18,14 +19,14 @@ export function AuthProvider({ children }) {
     });
   };
 
-  const userSignUp = (email, password) => {
+  const signup = (email, password) => {
     return auth
       .createUserWithEmailAndPassword(email, password)
       .then((response) => {
-        console.log(response)
-        response.user.sendEmailVerification();
-        addUser({ email, password, uid: response.user.uid });
-        setCurrentUser(response.user);
+        response.user.sendEmailVerification()
+        console.log(response.user)
+        setCurrentUser(response.user)
+        addUser({ email, password, uid: response.user.uid});
         return response.user;
       });
   };
@@ -50,7 +51,7 @@ export function AuthProvider({ children }) {
 
   const value = {
     currentUser,
-    userSignUp,
+    signup,
     signout,
     signin
   };

@@ -6,24 +6,24 @@ import {
   ADD_MEMBER,
   DATE,
   TIME,
-  TEXT,
-  TEL,
-  FIRST_NAME,
-  LAST_NAME,
-  PHONE_NUMBER,
+  // TEXT,
+  // TEL,
+  // FIRST_NAME,
+  // LAST_NAME,
+  // PHONE_NUMBER,
 } from "../../../constants/constants";
 import { addOneOnOneEvent } from "../../../services/OneOnOne.services/addOneOnOneEvent";
 import { nanoid } from "nanoid";
 import Member from "../../../components/newOneOnOne/Member";
-import { eventItems } from "../../../components/OneOnOne/OneOnOne.style";
 
 export default function OneOnOneScheduler() {
+  const [title, setTitle] = useState("")
   const [date, setDate] = useState();
   const [startTime, setStartTime] = useState();
   const [endTime, setEndTime] = useState();
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [phoneNumber, setPhoneNumber] = useState();
+  // const [firstName, setFirstName] = useState();
+  // const [lastName, setLastName] = useState();
+  // const [phoneNumber, setPhoneNumber] = useState();
   const [members, setMembers] = useState([]);
 
   const eventId = nanoid();
@@ -34,7 +34,7 @@ export default function OneOnOneScheduler() {
       startTime === undefined ||
       endTime === undefined
     ) {
-      return;
+      return; // Must be an error
     }
     console.log(1);
     let member = { date, startTime, endTime };
@@ -42,7 +42,9 @@ export default function OneOnOneScheduler() {
   };
 
   const addEvent = () => {
-    console.log(members);
+    if (members.length === 0) {
+      return; // Must be an error
+    }
     addOneOnOneEvent(members, eventId);
   };
 
@@ -55,15 +57,15 @@ export default function OneOnOneScheduler() {
   const handleEndTime = (event) => {
     setEndTime(event.target.value);
   };
-  const handleFirstName = (event) => {
-    setFirstName(event.target.value);
-  };
-  const handleLastName = (event) => {
-    setLastName(event.target.value);
-  };
-  const handlePhoneNumber = (event) => {
-    setPhoneNumber(event.target.value);
-  };
+  // const handleFirstName = (event) => {
+  //   setFirstName(event.target.value);
+  // };
+  // const handleLastName = (event) => {
+  //   setLastName(event.target.value);
+  // };
+  // const handlePhoneNumber = (event) => {
+  //   setPhoneNumber(event.target.value);
+  // };
   return (
     <div>
       <p>Create Your One-on-One event</p>
@@ -71,8 +73,7 @@ export default function OneOnOneScheduler() {
         <Input type={DATE} onChange={handleDate} />
         <Input type={TIME} onChange={handleStartTime} />
         <Input type={TIME} onChange={handleEndTime} />
-        <Input
-          required={false}
+        {/* <Input
           type={TEXT}
           onChange={handleFirstName}
           placeholder={FIRST_NAME}
@@ -82,7 +83,7 @@ export default function OneOnOneScheduler() {
           type={TEL}
           onChange={handlePhoneNumber}
           placeholder={PHONE_NUMBER}
-        />
+        /> */}
         <Button name={ADD_MEMBER} onClick={addMember} />
         <div>
           {members.map(({ date, startTime, endTime }) => {

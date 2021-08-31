@@ -1,6 +1,6 @@
-import { db } from "./base";
+import { db } from "../base";
 
-export const addUser = ({ email, password, uid }) => {
+export const addUser = ({ email, password, uid}) => {
   return db.ref(`/users/${uid}`).set({
     email,
     password,
@@ -13,3 +13,5 @@ export const updateProfile = (uid, { description }) => {
     description,
   });
 };
+
+

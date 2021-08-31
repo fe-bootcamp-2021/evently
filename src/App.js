@@ -8,6 +8,7 @@ import BookingPage from "./components/BookingPage/BookingPage";
 
 import GroupEventFirstPage from "./components/GroupEventPage/GroupEventFirstPage";
 import Events from "./pages/Events/Events";
+import Login from "../src/components/LoginSign/LoginSign";
 
 
 export default function App() {
@@ -15,7 +16,7 @@ export default function App() {
     <AuthProvider>
 
     <div className="App">
-     <Events/>
+     < Login/>
     </div>
   </AuthProvider>
 

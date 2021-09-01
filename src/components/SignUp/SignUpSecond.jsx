@@ -1,4 +1,6 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
+import { nanoid } from "nanoid";
+import { weekDays } from "../../constants/constants";
 import Button from "../Button/Button";
 import {
   containerSignUp,
@@ -19,34 +21,14 @@ export default function SignUpFirst() {
           <div className={items}>
             <label className={label}>Working Days *</label>
             <div className="flex flex-wrap justify-center">
-              <div className="m-5">
-                <p>SUN</p>
-                <input type="checkbox" className="m-3" />
-              </div>
-              <div className="m-5">
-                <p>MON</p>
-                <input type="checkbox" className="m-3" />
-              </div>
-              <div className="m-5">
-                <p>TUE</p>
-                <input type="checkbox" className="m-3" />
-              </div>
-              <div className="m-5">
-                <p>WED</p>
-                <input type="checkbox" className="m-3" />
-              </div>
-              <div className="m-5">
-                <p>THU</p>
-                <input type="checkbox" className="m-3" />
-              </div>
-              <div className="m-5">
-                <p>FRI</p>
-                <input type="checkbox" className="m-3" />
-              </div>
-              <div className="m-5">
-                <p>SAT</p>
-                <input type="checkbox" className="m-3" />
-              </div>
+              {weekDays.map((el, ind) => {
+                return (
+                  <div className="m-5" key={nanoid()}>
+                    <p>{el}</p>
+                    <input type="checkbox" className="m-3" value={ind} />
+                  </div>
+                );
+              })}
             </div>
             <div className="flex flex-wrap justify-center items-center mt-10">
               <div>

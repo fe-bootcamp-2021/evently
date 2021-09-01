@@ -3,15 +3,15 @@ import SignUpFirst from "./SignUpFirst";
 import SignUpSecond from "./SignUpSecond";
 
 export default function SignUp() {
-    const [page, setPage] = useState(1);
+  const [page, setPage] = useState(1);
+  const [firstPageInfo, setFirstPageInfo] = useState(1);
   return (
     <>
       {page === 1 ? (
-      <SignUpFirst />
+        <SignUpFirst setFirstPageInfo={setFirstPageInfo} setPage={setPage} />
       ) : (
-        <SignUpSecond/>
+        <SignUpSecond />
       )}
-      
     </>
   );
 }

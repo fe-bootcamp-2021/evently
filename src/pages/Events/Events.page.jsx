@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "../../components/Button/Button";
+import Navbar from "../../components/Navbar/Navbar";
 import {
   GROUP_EVENT_NAME,
   ONE_ON_ONE_EVENT_NAME,
@@ -7,7 +8,7 @@ import {
 import GroupEventScheduler from "./GroupEvent/GroupEvent";
 import OneOnOneScheduler from "./OneOnOne/OneOnOne";
 
-export default function Events() {
+export default function EventsPage() {
   const [isGroupShown, setIsGroupShown] = useState(true);
 
   const showGroupScheduler = () => {
@@ -19,6 +20,7 @@ export default function Events() {
 
   return (
     <>
+      <Navbar />
       <p>Create your Event</p>
       <div>
         <Button name={GROUP_EVENT_NAME} onClick={showGroupScheduler} />

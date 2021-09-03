@@ -31,7 +31,7 @@ export const menu = classNames([
   "no-underline",
 ]);
 
-export const titleHome = classNames([
+export const title = classNames([
   "no-underline",
   "text-blue-800",
   "text-xl",

@@ -1,6 +1,7 @@
 import Home from "../components/Home/Home";
 import Account from "../components/Account/Account";
 import Login from "../components/LoginSign/LoginSign";
+import SignUp from "../components/SignUp/SignUp";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import OneOnOne from "../components/OneOnOne/OneOnOne";
 import GroupEventFirstPage from "../components/GroupEventPage/GroupEventFirstPage";
@@ -10,6 +11,11 @@ export const Routes = {
     path: "/",
     text: "Login",
     component: Login,
+  }),
+  signup: () => ({
+    path: "/signup",
+    text: "Sign Up",
+    component: SignUp,
   }),
   home: () => ({
     path: "/home",
@@ -27,7 +33,11 @@ export const Routes = {
     text: "One On One",
     component: OneOnOne,
   }),
-  group: () => ({ path: "/group", text: "Group", component: GroupEventFirstPage }),
+  group: () => ({
+    path: "/group",
+    text: "Group",
+    component: GroupEventFirstPage,
+  }),
   error: () => ({ path: "*", text: "", component: ErrorPage }),
 };
 

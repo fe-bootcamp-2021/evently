@@ -1,10 +1,28 @@
 import { db } from "./base";
 
-export const addUser = ({ email, password, uid }) => {
+export const addUser = ({
+  email,
+  password,
+  uid,
+  birthday,
+  endHour,
+  firstName,
+  gender,
+  lastName,
+  startHour,
+  weekDayAvailability,
+}) => {
   return db.ref(`/users/${uid}`).set({
     email,
     password,
     uid,
+    birthday,
+    endHour,
+    firstName,
+    gender,
+    lastName,
+    startHour,
+    weekDayAvailability,
   });
 };
 

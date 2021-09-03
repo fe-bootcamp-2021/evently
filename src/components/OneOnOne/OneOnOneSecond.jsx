@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { Routes } from "../../constants/routes";
 import { addEvent } from "../../services/event.services";
+import { useAuth } from "../../contexts/AuthContext";
 import DataRange from "../DateRange/DateRange";
 import Duration from "../Duration/Duration";
 import Button from "../Button/Button";
@@ -10,6 +13,8 @@ export default function OneOnOneSecond({
   setFirstPageInfo,
   setSecondPageInfo,
 }) {
+  const history = useHistory();
+  const { user } = useAuth();
   const [dateRangeInfo, setDateRangeInfo] = useState({});
   const [minutes, setMinutes] = useState(60);
 
@@ -17,15 +22,25 @@ export default function OneOnOneSecond({
     const secondPageInfo = { dateRange: dateRangeInfo, minutes };
 
     const eventInfo = Object.assign(setFirstPageInfo, secondPageInfo, {
-      userId: "",
+      userId: user.uid,
     });
 
     setSecondPageInfo(secondPageInfo);
-    addEvent(eventInfo);
+    try {
+      addEvent(eventInfo);
+      history.push(Routes.home().path);
+    } catch (err) {
+      alert(err);
+    }
+  };
+
+  const handleCancel = () => {
+    history.push(Routes.home().path);
   };
 
   return (
     <>
+      {console.log(user)}
       <div className={containerOneOnOne}>
         <div className={card}>
           <section className="my-10 px-10">
@@ -39,8 +54,8 @@ export default function OneOnOneSecond({
           </section>
           <section className="my-10 px-10 pt-10 border-t-2 border-fuchsia-600">
             <div className={buttonContainer}>
-              <Button name={`Cancel`} onClick={console.log(1)} />
-              <Button name={`Next >>`} className="ml-3" onClick={handleNext} />
+              <Button name={`Cancel`} onClick={handleCancel} />
+              <Button name={`Create`} className="ml-3" onClick={handleNext} />
             </div>
           </section>
         </div>

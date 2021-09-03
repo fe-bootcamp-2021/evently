@@ -1,21 +1,25 @@
 import React, { useContext, useState, useEffect, createContext } from "react";
-import { app } from "../services/base";
-import { addUser } from "../services/user.services";
+import { auth, app } from "../services/base";
+import { addUser } from "../services/user.services/user.services";
 
 const authContext = createContext();
 
+// Provider component that wraps your app and makes auth object ...
+// ... available to any child component that calls useAuth().
 export function ProvideAuth({ children }) {
   const auth = useProvideAuth();
   return <authContext.Provider value={auth}>{children}</authContext.Provider>;
 }
-
+// Hook for child components to get the auth object ...
+// ... and re-render when it changes.
 export const useAuth = () => {
   return useContext(authContext);
 };
-
+// Provider hook that creates auth object and handles state
 function useProvideAuth() {
   const [user, setUser] = useState(null);
-
+  // Wrap any Firebase methods we want to use making sure ...
+  // ... to save the user to state.
   const signin = (email, password) => {
     return app
       .auth()
@@ -46,18 +50,14 @@ function useProvideAuth() {
       .createUserWithEmailAndPassword(email, password)
       .then((response) => {
         response.user.sendEmailVerification();
-        addUser({
-          email,
-          password,
-          uid: response.user.uid,
+        addUser({ email, password, uid: response.user.uid,
           birthday,
           endHour,
           firstName,
           gender,
           lastName,
           startHour,
-          weekDayAvailability,
-        });
+          weekDayAvailability, });
         setUser(response.user);
         return response.user;
       });
@@ -89,6 +89,11 @@ function useProvideAuth() {
         return true;
       });
   };
+
+  // Subscribe to user on mount
+  // Because this sets state in the callback it will cause any ...
+  // ... component that utilizes this hook to re-render with the ...
+  // ... latest auth object.
 
   useEffect(() => {
     const unsubscribe = app.auth().onAuthStateChanged((user) => {

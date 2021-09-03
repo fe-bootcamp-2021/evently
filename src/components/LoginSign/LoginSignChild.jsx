@@ -22,7 +22,7 @@ export let Child = (props) => {
   const [password, setPassword] = useState();
   const [loading, setLoading] = useState(false);
   const history = useHistory();
-  const { userSignUp, currentUser } = useAuth();
+  const { signup, currentUser } = useAuth();
 
   function handleLogin(event) {
     event.stopPropagation();
@@ -39,7 +39,7 @@ export let Child = (props) => {
         setIsLoggedIn(true);
 
     try {
-      await userSignUp(email, password);
+      await signup(email, password);
     } catch {
       console.log("error");
     }
@@ -54,7 +54,7 @@ export let Child = (props) => {
   }
 
   return (
-    <>{console.log("sdssf")}
+    <>
       {login ? (
         <div>
           <h2 className={titleLogin}>{signUp}</h2>
@@ -78,7 +78,7 @@ export let Child = (props) => {
               className={emailPassStyle}
               placeholder="Email address"
             />
-            <label for="email" className={emailPassLabel}>
+            <label className={emailPassLabel}>
               Email Address
             </label>
           </div>
@@ -92,7 +92,7 @@ export let Child = (props) => {
               className={emailPassStyle}
               placeholder="Password"
             />
-            <label for="password" className={emailPassLabel}>
+            <label className={emailPassLabel}>
               Password
             </label>
           </div>
@@ -103,7 +103,7 @@ export let Child = (props) => {
 
               </span> */}
 
-              <Button onClick={handleSubmit} name={signUp} />
+              <Button onClick={handleSubmit} name={signup} />
             </div>
           ) : (
             <div className={emailPassword}>

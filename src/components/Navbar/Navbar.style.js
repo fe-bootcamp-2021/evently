@@ -5,9 +5,10 @@ export const navContainer = classNames(
   "items-center",
   "justify-between",
   "flex-wrap",
-  "p-6",
-  "border-b-2",
-  "border-blue-800"
+  "pt-6",
+  "pb-6",
+  "w-9/12",
+  "mx-auto"
 );
 
 export const logoContainer = classNames([
@@ -19,7 +20,9 @@ export const logoContainer = classNames([
 ]);
 
 export const menu = classNames([
-  "w-full",
+  "flex",
+  "justify-end",
+  // "w-full",
   "block",
   "flex-grow",
   "lg:flex",
@@ -31,6 +34,23 @@ export const menu = classNames([
 export const titleHome = classNames([
   "no-underline",
   "text-blue-800",
-  "text-2xl",
+  "text-xl",
   "cursor-pointer",
+  "p-2",
+]);
+
+export const buttonOutline = classNames([
+  "px-4",
+  "py-2",
+  "text-xl",
+  "text-blue-900",
+  "transition-colors",
+  "duration-150",
+  "border",
+  "border-blue-900",
+  "rounded-full",
+  "cursor-pointer",
+  "focus:shadow-outline",
+  "hover:bg-blue-800",
+  "hover:text-white",
 ]);

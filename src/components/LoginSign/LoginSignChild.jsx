@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Router, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { getEvents } from "../../services/event.services";
 import { logIn, signUp } from "../../constants/constants";
 import { useAuth } from "../../contexts/AuthContext";
 import { Routes } from "../../constants/routes";
@@ -16,12 +17,11 @@ import {
 } from "./LoginSign.style";
 
 export let Child = (props) => {
-  const [login, setLogin] = useState(false);
+  const history = useHistory();
+  const { signin } = useAuth();
   const [name, setName] = useState(signUp);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const history = useHistory();
-  const { signin } = useAuth();
 
   function handleSign(event) {
     event.stopPropagation();

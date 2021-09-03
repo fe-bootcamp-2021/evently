@@ -4,7 +4,7 @@ import Input from "../Input/Input";
 import Image from "../../images/Ellipse96.svg";
 import Image2 from "../../images/Ellipse97.svg";
 
-export default function Main() {
+export default function unAuthenticatedApp() {
   return (
     <div>
       <div className="w-9/12 mx-auto flex justify-between items-center justify-center">

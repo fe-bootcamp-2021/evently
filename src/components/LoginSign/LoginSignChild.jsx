@@ -1,9 +1,8 @@
-
 import React, { useState } from "react";
 import { Router, useHistory } from "react-router-dom";
 import { logIn, signUp } from "../../constants/constants";
 import { useAuth } from "../../contexts/AuthContext";
-import {Routes} from "../../constants/routes";
+import { Routes } from "../../constants/routes";
 import Button from "../Button/Button";
 import Input from "../Inputs/Input";
 import {
@@ -17,36 +16,26 @@ import {
 } from "./LoginSign.style";
 
 export let Child = (props) => {
-  let { setIsLoggedIn } = props;
   const [login, setLogin] = useState(false);
   const [name, setName] = useState(signUp);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [loading, setLoading] = useState(false);
   const history = useHistory();
-  const { userSignUp, currentUser } = useAuth();
+  const { signin } = useAuth();
 
-  function handleLogin(event) {
-    event.stopPropagation();
-    setName(logIn);
-    setLogin(true);
-  }
   function handleSign(event) {
     event.stopPropagation();
     setName(signUp);
-    setLogin(false);
     history.push(Routes.signup().path);
   }
 
-  async function handleSubmit() {
-    setIsLoggedIn(true);
-
-    try {
-      await userSignUp(email, password);
-    } catch {
-      console.log("error");
-    }
-  }
+  const handleSignIn = () => {
+    return signin(email, password)
+      .then((res) => {
+        history.push(Routes.home().path);
+      })
+      .catch((e) => alert(e.message));
+  };
 
   function handleEmail(event) {
     setEmail(event.target.value);
@@ -57,16 +46,9 @@ export let Child = (props) => {
 
   return (
     <>
-      {login ? (
-        <div>
-          <h2 className={titleLogin}>{signUp}</h2>
-        </div>
-      ) : (
-        <div>
-          <h2 className={titleLogin}>{logIn}</h2>
-        </div>
-      )}
-
+      <div>
+        <h2 className={titleLogin}>{logIn}</h2>
+      </div>
       <div className={inputWrapper}>
         <div className={emailInput}>
           <div className={emailPassword}>
@@ -92,30 +74,18 @@ export let Child = (props) => {
             <label className={emailPassLabel}>Password</label>
           </div>
           <div>
-            <span className="underline text-custom-current hover:text-purple-700 cursor-pointer" onClick={handleSign}>
+            <span
+              className="underline text-custom-current hover:text-purple-700 cursor-pointer"
+              onClick={handleSign}
+            >
               {name}
             </span>
           </div>
-          {login ? (
-            <div className={emailPassword}>
-              {/* <span className="underline" onClick={handleSign}>
-                {name}
-
-              </span> */}
-
-              <Button onClick={handleSubmit} name={signUp} />
+          <div className={emailPassword}>
+            <div className={buttonContainer}>
+              <Button onClick={handleSignIn} name={logIn} />
             </div>
-          ) : (
-            <div className={emailPassword}>
-              {/* <span className="underline" onClick={handleLogin}>
-                {name}
-
-              </span> */}
-              <div className={buttonContainer}>
-                <Button onClick={handleSubmit} name={logIn} />
-              </div>
-            </div>
-          )}
+          </div>
         </div>
       </div>
     </>

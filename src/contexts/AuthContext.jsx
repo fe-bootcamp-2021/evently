@@ -1,59 +1,120 @@
-import React, { useContext, useState, useEffect } from "react";
-import { auth } from "../services/base";
+import React, { useContext, useState, useEffect, createContext } from "react";
+import { auth, app } from "../services/base";
 import { addUser } from "../services/user.services";
 
-const AuthContext = React.createContext();
+const authContext = createContext();
 
-export function useAuth() {
-  return useContext(AuthContext);
+// Provider component that wraps your app and makes auth object ...
+// ... available to any child component that calls useAuth().
+export function ProvideAuth({ children }) {
+  const auth = useProvideAuth();
+  return <authContext.Provider value={auth}>{children}</authContext.Provider>;
 }
-
-export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState();
-
+// Hook for child components to get the auth object ...
+// ... and re-render when it changes.
+export const useAuth = () => {
+  return useContext(authContext);
+};
+// Provider hook that creates auth object and handles state
+function useProvideAuth() {
+  const [user, setUser] = useState(null);
+  // Wrap any Firebase methods we want to use making sure ...
+  // ... to save the user to state.
   const signin = (email, password) => {
-    return auth.signInWithEmailAndPassword(email, password).then((response) => {
-      setCurrentUser(response.user);
-      return response.user;
-    });
-  };
-
-  const userSignUp = (email, password) => {
-    return auth
-      .createUserWithEmailAndPassword(email, password)
+    return app
+      .auth()
+      .signInWithEmailAndPassword(email, password)
       .then((response) => {
-        console.log(response)
-        response.user.sendEmailVerification();
-        addUser({ email, password, uid: response.user.uid });
-        setCurrentUser(response.user);
+        setUser(response.user);
         return response.user;
       });
   };
-  const signout = () => {
-    return auth.signOut().then(() => {
-      setCurrentUser(false);
-    });
+
+  const signInWithGmail = () => {
+    return app.auth().signInWithEmailLink();
   };
+
+  const signup = ({
+    email,
+    password,
+    birthday,
+    endHour,
+    firstName,
+    gender,
+    lastName,
+    startHour,
+    weekDayAvailability,
+  }) => {
+    return app
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((response) => {
+        response.user.sendEmailVerification();
+        addUser({ email, password, uid: response.user.uid,
+          birthday,
+          endHour,
+          firstName,
+          gender,
+          lastName,
+          startHour,
+          weekDayAvailability, });
+        setUser(response.user);
+        return response.user;
+      });
+  };
+
+  const signout = () => {
+    return app
+      .auth()
+      .signOut()
+      .then(() => {
+        setUser(false);
+      });
+  };
+
+  const sendPasswordResetEmail = (email) => {
+    return app
+      .auth()
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        return true;
+      });
+  };
+
+  const confirmPasswordReset = (code, password) => {
+    return app
+      .auth()
+      .confirmPasswordReset(code, password)
+      .then(() => {
+        return true;
+      });
+  };
+
+  // Subscribe to user on mount
+  // Because this sets state in the callback it will cause any ...
+  // ... component that utilizes this hook to re-render with the ...
+  // ... latest auth object.
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    const unsubscribe = app.auth().onAuthStateChanged((user) => {
       if (user) {
-        setCurrentUser(user);
+        setUser(user);
       } else {
-        setCurrentUser(false);
+        setUser(false);
       }
-
     });
-
-    return unsubscribe;
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
   }, []);
 
-  const value = {
-    currentUser,
-    userSignUp,
+  // Return the user object and auth methods
+  return {
+    user,
+    signin,
+    signup,
     signout,
-    signin
+    sendPasswordResetEmail,
+    confirmPasswordReset,
+    signInWithGmail,
   };
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

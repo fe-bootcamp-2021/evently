@@ -22,13 +22,22 @@ export function isValidEmail(email) {
 
 export function isValidPassword(password) {
   // Minimum eight characters, at least one letter and one number:
-  const passwordCheckReg =
-  /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  const passwordCheckReg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
   if (passwordCheckReg.test(password)) return true;
   return false;
 }
 
-export function isEmptyString(value){
+export function isEmptyString(value) {
   if (value.replace(/\s/g, "") === "") return false;
+  return true;
+}
+
+export function isValidHours(value) {
+  if (isNaN(value) || Number(value) < 0 || Number(value) > 23) return false;
+  return true;
+}
+
+export function isValidMinutes(value) {
+  if (isNaN(value) || Number(value) < 0 || Number(value) > 59) return false;
   return true;
 }

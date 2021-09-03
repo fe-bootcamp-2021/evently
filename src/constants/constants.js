@@ -11,4 +11,12 @@ export const TEL = "tel";
 export const FIRST_NAME = "First Name";
 export const LAST_NAME = "Last Name";
 export const PHONE_NUMBER = "Phone Number";
-export const weekDays = ["SUN","MON","TUE","WED","THU","FRI", "SAT"];
+export const weekDays = {
+  0: "SUN",
+  1: "MON",
+  2: "TUE",
+  3: "WED",
+  4: "THU",
+  5: "FRI",
+  6: "SAT",
+};

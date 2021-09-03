@@ -127,6 +127,7 @@ export default function SignUpFirst({ setFirstPageInfo, setPage }) {
               required
               className={input}
               onChange={handleEmail}
+              autoComplete="off"
             />
             <ErrorMessage
               message="Invalid email address"
@@ -141,6 +142,7 @@ export default function SignUpFirst({ setFirstPageInfo, setPage }) {
               required
               className={input}
               onChange={handlePassword}
+              autoComplete="off"
             />
             <ErrorMessage
               message="Password should be minimum eight characters, at least one letter and one number"
@@ -184,6 +186,7 @@ export default function SignUpFirst({ setFirstPageInfo, setPage }) {
               className={input}
               value={birthdayString}
               onClick={handleBirthday}
+              onChange={(ev)=>setBirthdayString(birthdayString)}
             />
             <ErrorMessage
               message="Birthday is required"

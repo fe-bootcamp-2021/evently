@@ -99,9 +99,11 @@ export default function Navbar() {
             <li
               className={buttonOutline}
               key={nanoid()}
+
               onClick={handleNav(NavRoutes.login().path)}
             >
               {NavRoutes.login().text}
+
             </li>
           </div>
         </ul>

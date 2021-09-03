@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { getEvents } from "../../services/event.services";
 import { logIn, signUp } from "../../constants/constants";
 import { useAuth } from "../../contexts/AuthContext";
 import { Routes } from "../../constants/routes";

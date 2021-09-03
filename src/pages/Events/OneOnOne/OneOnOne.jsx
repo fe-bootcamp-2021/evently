@@ -6,45 +6,50 @@ import {
   ADD_MEMBER,
   DATE,
   TIME,
-  TEXT,
-  TEL,
-  FIRST_NAME,
-  LAST_NAME,
-  PHONE_NUMBER,
+  // TEXT,
+  // TEL,
+  // FIRST_NAME,
+  // LAST_NAME,
+  // PHONE_NUMBER,
 } from "../../../constants/constants";
+import { addOneOnOneEvent } from "../../../services/OneOnOne.services/addOneOnOneEvent";
+import { nanoid } from "nanoid";
+import Member from "../../../components/newOneOnOne/Member";
 
 export default function OneOnOneScheduler() {
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
+  const [title, setTitle] = useState("")
+  const [date, setDate] = useState();
   const [startTime, setStartTime] = useState();
   const [endTime, setEndTime] = useState();
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [phoneNumber, setPhoneNumber] = useState();
+  // const [firstName, setFirstName] = useState();
+  // const [lastName, setLastName] = useState();
+  // const [phoneNumber, setPhoneNumber] = useState();
+  const [members, setMembers] = useState([]);
 
-  const addEvent = () => {
+  const eventId = nanoid();
+
+  const addMember = () => {
     if (
-      startDate === undefined ||
-      endDate === undefined ||
+      date === undefined ||
       startTime === undefined ||
       endTime === undefined
     ) {
-      return;
+      return; // Must be an error
     }
-    console.log(startDate);
-    console.log(endDate);
-    console.log(startTime);
-    console.log(endTime);
-    console.log(firstName);
-    console.log(lastName);
-    console.log(phoneNumber);
+    console.log(1);
+    let member = { date, startTime, endTime };
+    setMembers([...members, member]);
   };
 
-  const handleStartDate = (event) => {
-    setStartDate(event.target.value);
+  const addEvent = () => {
+    if (members.length === 0) {
+      return; // Must be an error
+    }
+    addOneOnOneEvent(members, eventId);
   };
-  const handleEndDate = (event) => {
-    setEndDate(event.target.value);
+
+  const handleDate = (event) => {
+    setDate(event.target.value);
   };
   const handleStartTime = (event) => {
     setStartTime(event.target.value);
@@ -52,25 +57,23 @@ export default function OneOnOneScheduler() {
   const handleEndTime = (event) => {
     setEndTime(event.target.value);
   };
-  const handleFirstName = (event) => {
-    setFirstName(event.target.value);
-  };
-  const handleLastName = (event) => {
-    setLastName(event.target.value);
-  };
-  const handlePhoneNumber = (event) => {
-    setPhoneNumber(event.target.value);
-  };
+  // const handleFirstName = (event) => {
+  //   setFirstName(event.target.value);
+  // };
+  // const handleLastName = (event) => {
+  //   setLastName(event.target.value);
+  // };
+  // const handlePhoneNumber = (event) => {
+  //   setPhoneNumber(event.target.value);
+  // };
   return (
     <div>
       <p>Create Your One-on-One event</p>
       <div>
-        <Input type={DATE} onChange={handleStartDate} />
-        <Input type={DATE} onChange={handleEndDate} />
+        <Input type={DATE} onChange={handleDate} />
         <Input type={TIME} onChange={handleStartTime} />
         <Input type={TIME} onChange={handleEndTime} />
-        <Input
-          required={false}
+        {/* <Input
           type={TEXT}
           onChange={handleFirstName}
           placeholder={FIRST_NAME}
@@ -80,10 +83,17 @@ export default function OneOnOneScheduler() {
           type={TEL}
           onChange={handlePhoneNumber}
           placeholder={PHONE_NUMBER}
-        />
-        <Button name={ADD_MEMBER} onClick={addEvent} />
+        /> */}
+        <Button name={ADD_MEMBER} onClick={addMember} />
         <div>
-          <Button name={ADD_EVENT} />
+          {members.map(({ date, startTime, endTime }) => {
+            return (
+              <>
+                <Member date={date} startTime={startTime} endTime={endTime} />
+              </>
+            );
+          })}
+          <Button name={ADD_EVENT} onClick={addEvent} />
         </div>
       </div>
     </div>

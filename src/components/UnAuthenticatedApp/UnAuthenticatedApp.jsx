@@ -6,6 +6,7 @@ import Image from "../../images/Ellipse96.svg";
 import Image2 from "../../images/Ellipse97.svg";
 
 export default function UnAuthenticatedApp() {
+
   return (
     <div className="mx-auto flex flex-col">
         <div className="shadow-md">

@@ -1,5 +1,6 @@
-import { db } from "./base";
+import { db } from "../base";
 
+<<<<<<< HEAD:src/services/user.services.js
 export const addUser = ({
   email,
   password,
@@ -12,6 +13,9 @@ export const addUser = ({
   startHour,
   weekDayAvailability,
 }) => {
+=======
+export const addUser = ({ email, password, uid}) => {
+>>>>>>> 7465d816d4305c0b5ce228866ca2e49f230f9eff:src/services/user.services/user.services.js
   return db.ref(`/users/${uid}`).set({
     email,
     password,
@@ -31,3 +35,5 @@ export const updateProfile = (uid, { description }) => {
     description,
   });
 };
+
+

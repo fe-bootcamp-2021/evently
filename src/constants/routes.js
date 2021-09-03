@@ -39,6 +39,7 @@ export const Routes = {
     component: GroupEventFirstPage,
   }),
   error: () => ({ path: "*", text: "", component: ErrorPage }),
+
 };
 
 export const NavRoutes = {
@@ -48,9 +49,11 @@ export const NavRoutes = {
     component: Home,
   }),
   account: () => ({ path: "/account", text: "Account", component: Account }),
+
   login: () => ({
     path: "/",
     text: "Log Out",
+
     component: Login,
   }),
 };

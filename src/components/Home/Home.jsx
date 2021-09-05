@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { nanoid } from "nanoid";
+import { useAuth } from "../../contexts/AuthContext";
+import { getEvents } from "../../services/event.services";
 import Card from "../Card/Card";
 import Dropdown from "../Dropdown/Dropdown";
 import Button from "../Button/Button";
 import Navbar from "../Navbar/Navbar";
 
 export default function Home() {
+  const { user } = useAuth();
+  const userId = user?.uid;
+  const [events, setEvents] = useState({});
+
+  useEffect(() => {
+    getEvents(userId).then((result) => {
+      setEvents(result);
+    })
+  }, []);
+
   return (
     <div className="h-screen">
       <div className="max-w-lm h-48 inline-block flex flex-col mx-auto bg-white shadow-md items-center ">
@@ -32,11 +45,17 @@ export default function Home() {
             <Card />
             <Card />
             <Card />
+            {
+              events?
+                Object.keys(events).map((el)=>{
+                  return <Card key={nanoid()}/>
+                })
+                :<></>
+            }
           </div>
         </div>
 
-        <div  className="-mt-24 w-9/12"></div>
-
+        <div className="-mt-24 w-9/12"></div>
       </div>
     </div>
   );

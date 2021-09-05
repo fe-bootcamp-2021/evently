@@ -37,12 +37,12 @@ export default function Dropdown({buttonName}) {
 
         <div className={dropDownMenu}>
           <ul>
-            <li className={li} onClick={handlePath(Routes.oneOnOne().path)}>
+            {/* <li className={li} onClick={handlePath(Routes.oneOnOne().path)}>
               One-on-One
             </li>
             <li className={li} onClick={handlePath(Routes.group().path)}>
               Group Meeting
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

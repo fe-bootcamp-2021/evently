@@ -1,38 +1,40 @@
-import Home from "../components/Home/Home";
-import Account from "../components/Account/Account";
-import Login from "../components/LoginSign/LoginSign";
-import SignUp from "../components/SignUp/SignUp";
-import ErrorPage from "../components/ErrorPage/ErrorPage";
-import OneOnOne from "../components/OneOnOne/OneOnOne";
-import GroupEventFirstPage from "../components/GroupEventPage/GroupEventFirstPage";
+
+import AboutUsPage from "../pages/AboutUs/AboutUs.page";
+import AccountPage from "../pages/Account/Account.page";
+import EventsPage from "../pages/Events/Events.page";
+import HomePage from "../pages/Home/Home.page";
+import Login from "../components/LoginSign/LoginSign"
+import UnAuthenticatedPage from "../pages/UnAuthenticatedPage/UnAuthenticated.page";
+
+
 
 export const Routes = {
   login: () => ({
-    path: "/",
-    text: "Login",
+    path: "/login",
+    text: "Log In",
     component: Login,
   }),
+
   signup: () => ({
     path: "/signup",
     text: "Sign Up",
     component: SignUp,
   }),
-  home: () => ({
-    path: "/home",
-    text: "Home",
-    component: Home,
-  }),
+
   // about: () => ({
   //   path: "/about",
   //   text: "About",
   //   component: About,
+
   // }),
-  account: () => ({ path: "/account", text: "Account", component: Account }),
-  oneOnOne: () => ({
-    path: "/oneOnOne",
-    text: "One On One",
-    component: OneOnOne,
+  
+ 
+  unAuthenticated: () => ({
+    path: "/",
+    text: "Info",
+    component: UnAuthenticatedPage
   }),
+
   group: () => ({
     path: "/group",
     text: "Group",
@@ -40,20 +42,24 @@ export const Routes = {
   }),
   error: () => ({ path: "*", text: "", component: ErrorPage }),
 
+
 };
 
 export const NavRoutes = {
   home: () => ({
     path: "/home",
     text: "Home",
-    component: Home,
+    component: HomePage,
   }),
-  account: () => ({ path: "/account", text: "Account", component: Account }),
-
-  login: () => ({
-    path: "/",
-    text: "Log Out",
-
-    component: Login,
+  about: () => ({
+    path: "/about",
+    text: "About",
+    component: AboutUsPage
   }),
+  events: () => ({
+    path: "/events",
+    text: "Events",
+    component: EventsPage
+  }),
+  account: () => ({ path: "/account", text: "Account", component: AccountPage }),
 };

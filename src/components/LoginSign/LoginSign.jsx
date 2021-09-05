@@ -10,11 +10,7 @@ export default function Login() {
 
   return (
     <>
-      {isLoggedIn ? (
-        history.push(Routes.home().path)
-      ) : (
-        <Layout child={<Child setIsLoggedIn={setIsLoggedIn} />} />
-      )}
+      <Layout child={<Child setIsLoggedIn={setIsLoggedIn} />} />
     </>
   );
 }

@@ -2,21 +2,22 @@ import AboutUsPage from "../pages/AboutUs/AboutUs.page";
 import AccountPage from "../pages/Account/Account.page";
 import EventsPage from "../pages/Events/Events.page";
 import HomePage from "../pages/Home/Home.page";
-import unAuthenticatedPage from "../pages/unAuthenticatedPage/unAuthenticated.page";
+import Login from "../components/LoginSign/LoginSign"
+import unAuthenticatedPage from "../pages/unAuthenticatedPage/UnAuthenticated.page";
 
 
 export const Routes = {
-  // home: () => ({
-  //   path: "/home",
-  //   text: "Home",
-  //   component: HomePage,
-  // }),
-  
-  // unAuthenticated: () => ({
-  //   path: "/info",
-  //   text: "Info",
-  //   component: unAuthenticatedPage
-  // }),
+  login: () => ({
+    path: "/login",
+    text: "Log Out",
+    component: Login,
+  }),
+ 
+  unAuthenticated: () => ({
+    path: "/",
+    text: "Info",
+    component: unAuthenticatedPage
+  }),
   // account: () => ({ path: "/account", text: "Account", component: AccountPage }),
   // oneOnOne: () => ({
   //   path: "/oneOnOne",
@@ -31,7 +32,7 @@ export const Routes = {
 
 export const NavRoutes = {
   home: () => ({
-    path: "/",
+    path: "/home",
     text: "Home",
     component: HomePage,
   }),
@@ -46,11 +47,4 @@ export const NavRoutes = {
     component: EventsPage
   }),
   account: () => ({ path: "/account", text: "Account", component: AccountPage }),
-
-  // login: () => ({
-  //   path: "/",
-  //   text: "Log Out",
-
-  //   component: Login,
-  // }),
 };

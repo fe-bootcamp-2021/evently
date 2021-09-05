@@ -88,3 +88,10 @@ export const signStyle = classNames([
   "px-2",
   "py-1",
 ]);
+export const buttonContainer = classNames([
+  "flex",
+  "justify-end",
+  "z-0",
+  "w-full",
+  "mb-5",
+]);

@@ -7,7 +7,6 @@ import Navbar from "../Navbar/Navbar";
 export default function Home() {
   return (
     <div className="h-screen">
-        
       <div className="max-w-lm h-48 inline-block flex flex-col mx-auto bg-white shadow-md items-center ">
         <Navbar />
         <div className="w-9/12">
@@ -39,7 +38,6 @@ export default function Home() {
         <div  className="-mt-24 w-9/12"></div>
 
       </div>
-
     </div>
   );
 }

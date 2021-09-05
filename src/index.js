@@ -6,11 +6,11 @@ import { Routes } from "./constants/routes";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { AuthProvider } from "./contexts/AuthContext";
+import { ProvideAuth } from "./contexts/AuthContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
+    <ProvideAuth>
       <Router>
         <App />
         <Switch>
@@ -22,7 +22,7 @@ ReactDOM.render(
           })}
         </Switch>
       </Router>
-    </AuthProvider>
+    </ProvideAuth>
   </React.StrictMode>,
   document.getElementById("root")
 );

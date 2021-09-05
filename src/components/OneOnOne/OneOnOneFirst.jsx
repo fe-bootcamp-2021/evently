@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { nanoid } from "nanoid";
+import { Routes } from "../../constants/routes";
 import {
   isValidEventName,
   isValidEventLink,
@@ -21,6 +23,7 @@ import {
 } from "./OneOnOne.style";
 
 export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
+  const history = useHistory();
   const [eventName, setEventName] = useState("");
   const [eventLink, setEventLink] = useState("");
   const [location, setLocation] = useState("");
@@ -78,6 +81,10 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
       ? setIsValidEvtLink(true)
       : setIsValidEvtLink(false);
     setEventLink(value);
+  };
+
+  const handleCancel = () => {
+    history.push(Routes.home().path);
   };
 
   return (
@@ -145,7 +152,8 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
             <EventColors selected={eventColor} setSelected={setEventColor} />
           </div>
           <div className={buttonContainer}>
-            <Button name={`Next >>`} onClick={handleNext} />
+            <Button name={`Cancel`} onClick={handleCancel} />
+            <Button name={`Next >>`} className="ml-3" onClick={handleNext} />
           </div>
         </div>
       </div>

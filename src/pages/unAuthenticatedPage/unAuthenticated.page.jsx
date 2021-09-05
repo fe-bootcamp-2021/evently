@@ -7,13 +7,21 @@ import UnAuthenticatedApp from "../../components/UnAuthenticatedApp/UnAuthentica
 
 export default function UnAuthenticatedPage() {
   return (
-    <Switch>
-      <Route exact path="/">
-        <UnAuthenticatedApp />
-      </Route>
-      <Route exact path="/login">
-        <Login />
-      </Route>
-    </Switch>
+    <>
+      <Link to={Routes.login().path}>
+        <Button name={logIn} />
+      </Link>
+      <Link>
+        <Button name={signUp} />
+      </Link>
+      <Switch>
+        <Route exact path={Routes.unAuthenticated().path}>
+          <UnAuthenticatedApp />
+        </Route>
+        <Route exact path={Routes.login().path}>
+          <Login />
+        </Route>
+      </Switch>
+    </>
   );
 }

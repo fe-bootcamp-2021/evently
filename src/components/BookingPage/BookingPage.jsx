@@ -16,11 +16,11 @@ export default function BookingPage() {
                 <div className="text-right my-2 h-24 flex flex-col justify-between my-4 py-1">
                     <h2 className="text-3xl px-4 text-blue-900">Title Name</h2>
                     <div className="flex mx-4 justify-end">
-                        <img src={Location} className="w-6 h-6 mx-1" />
+                        <img src={Location} className="w-6 h-6 mx-1" alt=""/>
                         <h3 className="text-ml text-blue-700">40 Marshal Baghramyan Ave, Yerevan 0019</h3>
                     </div>
                     <div className="flex mx-4 justify-end">
-                        <img src={Time} className="w-6 h-6 mx-1" />
+                        <img src={Time} className="w-6 h-6 mx-1" alt=""/>
                         <h3 className="text-ml text-blue-700">30 min.</h3>
                     </div>
                 </div>

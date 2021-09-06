@@ -15,7 +15,7 @@ export default function Home() {
   useEffect(() => {
     getEvents(userId).then((result) => {
       setEvents(result);
-    })
+    });
   }, []);
 
   return (
@@ -42,16 +42,23 @@ export default function Home() {
       <div>
         <div className="w-9/12 mt-6 mx-auto items-center">
           <div className="grid 2xl:grid-cols-3 sm:grid-cols-2 gap-4 mt-10">
-            <Card />
-            <Card />
-            <Card />
-            {
-              events?
-                Object.keys(events).map((el)=>{
-                  return <Card key={nanoid()}/>
-                })
-                :<></>
-            }
+            {events ? (
+              Object.keys(events).map((el) => {
+                const { title, minutes, type, color ,link} = events[el];
+                return (
+                  <Card
+                    key={nanoid()}
+                    title={title}
+                    duration={minutes}
+                    type={type}
+                    color={color}
+                    link={link}
+                  />
+                );
+              })
+            ) : (
+              <></>
+            )}
           </div>
         </div>
 

@@ -17,7 +17,7 @@ export default function EventColors({ selected, setSelected }) {
             type="radio"
             name={name}
             value={id}
-            className={`${radio} ${classNames} checked:${classNames}`}
+            className={`${radio} bg-${classNames} checked:${classNames}`}
             onChange={handleChange}
             checked={checked}
           />

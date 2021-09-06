@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { logIn, signUp } from "../../constants/constants";
 import { useAuth } from "../../contexts/AuthContext";
-import { NavRoutes } from "../../constants/routes";
+import { NavRoutes, Routes } from "../../constants/routes";
 import Button from "../Button/Button";
 import Input from "../Inputs/Input";
 import {
@@ -15,7 +15,7 @@ import {
   buttonContainer,
 } from "./LoginSign.style";
 
-export let Child = (props) => {
+export let Child = () => {
   const history = useHistory();
   const { signin } = useAuth();
   const [name, setName] = useState(signUp);
@@ -25,7 +25,7 @@ export let Child = (props) => {
   function handleSign(event) {
     event.stopPropagation();
     setName(signUp);
-    history.push(NavRoutes.signup().path);
+    history.push(Routes.signup().path);
   }
 
   const handleSignIn = () => {

@@ -1,8 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { nanoid } from "nanoid";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Routes } from "./constants/routes";
+import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -10,9 +8,9 @@ import { ProvideAuth } from "./contexts/AuthContext";
 
 ReactDOM.render(
   <React.StrictMode>
-     <ProvideAuth>
+    <ProvideAuth>
       <Router>
-        <App/>
+        <App />
       </Router>
     </ProvideAuth>
   </React.StrictMode>,

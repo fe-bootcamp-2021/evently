@@ -26,6 +26,7 @@ function useProvideAuth() {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((response) => {
+        setIsAuthenticated(true)
         setUser(response.user);
         return response.user;
       });

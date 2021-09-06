@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { nanoid } from "nanoid";
 import { useAuth } from "../../contexts/AuthContext";
 import { weekDays } from "../../constants/constants";
-import { Routes } from "../../constants/routes";
+import { NavRoutes } from "../../constants/routes";
 import { isValidHours, isValidMinutes } from "../../helpers/validations";
 import Button from "../Button/Button";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
@@ -19,7 +19,7 @@ import {
 
 export default function SignUpSecond({ firstPageInfo }) {
   const history = useHistory();
-  const { signup } = useAuth();
+  const { signup} = useAuth();
 
   const [weekDayValue, setWeekDayValue] = useState({
     0: false,
@@ -95,8 +95,6 @@ export default function SignUpSecond({ firstPageInfo }) {
   };
 
   const handleSignUp = () => {
-    console.log(1111);
-
     const user = Object.assign({}, firstPageInfo, {
       weekDayAvailability: weekDayValue,
       startHour: startHours,
@@ -104,8 +102,8 @@ export default function SignUpSecond({ firstPageInfo }) {
     });
 
     return signup(user)
-      .then((res) => {
-        history.push(Routes.home().path);
+      .then(() => {
+        history.push(NavRoutes.home().path);
       })
       .catch((e) => alert(e.message));
   };

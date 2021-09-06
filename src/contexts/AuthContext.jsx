@@ -18,6 +18,7 @@ export const useAuth = () => {
 // Provider hook that creates auth object and handles state
 function useProvideAuth() {
   const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   // Wrap any Firebase methods we want to use making sure ...
   // ... to save the user to state.
   const signin = (email, password) => {
@@ -59,6 +60,7 @@ function useProvideAuth() {
           startHour,
           weekDayAvailability, });
         setUser(response.user);
+        setIsAuthenticated(true)
         return response.user;
       });
   };
@@ -110,6 +112,7 @@ function useProvideAuth() {
   // Return the user object and auth methods
   return {
     user,
+    isAuthenticated,
     signin,
     signup,
     signout,

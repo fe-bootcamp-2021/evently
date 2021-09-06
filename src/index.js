@@ -10,7 +10,11 @@ import { ProvideAuth } from "./contexts/AuthContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+     <ProvideAuth>
+      <Router>
+        <App/>
+      </Router>
+    </ProvideAuth>
   </React.StrictMode>,
   document.getElementById("root")
 );

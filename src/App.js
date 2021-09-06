@@ -16,7 +16,7 @@ export default function App() {
   return (
     <ProvideAuth>
       <Router>
-        <HomePage />
+        <UnAuthenticatedPage />
       </Router>
     </ProvideAuth>
   );

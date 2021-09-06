@@ -17,14 +17,18 @@ export default function OneOnOneSecond({
   const { user } = useAuth();
   const [dateRangeInfo, setDateRangeInfo] = useState({});
   const [minutes, setMinutes] = useState(60);
+ 
 
   const handleNext = () => {
     const secondPageInfo = { dateRange: dateRangeInfo, minutes };
-
-    const eventInfo = Object.assign(setFirstPageInfo, secondPageInfo, {
+    const event = {
+      eventType: "One-on-One",
       userId: user.uid,
-    });
+      cratedOn: new Date()
+    };
 
+    const eventInfo = Object.assign(setFirstPageInfo, secondPageInfo,event);
+    console.log(eventInfo);
     setSecondPageInfo(secondPageInfo);
     try {
       addEvent(eventInfo);

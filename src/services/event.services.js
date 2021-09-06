@@ -1,6 +1,5 @@
 import { db } from "../services/base";
 
-
 export function addEvent({
   userId,
   eventId,
@@ -28,15 +27,14 @@ export function addEvent({
   }
 }
 
-export function getEvents() {
+export async function getEvents(id) {
   try {
-    const reference = db.ref(`event`);
-    const referenceQuery = reference
+    return db.ref(`event`)
       .orderByChild("userId")
-      .equalTo("juAA3CLC3NNzFpyZK1PC7bmL2O23");
-    referenceQuery.on("value", (snapshot) => {
-      return snapshot.val();
-    });
+      .equalTo(id)
+      .once("value").then((snapshot) => {
+        return snapshot.val();
+      }) ;
   } catch (err) {
     console.log(err);
   }

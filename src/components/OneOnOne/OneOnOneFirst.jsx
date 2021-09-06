@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { nanoid } from "nanoid";
+import { useAuth } from "../../contexts/AuthContext";
 import { Routes } from "../../constants/routes";
+import RadioColors from "../../constants/radioColors";
+import { getUrl } from "../../helpers/url.helpers";
 import {
   isValidEventName,
   isValidEventLink,
@@ -11,7 +14,6 @@ import EventColors from "../EventColors/EventColors";
 import Button from "../Button/Button";
 import InputCKEditor from "../InputCKEditor/InputCKEditor";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import RadioColors from "../../constants/radioColors";
 import {
   containerOneOnOne,
   card,
@@ -23,9 +25,11 @@ import {
 } from "./OneOnOne.style";
 
 export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
+  const { user } = useAuth();
   const history = useHistory();
   const [eventName, setEventName] = useState("");
   const [eventLink, setEventLink] = useState("");
+  const [userprofile, setUserprofile] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
   const [eventColor, setEventColor] = useState(RadioColors()[0].id);
@@ -33,6 +37,14 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
   const [isValidEvtName, setIsValidEvtName] = useState(true);
   const [isValidEvtLocation, setIsValidEvtLocation] = useState(true);
   const [isValidEvtLink, setIsValidEvtLink] = useState(true);
+
+  useEffect(() => {
+    const url = getUrl();
+    const userName = user.email.slice(0,user.email.indexOf("@"));
+    const eventUrl = `${url}/${userName}/`;
+    setUserprofile(eventUrl)
+  },[]);
+
 
   const handleNext = () => {
     const isValidEvtName = isValidEventName(eventName);
@@ -45,7 +57,7 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
         description,
         location,
         title: eventName,
-        link: eventLink,
+        link: userprofile + eventLink,
         color: eventColor,
       };
       setFirstPageInfo(newEventInfo);
@@ -126,6 +138,7 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
 
           <div className={eventItems}>
             <label className={label}>Event link *</label>
+            <p className={`${label} mt-3`}>{userprofile}</p>
             <input
               type="text"
               name="name"

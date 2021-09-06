@@ -32,4 +32,15 @@ export const updateProfile = (uid, { description }) => {
   });
 };
 
-
+export const getUser = (id)=>{console.log(id)
+  try {
+    return db.ref(`users`)
+      .orderByChild("uid")
+      .equalTo(id)
+      .once("value").then((snapshot) => {
+        return snapshot.val();
+      }) ;
+  } catch (err) {
+    console.log(err);
+  }
+}

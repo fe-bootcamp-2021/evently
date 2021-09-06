@@ -17,7 +17,7 @@ import {
   buttonContainer,
 } from "./SignUp.style";
 
-export default function SignUpFirst({ firstPageInfo }) {
+export default function SignUpSecond({ firstPageInfo }) {
   const history = useHistory();
   const { signup } = useAuth();
 

@@ -12,7 +12,7 @@ import {
   // LAST_NAME,
   // PHONE_NUMBER,
 } from "../../../constants/constants";
-import { addOneOnOneEvent} from "../../../services/OneOnOne.services/addOneOnOneEvent"
+import {addOneOnOneEvent} from "../../../services/OneOnOne.services/addOneOnOneEvent" 
 import { nanoid } from "nanoid";
 import Member from "../../../components/newOneOnOne/Member";
 

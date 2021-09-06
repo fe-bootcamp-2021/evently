@@ -88,9 +88,6 @@ export default function Navbar() {
           <Link className={title} to={NavRoutes.home().path}>
             {NavRoutes.home().text}{" "}
           </Link>
-          <Link className={title} to={NavRoutes.events().path}>
-            {NavRoutes.events().text}{" "}
-          </Link>
           <Link className={title} to={NavRoutes.about().path}>
             {NavRoutes.about().text}{" "}
           </Link>

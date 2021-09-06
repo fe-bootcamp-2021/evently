@@ -1,7 +1,6 @@
 
 import AboutUsPage from "../pages/AboutUs/AboutUs.page";
 import AccountPage from "../pages/Account/Account.page";
-import EventsPage from "../pages/Events/Events.page";
 import HomePage from "../pages/Home/Home.page";
 import Login from "../components/LoginSign/LoginSign"
 import UnAuthenticatedPage from "../pages/UnAuthenticatedPage/UnAuthenticated.page";
@@ -58,11 +57,7 @@ export const NavRoutes = {
     text: "About",
     component: AboutUsPage
   }),
-  events: () => ({
-    path: "/events",
-    text: "Events",
-    component: EventsPage
-  }),
+
   account: () => ({ path: "/account", text: "Account", component: AccountPage }),
   oneOnOne: () => ({
     path: "/oneOnOne",

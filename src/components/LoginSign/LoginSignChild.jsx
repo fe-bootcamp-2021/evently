@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { logIn, signUp } from "../../constants/constants";
 import { useAuth } from "../../contexts/AuthContext";
-import { Routes } from "../../constants/routes";
+import { NavRoutes } from "../../constants/routes";
 import Button from "../Button/Button";
 import Input from "../Inputs/Input";
 import {
@@ -25,13 +25,13 @@ export let Child = (props) => {
   function handleSign(event) {
     event.stopPropagation();
     setName(signUp);
-    history.push(Routes.signup().path);
+    history.push(NavRoutes.signup().path);
   }
 
   const handleSignIn = () => {
     return signin(email, password)
       .then((res) => {
-        history.push(Routes.home().path);
+        history.push(NavRoutes.home().path);
       })
       .catch((e) => alert(e.message));
   };

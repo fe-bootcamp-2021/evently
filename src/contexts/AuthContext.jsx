@@ -114,6 +114,8 @@ function useProvideAuth() {
   return {
     user,
     isAuthenticated,
+    setIsAuthenticated,
+    setUser,
     signin,
     signup,
     signout,

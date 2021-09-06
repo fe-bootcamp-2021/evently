@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { nanoid } from "nanoid";
-import { NavRoutes } from "../../constants/routes";
+import { NavRoutes, Routes } from "../../constants/routes";
 import { useAuth } from "../../contexts/AuthContext"; //
 import Logo from "../Logo/Logo";
 import {
@@ -14,68 +14,15 @@ import {
 
 export default function Navbar() {
   const history = useHistory();
+  const { setUser, setIsAuthenticated} = useAuth()
 
-  // const handleNav = (path) => () => {
-  //   history.push(path);
-  // };
+  const handleNav = () => {
+    history.push(Routes.login().path)
+    setIsAuthenticated(false)
+    setUser(false)
+  };
 
-  // const authenticatedPage = () => {
-  //   // eslint-disable-next-line react-hooks/rules-of-hooks
-  //   const auth1 = useAuth();
-
-  //   if (auth1) {
-  //     return(  <ul className={menu}>
-  //         <div className="lg:flex-grow no-underline ">
-  //           <li
-  //             className={titleHome}
-  //             key={nanoid()}
-  //             onClick={handleNav(NavRoutes.home().path)}
-  //           >
-  //             {NavRoutes.home().text}{" "}
-  //           </li>
-  //         </div>
-  //         <div className="lg:flex-grow no-underline ">
-  //           <li
-  //             className={titleHome}
-  //             key={nanoid()}
-  //             onClick={handleNav(NavRoutes.home().path)}
-  //           >
-  //             Help
-  //           </li>
-  //         </div>
-  //         <div>
-  //           <li
-  //             className={titleHome}
-  //             key={nanoid()}
-  //             onClick={handleNav(NavRoutes.logInSign().path)}
-  //           >
-  //             Log Out
-  //           </li>
-  //         </div>
-  //       </ul>)
-  //   } else {
-  //     return ( <ul className={menu}>
-  //         <div className="lg:flex-grow no-underline ">
-  //           <li
-  //             className={titleHome}
-  //             key={nanoid()}
-  //             onClick={handleNav(NavRoutes.home().path)}
-  //           >
-  //             {NavRoutes.home().text}{" "}
-  //           </li>
-  //         </div>
-  //         <div>
-  //           <li
-  //             className={buttonOutline}
-  //             key={nanoid()}
-  //             onClick={handleNav(NavRoutes.logInSign().path)}
-  //           >
-  //             {NavRoutes.logInSign().text}
-  //           </li>
-  //         </div>
-  //       </ul>)
-  //   }
-  // }
+ 
 
   return (
     <nav className={navContainer} onClick={() => window.scroll(0, 0)}>
@@ -96,7 +43,13 @@ export default function Navbar() {
           </Link>
         </div>
         <div>
-          <li className={buttonOutline} key={nanoid()}></li>
+          <li
+            className={buttonOutline}
+            key={nanoid()}
+            onClick={handleNav}
+          >
+            Log Out
+          </li>
         </div>
       </ul>
     </nav>

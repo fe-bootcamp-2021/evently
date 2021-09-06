@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import classNames from "classnames/bind";
 import Button from "../Button/Button";
-import { Routes } from "../../constants/routes";
+import { NavRoutes } from "../../constants/routes";
 import { li } from "./Dropdown.style";
 
 export default function Dropdown({buttonName}) {
@@ -37,10 +37,10 @@ export default function Dropdown({buttonName}) {
 
         <div className={dropDownMenu}>
           <ul>
-            {/* <li className={li} onClick={handlePath(Routes.oneOnOne().path)}>
+            { <li className={li} onClick={handlePath(NavRoutes.oneOnOne().path)}>
               One-on-One
             </li>
-            <li className={li} onClick={handlePath(Routes.group().path)}>
+            /*<li className={li} onClick={handlePath(Routes.group().path)}>
               Group Meeting
             </li> */}
           </ul>

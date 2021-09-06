@@ -30,7 +30,7 @@ export let Child = (props) => {
 
   const handleSignIn = () => {
     return signin(email, password)
-      .then(() => {
+      .then((res) => {
         history.push(NavRoutes.home().path);
       })
       .catch((e) => alert(e.message));

@@ -4,9 +4,12 @@ import classNames from "classnames/bind";
 import Button from "../Button/Button";
 import { NavRoutes } from "../../constants/routes";
 import { li } from "./Dropdown.style";
+import { useAuth } from "../../contexts/AuthContext";
 
-export default function Dropdown({buttonName}) {
+export default function Dropdown({ buttonName }) {
   const history = useHistory();
+  const { user } = useAuth();
+  const isDisabled = !user.emailVerified;
   const [show, setShow] = useState(false);
   let showFn = () => {
     setShow(!show);
@@ -29,6 +32,7 @@ export default function Dropdown({buttonName}) {
     <div>
       <div className="flex flex-col justify-end">
         <Button
+          disabled={isDisabled}
           name={buttonName}
           onClick={showFn}
           variant=""
@@ -37,16 +41,20 @@ export default function Dropdown({buttonName}) {
 
         <div className={dropDownMenu}>
           <ul>
-            { <li className={li} onClick={handlePath(NavRoutes.oneOnOne().path)}>
-              One-on-One
-            </li>
-            /*<li className={li} onClick={handlePath(Routes.group().path)}>
+            {
+              <li
+                className={li}
+                onClick={handlePath(NavRoutes.oneOnOne().path)}
+              >
+                One-on-One
+              </li>
+              /*<li className={li} onClick={handlePath(Routes.group().path)}>
               Group Meeting
-            </li> */}
+            </li> */
+            }
           </ul>
         </div>
       </div>
     </div>
   );
 }
-

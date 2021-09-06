@@ -5,7 +5,7 @@ import {
   buttonLink,
   buttonLink1,
 } from "./Button.style";
-const Button = ({ name, onClick, className, variant = buttonStyle }) => {
+const Button = ({ name, onClick, className, disabled,  variant = buttonStyle }) => {
   let styleBtn = buttonStyle;
   if (variant === "custom") styleBtn = "";
   else if (variant === "buttonOutline") styleBtn = buttonOutline;
@@ -16,6 +16,7 @@ const Button = ({ name, onClick, className, variant = buttonStyle }) => {
       type="button"
       className={`${className} ${styleBtn}`}
       onClick={onClick}
+      disabled={disabled}
     >
       {name}
     </button>

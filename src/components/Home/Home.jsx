@@ -11,9 +11,7 @@ export default function Home() {
   const { user } = useAuth();
   const userId = user?.uid;
   const [events, setEvents] = useState({});
-  const [isAccountVerified, setIsAccountVerified] = useState(
-    user.emailVerified
-  );
+  const isAccountVerified = user.emailVerified;
 
   useEffect(() => {
     getEvents(userId).then((result) => {

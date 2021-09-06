@@ -56,16 +56,3 @@ export const NavRoutes = {
   }),
 };
 
-export const verifiedRoutes = {
-  oneOnOne: () => ({
-    path: "/oneOnOne",
-    text: "One On One",
-    component: OneOnOne
-  }),
-
-  //   group: () => ({
-  //   path: "/group",
-  //   text: "Group",
-  //   component: GroupEventFirstPage,
-  // }),
-}

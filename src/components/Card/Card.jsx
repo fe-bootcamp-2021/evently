@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
-import Button from "../Button/Button";
+import { isValidEmail } from "../../helpers/validations";
 import RadioColors from "../../constants/radioColors";
+import Button from "../Button/Button";
+import Modal from "../Modal/Modal";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 export default function Card({ title, duration, type, color, link }) {
+  const [emailValue, setEmailValue] = useState(null);
   const [eventColor, setEventColor] = useState(RadioColors()[0].id);
+  const [showModal, setShowModal] = React.useState(false);
+
+  const [isValidEmailValue, setIsValidEmailValue] = useState(true);
 
   useEffect(() => {
     const evtColors = RadioColors().filter((el) => el.id === color);
@@ -11,9 +18,17 @@ export default function Card({ title, duration, type, color, link }) {
     setEventColor(evtColor);
   }, []);
 
-  const handleCopyLink = ()=>{
+  const handleCopyLink = () => {
     navigator.clipboard.writeText(link);
-  }
+  };
+
+  const handleEmail = (ev) => {
+    const value = ev.target.value;
+    isValidEmail(value)
+      ? setIsValidEmailValue(true)
+      : setIsValidEmailValue(false);
+    setEmailValue(value);
+  };
 
   return (
     <div>
@@ -57,10 +72,32 @@ export default function Card({ title, duration, type, color, link }) {
               name="Share"
               className="bg-blue-800 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full"
               variant="custom"
+              onClick={() => setShowModal(true)}
             />
           </div>
         </div>
       </div>
+      <Modal
+        showModal={showModal}
+        body={
+          <>
+            <input
+              type="text"
+              name="name"
+              placeholder=" "
+              required
+              className={`pt-3 pb-2 block w-96 px-0 mt-0 border-gray-500 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200`}
+              onChange={handleEmail}
+            />
+            <ErrorMessage
+              message="Invalid email address"
+              isValid={isValidEmailValue}
+            />
+          </>
+        }
+        setShowModal={setShowModal}
+        title="Input Email"
+      />
     </div>
   );
 }

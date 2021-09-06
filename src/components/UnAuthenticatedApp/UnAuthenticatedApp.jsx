@@ -1,14 +1,24 @@
 import React from "react";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
+import { Link } from "react-router-dom";
 import Image from "../../images/Ellipse96.svg";
 import Image2 from "../../images/Ellipse97.svg";
+import { Routes } from "../../constants/routes";
+import { logIn, signUp } from "../../constants/constants";
+
 
 export default function UnAuthenticatedApp() {
   return (
     <>
       <div className="mx-auto flex flex-col">
         <div className="shadow-md">
+          <Link to={Routes.login().path}>
+            <Button name={logIn}/>
+          </Link>
+          <Link to={Routes.signup().path}>
+            <Button name={signUp}/>
+          </Link>
         </div>
         <div className="w-9/12 mx-auto flex justify-between items-center justify-center">
           <div className="h-screen flex flex-col items-left justify-center">

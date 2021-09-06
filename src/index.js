@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { nanoid } from "nanoid";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Routes } from "./constants/routes";
 import "./index.css";
 import App from "./App";
@@ -10,19 +10,7 @@ import { ProvideAuth } from "./contexts/AuthContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ProvideAuth>
-      <Router>
-        <App />
-        <Switch>
-          {Object.values(Routes).map((fn) => {
-            const { path, component } = fn();
-            return (
-              <Route exact path={path} component={component} key={nanoid()} />
-            );
-          })}
-        </Switch>
-      </Router>
-    </ProvideAuth>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

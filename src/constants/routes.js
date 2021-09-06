@@ -5,6 +5,8 @@ import EventsPage from "../pages/Events/Events.page";
 import HomePage from "../pages/Home/Home.page";
 import Login from "../components/LoginSign/LoginSign"
 import UnAuthenticatedPage from "../pages/UnAuthenticatedPage/UnAuthenticated.page";
+import SignUp from '../components/SignUp/SignUp'
+import UnAuthenticatedApp from "../components/UnAuthenticatedApp/UnAuthenticatedApp";
 
 
 
@@ -32,15 +34,15 @@ export const Routes = {
   unAuthenticated: () => ({
     path: "/",
     text: "Info",
-    component: UnAuthenticatedPage
+    component: UnAuthenticatedApp
   }),
 
-  group: () => ({
-    path: "/group",
-    text: "Group",
-    component: GroupEventFirstPage,
-  }),
-  error: () => ({ path: "*", text: "", component: ErrorPage }),
+  // group: () => ({
+  //   path: "/group",
+  //   text: "Group",
+  //   component: GroupEventFirstPage,
+  // }),
+  // error: () => ({ path: "*", text: "", component: ErrorPage }),
 
 
 };

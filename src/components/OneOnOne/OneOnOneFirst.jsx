@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { nanoid } from "nanoid";
 import { useAuth } from "../../contexts/AuthContext";
-import { Routes } from "../../constants/routes";
+import { NavRoutes } from "../../constants/routes";
 import RadioColors from "../../constants/radioColors";
 import { getUrl } from "../../helpers/url.helpers";
 import {
@@ -96,7 +96,7 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
   };
 
   const handleCancel = () => {
-    history.push(Routes.home().path);
+    history.push(NavRoutes.home().path);
   };
 
   return (

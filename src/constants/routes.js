@@ -7,6 +7,7 @@ import Login from "../components/LoginSign/LoginSign"
 import UnAuthenticatedPage from "../pages/UnAuthenticatedPage/UnAuthenticated.page";
 import SignUp from '../components/SignUp/SignUp'
 import UnAuthenticatedApp from "../components/UnAuthenticatedApp/UnAuthenticatedApp";
+import OneOnOne from "../components/OneOnOne/OneOnOne"
 
 
 
@@ -28,9 +29,7 @@ export const Routes = {
   //   text: "About",
   //   component: About,
 
-  // }),
-  
- 
+  // }), 
   unAuthenticated: () => ({
     path: "/",
     text: "Info",
@@ -42,6 +41,7 @@ export const Routes = {
   //   text: "Group",
   //   component: GroupEventFirstPage,
   // }),
+
   // error: () => ({ path: "*", text: "", component: ErrorPage }),
 
 
@@ -64,4 +64,9 @@ export const NavRoutes = {
     component: EventsPage
   }),
   account: () => ({ path: "/account", text: "Account", component: AccountPage }),
+  oneOnOne: () => ({
+    path: "/oneOnOne",
+    text: "One On One",
+    component: OneOnOne
+  }),
 };

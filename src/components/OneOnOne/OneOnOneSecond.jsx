@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Routes } from "../../constants/routes";
+import { NavRoutes } from "../../constants/routes";
 import { addEvent } from "../../services/event.services";
 import { useAuth } from "../../contexts/AuthContext";
 import DataRange from "../DateRange/DateRange";
@@ -32,14 +32,14 @@ export default function OneOnOneSecond({
     setSecondPageInfo(secondPageInfo);
     try {
       addEvent(eventInfo);
-      history.push(Routes.home().path);
+      history.push(NavRoutes.home().path);
     } catch (err) {
       alert(err);
     }
   };
 
   const handleCancel = () => {
-    history.push(Routes.home().path);
+    history.push(NavRoutes.home().path);
   };
 
   return (

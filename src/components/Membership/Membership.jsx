@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from '../Button/Button'
 import Input from "../Input/Input";
+import Navbar from "../Navbar/Navbar";
 import {
   ADD_EVENT,
   ADD_MEMBER,
@@ -68,6 +69,7 @@ export default function MemberShipScheduler() {
   // };
   return (
     <div>
+        <Navbar/>
       <p>Create Your One-on-One event</p>
       <div>
         <Input type={DATE} onChange={handleDate} />

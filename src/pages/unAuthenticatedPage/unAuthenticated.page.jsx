@@ -7,6 +7,7 @@ export default function UnAuthenticatedPage() {
     <Switch>
       {Object.values(Routes).map((fn) => {
         const { path, component } = fn();
+        
         return <Route exact path={path} component={component} key={nanoid()} />;
       })}
     </Switch>

@@ -10,10 +10,13 @@ import AboutUsPage from "./pages/AboutUs/AboutUs.page";
 import AccountPage from "./pages/Account/Account.page";
 import HomePage from "./pages/Home/Home.page";
 import UnAuthenticatedPage from "./pages/UnAuthenticatedPage/UnAuthenticated.page"
+import EventTypeAvailability from "./components/EventTypeAvailability/EventTypeAvailability";
 // import Main from "../src/components/Main/Main";
 
 export default function App() {
   const { isAuthenticated } = useAuth();
 
-  return <>{isAuthenticated ? <AuthenticatedApp /> : <UnAuthenticatedPage />}</>;
+  return <EventTypeAvailability/>
+
+  // return <>{isAuthenticated ? <AuthenticatedApp /> : <UnAuthenticatedPage />}</>;
 }

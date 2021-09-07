@@ -13,6 +13,9 @@ export const LAST_NAME = "Last Name";
 export const PHONE_NUMBER = "Phone Number";
 export const COPY_LINK = 'Copy Link'
 export const SHARE = 'Share'
+export const EXISTING_SCHEDULE = "Use an existing schedule"
+export const CUSTOM_HOURS = "Set custom hours"
+export const BUTTON_OUTLINE = "buttonOutline"
 export const weekDays = {
   0: "SUN",
   1: "MON",

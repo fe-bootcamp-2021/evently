@@ -3,8 +3,8 @@ import { useHistory } from "react-router-dom";
 import classNames from "classnames/bind";
 import Button from "../Button/Button";
 import { NavRoutes } from "../../constants/routes";
-import { li } from "./Dropdown.style";
 import { useAuth } from "../../contexts/AuthContext";
+import { createButtonStyle, dropDownContainer, li } from "./Dropdown.style";
 
 export default function Dropdown({ buttonName }) {
   const history = useHistory();
@@ -30,13 +30,13 @@ export default function Dropdown({ buttonName }) {
 
   return (
     <div>
-      <div className="flex flex-col justify-end">
+      <div className={dropDownContainer}>
         <Button
           disabled={isDisabled}
           name={buttonName}
           onClick={showFn}
           variant=""
-          className="mt-4 border-0 block bg-blue-800 hover:bg-blue-600 text-white font-bold rounded-full px-11 py-3 overflow-hidden focus:outline-none focus:border-white"
+          className={createButtonStyle}
         />
 
         <div className={dropDownMenu}>

@@ -1,6 +1,8 @@
+import { durationContainer } from "./Duration.style";
+
 export default function Duration({ minutes, setMinutes }) {
   return (
-    <div className="flex flex-wrap w-full">
+    <div className={durationContainer}>
       <div className="w-2/3">
         <span className="mt-2">Duration</span>
         <label className="block mt-2">

@@ -4,18 +4,29 @@ import RadioColors from "../../constants/radioColors";
 import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import { COPY_LINK, SHARE, TEXT } from "../../constants/constants";
+import {
+  cardContainer,
+  buttonContainer,
+  titleStyle,
+  copyLinkButton,
+  infoButton,
+  shareButton,
+  modalWindowContainer,
+} from "./Card.style";
 
 export default function Card({ title, duration, type, color, link }) {
+  // eslint-disable-next-line
   const [emailValue, setEmailValue] = useState(null);
   const [eventColor, setEventColor] = useState(RadioColors()[0].id);
   const [showModal, setShowModal] = React.useState(false);
-
   const [isValidEmailValue, setIsValidEmailValue] = useState(true);
 
   useEffect(() => {
     const evtColors = RadioColors().filter((el) => el.id === color);
     const evtColor = evtColors[0]?.classNames;
     setEventColor(evtColor);
+    // eslint-disable-next-line
   }, []);
 
   const handleCopyLink = () => {
@@ -32,45 +43,28 @@ export default function Card({ title, duration, type, color, link }) {
 
   return (
     <div>
-      <div
-        className={`bg-white max-w-7xl rounded-2xl border-t-8 px-10 py-8 shadow-lg hover:shadow-2xl transition duration-500 border-${eventColor}`}
-      >
-        <div className="flex justify-between items-center">
-          <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-          <Button
-            variant="custom"
-            name={
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            }
-          />
+      <div className={cardContainer(eventColor)}>
+        <div className={buttonContainer}>
+          <Button variant="custom" />
         </div>
         <div className="mt-4">
-          <h1 className="text-lg text-gray-700 font-semibold">{title}</h1>
+          <h1 className={titleStyle}>{title}</h1>
           <Button
             name={`${duration} mins, ${type}`}
-            className="text-sm mr-4 font-semibold text-blue-700 hover:text-purple-700"
+            className={infoButton}
             variant="custom"
           />
           <hr className="mt-8 py-3" />
-          <div className=" flex justify-between items-center">
+          <div className={buttonContainer}>
             <Button
-              name="Copy Link"
-              className="text-sm font-semibold text-blue-700"
+              name={COPY_LINK}
+              className={copyLinkButton}
               variant="custom"
               onClick={handleCopyLink}
             />
             <Button
-              name="Share"
-              className="bg-blue-800 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full"
+              name={SHARE}
+              className={shareButton}
               variant="custom"
               onClick={() => setShowModal(true)}
             />
@@ -82,11 +76,11 @@ export default function Card({ title, duration, type, color, link }) {
         body={
           <>
             <input
-              type="text"
+              type={TEXT}
               name="name"
               placeholder=" "
               required
-              className={`pt-3 pb-2 block w-96 px-0 mt-0 border-gray-500 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200`}
+              className={modalWindowContainer}
               onChange={handleEmail}
             />
             <ErrorMessage

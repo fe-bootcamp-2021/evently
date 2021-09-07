@@ -9,7 +9,14 @@ import DataRange from "../DateRange/DateRange";
 import Duration from "../Duration/Duration";
 import Button from "../Button/Button";
 import EventTypeAvailability from "../EventTypeAvailability/EventTypeAvailability";
-import { containerOneOnOne, card, buttonContainer } from "./OneOnOne.style";
+import {
+  containerOneOnOne,
+  card,
+  buttonContainer,
+  sectionDuration,
+  availability,
+  buttonSection
+} from "./OneOnOne.style";
 
 export default function OneOnOneSecond({
   setFirstPageInfo,
@@ -50,13 +57,13 @@ export default function OneOnOneSecond({
           <section className="my-10 px-10">
             <DataRange setDateRangeInfo={setDateRangeInfo} />
           </section>
-          <section className="my-10 px-10 pt-10 border-t-2 border-fuchsia-600">
+          <section className={sectionDuration}>
             <Duration setMinutes={setMinutes} minutes={minutes} />
           </section>
-          <section className="my-10 px-10 pt-10 border-t-2 border-fuchsia-600">
+          <section className={availability}>
             <EventTypeAvailability />
           </section>
-          <section className="my-10 px-10 pt-10 border-t-2 border-fuchsia-600">
+          <section className={buttonSection}>
             <div className={buttonContainer}>
               <Button name={`Cancel`} onClick={handleCancel} />
               <Button name={`Create`} className="ml-3" onClick={handleNext} />

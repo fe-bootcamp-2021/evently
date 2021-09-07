@@ -4,7 +4,8 @@ export function isValidEventName(value) {
 }
 
 export function isValidEventLink(value) {
-  if (value.replace(/\s/g, "") === "" || value.length > 20) return false;
+  const linkReg = /^\s*([0-9a-zA-Z]+)\s*$/;
+  if (!linkReg.test(value) || value.length > 20) return false;
   return true;
 }
 

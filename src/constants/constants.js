@@ -1,5 +1,7 @@
 export const logIn = "Log In";
 export const signUp = "Sign Up";
+export const next = "Next >>";
+export const cancel = "Cancel";
 export const GROUP_EVENT_NAME = "Group";
 export const ONE_ON_ONE_EVENT_NAME = "One-on-One";
 export const ADD_EVENT = "Add Event";
@@ -24,4 +26,8 @@ export const weekDays = {
   4: "THU",
   5: "FRI",
   6: "SAT",
+};
+export const eventTypes = {
+  oneOnOne: "One-on-One",
+  group: "Group",
 };

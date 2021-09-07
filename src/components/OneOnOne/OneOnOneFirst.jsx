@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 import { useAuth } from "../../contexts/AuthContext";
 import { NavRoutes } from "../../constants/routes";
 import RadioColors from "../../constants/radioColors";
+import {next, cancel} from "../../constants/constants";
 import { getUrl } from "../../helpers/url.helpers";
 import {
   isValidEventName,
@@ -13,6 +14,7 @@ import {
 import EventColors from "../EventColors/EventColors";
 import Button from "../Button/Button";
 import InputCKEditor from "../InputCKEditor/InputCKEditor";
+import Input from "../Input/Input";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import {
   containerOneOnOne,
@@ -40,11 +42,10 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
 
   useEffect(() => {
     const url = getUrl();
-    const userName = user.email.slice(0,user.email.indexOf("@"));
+    const userName = user.email.slice(0, user.email.indexOf("@"));
     const eventUrl = `${url}/${userName}/`;
-    setUserprofile(eventUrl)
-  },[]);
-
+    setUserprofile(eventUrl);
+  }, []);
 
   const handleNext = () => {
     const isValidEvtName = isValidEventName(eventName);
@@ -106,11 +107,10 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
           <h2 className={title}>Add One-on-One Event</h2>
           <div className={eventItems}>
             <label className={label}>Event name *</label>
-            <input
+            <Input
               type="text"
-              name="name"
-              placeholder=" "
-              required
+              placeholder={" "}
+              required="required"
               className={input}
               onChange={handleEventName}
             />
@@ -122,11 +122,11 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
 
           <div className={eventItems}>
             <label className={label}>Location *</label>
-            <input
+            <Input
               type="text"
               name="location"
-              placeholder=" "
-              required
+              placeholder={" "}
+              required="required"
               className={input}
               onChange={handleLocation}
             />
@@ -139,11 +139,10 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
           <div className={eventItems}>
             <label className={label}>Event link *</label>
             <p className={`${label} mt-3`}>{userprofile}</p>
-            <input
+            <Input
               type="text"
-              name="name"
-              placeholder=" "
-              required
+              placeholder={" "}
+              required="required"
               className={input}
               onChange={handleLink}
             />
@@ -165,8 +164,8 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
             <EventColors selected={eventColor} setSelected={setEventColor} />
           </div>
           <div className={buttonContainer}>
-            <Button name={`Cancel`} onClick={handleCancel} />
-            <Button name={`Next >>`} className="ml-3" onClick={handleNext} />
+            <Button name={cancel} onClick={handleCancel} />
+            <Button name={next} className="ml-3" onClick={handleNext} />
           </div>
         </div>
       </div>

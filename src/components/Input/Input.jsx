@@ -4,10 +4,10 @@ export default function Input({
   type,
   className,
   placeholder,
-  onChange
+  onChange,
+  required
 }) {
   return (
-    <div>
       <input
         id={id}
         name={name}
@@ -15,7 +15,7 @@ export default function Input({
         className={className}
         placeholder={placeholder}
         onChange={onChange}
+        required={required}
       />
-    </div>
   );
 }

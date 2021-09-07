@@ -80,3 +80,15 @@ export const button = classNames([
 ]);
 
 export const description = classNames(["mt-2"]);
+
+export const sectionDuration = classNames([
+  "my-10 px-10 pt-10 border-t-2 border-fuchsia-600",
+]);
+
+export const availability = classNames([
+  "my-10 px-10 pt-10 border-t-2 border-fuchsia-600",
+]);
+
+export const buttonSection = classNames([
+  "my-10 px-10 pt-10 border-t-2 border-fuchsia-600",
+]);

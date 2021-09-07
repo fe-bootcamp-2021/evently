@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { logIn, signUp } from "../../constants/constants";
+import { EMAIL, EMAIL_ADDRESS, logIn, PASSWORD, signUp, TEXT } from "../../constants/constants";
 import { useAuth } from "../../contexts/AuthContext";
 import { NavRoutes, Routes } from "../../constants/routes";
 import Button from "../Button/Button";
@@ -13,6 +13,7 @@ import {
   emailPassStyle,
   emailPassLabel,
   buttonContainer,
+  signUpStyle,
 } from "./LoginSign.style";
 
 export let Child = () => {
@@ -54,28 +55,28 @@ export let Child = () => {
           <div className={emailPassword}>
             <Input
               onChange={handleEmail}
-              id="email"
-              name="email"
-              type="text"
+              id={EMAIL}
+              name={EMAIL}
+              type={TEXT}
               className={emailPassStyle}
-              placeholder="Email address"
+              placeholder={EMAIL_ADDRESS}
             />
             <label className={emailPassLabel}>Email Address</label>
           </div>
           <div className={emailPassword}>
             <Input
               onChange={handlePassword}
-              id="password"
-              name="password"
-              type="password"
+              id={PASSWORD}
+              name={PASSWORD}
+              type={PASSWORD}
               className={emailPassStyle}
-              placeholder="Password"
+              placeholder={PASSWORD}
             />
             <label className={emailPassLabel}>Password</label>
           </div>
           <div>
             <span
-              className="underline text-custom-current hover:text-purple-700 cursor-pointer"
+              className={signUpStyle}
               onClick={handleSign}
             >
               {name}

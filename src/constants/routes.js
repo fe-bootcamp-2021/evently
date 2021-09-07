@@ -6,6 +6,7 @@ import Login from "../components/LoginSign/LoginSign"
 import SignUp from '../components/SignUp/SignUp'
 import UnAuthenticatedApp from "../components/UnAuthenticatedApp/UnAuthenticatedApp";
 import OneOnOne from "../components/OneOnOne/OneOnOne"
+import ErrorPage from '../components/ErrorPage/ErrorPage'
 
 
 
@@ -31,7 +32,7 @@ export const Routes = {
 
 
 
-  // error: () => ({ path: "*", text: "", component: ErrorPage }),
+  error: () => ({ path: "*", text: "", component: ErrorPage }),
 
 
 };

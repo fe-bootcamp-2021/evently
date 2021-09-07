@@ -11,6 +11,8 @@ export const TEL = "tel";
 export const FIRST_NAME = "First Name";
 export const LAST_NAME = "Last Name";
 export const PHONE_NUMBER = "Phone Number";
+export const COPY_LINK = 'Copy Link'
+export const SHARE = 'Share'
 export const weekDays = {
   0: "SUN",
   1: "MON",

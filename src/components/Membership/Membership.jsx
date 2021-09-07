@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Button from "../../../components/Button/Button";
-import Input from "../../../components/Inputs/Input";
+import Button from '../Button/Button'
+import Input from "../Input/Input";
 import {
   ADD_EVENT,
   ADD_MEMBER,
@@ -11,12 +11,12 @@ import {
   // FIRST_NAME,
   // LAST_NAME,
   // PHONE_NUMBER,
-} from "../../../constants/constants";
-import { addOneOnOneEvent } from "../../../services/OneOnOne.services/addOneOnOneEvent";
+} from '../../constants/constants'
+import { addOneOnOneEvent } from "../../services/OneOnOne.services/addOneOnOneEvent";
 import { nanoid } from "nanoid";
-import Member from "../../../components/newOneOnOne/Member";
+import Member from "../Member/Member";
 
-export default function OneOnOneScheduler() {
+export default function MemberShipScheduler() {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState();
   const [startTime, setStartTime] = useState();

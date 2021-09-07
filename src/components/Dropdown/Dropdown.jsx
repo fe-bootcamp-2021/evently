@@ -44,9 +44,9 @@ export default function Dropdown({ buttonName }) {
             <li className={li} onClick={handlePath(NavRoutes.oneOnOne().path)}>
               One-on-One
             </li>
-            <li className={li} onClick={handlePath(NavRoutes.membership().path)}>
+            {/* <li className={li} onClick={handlePath(NavRoutes.membership().path)}>
               {NavRoutes.membership().text}
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

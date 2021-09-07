@@ -1,15 +1,15 @@
 import React from "react";
-import Logo from "../../components/Logo/Logo";
-import AboutUsFooter from "./AboutUsFooter/AboutUsFooter";
-import { Background } from "../Background/Background";
 import arev from "../../assets/images/arev.jpg";
 import tigran from "../../assets/images/tigran.jpg";
+import AboutUsFooter from "./AboutUsFooter/AboutUsFooter";
+import { Background } from "./Background/Background";
+import Navbar from '../../components/Navbar/Navbar'
 
 export default function PageAboutUS() {
   return (
     <div className="overflow-y-scroll ">
       <div className="max-w-lm inline-block flex flex-col mx-auto bg-white shadow-md">
-        <Logo />
+        <Navbar/>
       </div>
       <div>
         <div className="text-center p-10">

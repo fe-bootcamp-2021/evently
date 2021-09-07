@@ -6,6 +6,7 @@ export default function Input({
   placeholder,
   onChange,
   required,
+  checked,
   value
 }) {
   return (
@@ -18,6 +19,8 @@ export default function Input({
         placeholder={placeholder}
         onChange={onChange}
         required={required}
+        checked={checked}
+        value={value}
       />
   );
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
@@ -10,15 +11,13 @@ export default function AboutUsFooter() {
   return (
     <>
       <div className="text-sm px-8 text-center flex-none py-4 space-x-3">
-        <a
-          href="https://www.linkedin.com/"
-          target="_blank"
-          aria-label="linkedin-link"
+        <Link
+          to="https://www.linkedin.com/"
         >
           <i>
             <FontAwesomeIcon icon={faLinkedinIn} />
           </i>
-        </a>
+        </Link>
         <a
           href="https://www.facebook.com"
           target="_blank"

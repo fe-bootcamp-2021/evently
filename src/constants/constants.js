@@ -20,3 +20,7 @@ export const weekDays = {
   5: "FRI",
   6: "SAT",
 };
+export const eventTypes = {
+  oneOnOne: "One-on-One",
+  group: "Group",
+};

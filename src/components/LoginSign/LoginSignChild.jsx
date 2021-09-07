@@ -4,7 +4,7 @@ import { logIn, signUp } from "../../constants/constants";
 import { useAuth } from "../../contexts/AuthContext";
 import { NavRoutes, Routes } from "../../constants/routes";
 import Button from "../Button/Button";
-import Input from "../Inputs/Input";
+import Input from "../Input/Input";
 import {
   titleLogin,
   inputWrapper,

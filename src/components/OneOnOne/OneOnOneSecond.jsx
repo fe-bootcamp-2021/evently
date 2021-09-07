@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { NavRoutes } from "../../constants/routes";
+import { eventTypes } from "../../constants/constants";
 import { addEvent } from "../../services/event.services";
 import { useAuth } from "../../contexts/AuthContext";
+import { formatDate } from "../../helpers/date";
 import DataRange from "../DateRange/DateRange";
 import Duration from "../Duration/Duration";
 import Button from "../Button/Button";
@@ -17,18 +19,17 @@ export default function OneOnOneSecond({
   const { user } = useAuth();
   const [dateRangeInfo, setDateRangeInfo] = useState({});
   const [minutes, setMinutes] = useState(60);
- 
 
   const handleNext = () => {
     const secondPageInfo = { dateRange: dateRangeInfo, minutes };
     const event = {
-      eventType: "One-on-One",
+      eventType: eventTypes.oneOnOne,
       userId: user.uid,
-      cratedOn: new Date()
+      createdOn: formatDate(new Date()),
     };
 
-    const eventInfo = Object.assign(setFirstPageInfo, secondPageInfo,event);
-    console.log(eventInfo);
+    const eventInfo = Object.assign(setFirstPageInfo, secondPageInfo, event);
+
     setSecondPageInfo(secondPageInfo);
     try {
       addEvent(eventInfo);
@@ -44,7 +45,6 @@ export default function OneOnOneSecond({
 
   return (
     <>
-      {console.log(user)}
       <div className={containerOneOnOne}>
         <div className={card}>
           <section className="my-10 px-10">

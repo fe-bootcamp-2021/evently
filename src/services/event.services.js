@@ -10,6 +10,9 @@ export function addEvent({
   color,
   dateRange,
   minutes,
+  createdOn,
+  eventType
+
 }) {
   try {
     db.ref(`/event/${eventId}`).set({
@@ -21,6 +24,8 @@ export function addEvent({
       color,
       dateRange,
       minutes,
+      createdOn,
+      eventType
     });
   } catch (err) {
     console.log(err);

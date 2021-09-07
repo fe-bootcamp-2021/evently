@@ -43,25 +43,25 @@ export default function Home() {
       <div>
         <div className="w-9/12 mt-6 mx-auto items-center">
           <div className="grid 2xl:grid-cols-3 sm:grid-cols-2 gap-4 mt-10">
-            {isAccountVerified
-              ? "Congratulations now you can create an Event!"
-              : "Please verify your account to create an Event!"}
+            
             {events ? (
               Object.keys(events).map((el) => {
-                const { title, minutes, type, color, link } = events[el];
+                const { title, minutes, eventType, color, link } = events[el];
                 return (
                   <Card
                     key={nanoid()}
                     title={title}
                     duration={minutes}
-                    type={type}
+                    type={eventType}
                     color={color}
                     link={link}
                   />
                 );
               })
             ) : (
-              <></>
+              isAccountVerified
+                ? "Congratulations now you can create an Event!"
+                : "Please verify your account to create an Event!"
             )}
           </div>
         </div>

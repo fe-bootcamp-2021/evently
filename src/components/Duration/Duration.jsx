@@ -1,3 +1,5 @@
+import { TYPE_NUMBER } from "../../constants/constants";
+import Input from "../Input/Input";
 import { durationContainer } from "./Duration.style";
 
 export default function Duration({ minutes, setMinutes }) {
@@ -6,8 +8,8 @@ export default function Duration({ minutes, setMinutes }) {
       <div className="w-2/3">
         <span className="mt-2">Duration</span>
         <label className="block mt-2">
-          <input
-            type="number"
+          <Input
+            type={TYPE_NUMBER}
             name="name"
             placeholder=" "
             value={minutes}

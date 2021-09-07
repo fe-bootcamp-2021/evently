@@ -1,5 +1,4 @@
 import { useHistory } from "react-router-dom";
-import { Routes } from "../../constants/routes";
 import EventColors from "../EventColors/EventColors";
 import InputCKEditor from "../InputCKEditor/InputCKEditor";
 import Button from "../Button/Button";
@@ -102,13 +101,8 @@ export default function GroupEventFirstPage() {
         </div>
 
         <div className={buttonContainer}>
-<<<<<<< HEAD
-          <Button name={`Cancel `} onClick={console.log(1)}/>
-          <Button name={`Next >>`} onClick={console.log(1)}/>
-=======
-          <Button name={`Cancel`} onClick={console.log(1)} />
-          <Button name={`Next >>`} className="ml-3" onClick={()=>{return history.push(Routes.oneOnOne1().path)}} />
->>>>>>> dev
+          <Button name={`Cancel`}  />
+          <Button className="ml-3"  />
         </div>
       </div>
     </div>

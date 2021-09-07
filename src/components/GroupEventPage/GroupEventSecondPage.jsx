@@ -1,49 +1,43 @@
-import DataRange from "../DaveRange/DateRange";
+import DataRange from "../DateRange/DateRange";
 import Duration from "../Duration/Duration";
+import Button from "../Button/Button";
+import Navbar from "../Navbar/Navbar";
 import EventTypeAvailability from "../EventTypeAvailability/EventTypeAvailability";
 
 import {
   containerOneOnOne,
   card,
-  title,
-  eventItems,
-  errorMessage,
   buttonContainer,
-  button,
 } from "./GroupEventPage.style";
 
 export default function GroupEventSecondPage() {
+
   return (
-    <div className={containerOneOnOne}>
-      <div className={card}>
-        <h2 className={title}>When can people book this event?</h2>
-        <div className={eventItems}>
-          <DataRange />
-          <span className={errorMessage} id="error">
-            Event name is required
-          </span>
-        </div>
-        <div className={eventItems}>
-          <Duration />
-          <span className={errorMessage} id="error">
-            Event name is required
-          </span>
-        </div>
-        <div className={eventItems}>
-          <EventTypeAvailability />
-          <span className={errorMessage} id="error">
-            Event name is required
-          </span>
-        </div>
-        <div className={buttonContainer}>
-          <button id="button" type="button" className={button}>
-            Cancel {">>"}
-          </button>
-          <button id="button" type="button" className={button}>
-            Next {">>"}
-          </button>
+    <>
+      <Navbar />
+      <div className={containerOneOnOne}>
+        <div className={card}>
+          <section className="my-10 px-10">
+            <DataRange />
+          </section>
+          <section className="my-10 px-10 pt-10 border-t-2 border-fuchsia-600">
+            <Duration />
+          </section>
+          <section className="my-10 px-10 pt-10 border-t-2 border-fuchsia-600">
+            <EventTypeAvailability />
+          </section>
+          <section className="my-10 px-10 pt-10 border-t-2 border-fuchsia-600">
+            <div className={buttonContainer}>
+              <Button name={`Cancel`} onClick={console.log(1)} />
+              <Button
+                name={`Next >>`}
+                className="ml-3"
+                onClick={()=>{console.log(11)}}
+              />
+            </div>
+          </section>
         </div>
       </div>
-    </div>
+    </>
   );
 }

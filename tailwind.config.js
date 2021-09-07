@@ -3,8 +3,23 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      screens: {
+        max: "1200",
+        mid: "900px",
+        min: "600px",
+      },
+      spacing: {
+        108: "27rem",
+        120: "30rem",
+        132: "33rem",
+        144: "36rem",
+      },
+      animation: {
+        spin: "spin 12s linear infinite",
+      },
       colors: {
         custom: {
+          current:" rgb(30 64 175)",
           "orange-1": "rgb(255, 79, 0)",
           pink: "rgb(255, 117, 142)",
           purple: "rgb(229, 92, 255)",
@@ -19,6 +34,9 @@ module.exports = {
           "purple-1": "rgb(213, 128, 255)",
         },
       },
+      width: {
+        '80px': '80px',
+      }
     },
   },
   variants: {

@@ -1,25 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import RadioColors from "../../constants/radioColors";
 import { containerRadioBtn, radio } from "./EventColors.style";
 
-export default function EventColors() {
-  const [isChecked, setIsChecked] = useState(RadioColors()[0].id);
-
+export default function EventColors({ selected, setSelected }) {
   const handleChange = (ev) => {
-    setIsChecked(Number(ev.target.value));
+    setSelected(Number(ev.target.value));
   };
 
   return (
     <div className={containerRadioBtn}>
       {RadioColors().map(({ id, name, classNames }) => {
-        const checked = isChecked === id ? "checked" : "";
+        const checked = selected === id ? "checked" : "";
         return (
           <input
             key={id}
             type="radio"
             name={name}
             value={id}
-            className={`${radio} ${classNames} checked:${classNames}`}
+            className={`${radio} bg-${classNames} checked:${classNames}`}
             onChange={handleChange}
             checked={checked}
           />

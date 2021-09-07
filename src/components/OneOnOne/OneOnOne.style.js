@@ -10,7 +10,6 @@ export const card = classNames([
   "rounded-2xl",
   "border-t-8",
   "border-blue-800",
-  "px-10",
   "py-8",
   "shadow-lg",
   "hover:shadow-2xl",
@@ -32,7 +31,7 @@ export const eventItems = classNames(["relative", "z-0", "w-full", "mb-5"]);
 
 export const label = classNames(["text-gray-500"]);
 
-export const errorMessage = classNames(["text-sm", "text-red-600", "hidden"]);
+export const errorMessage = classNames(["text-sm", "text-red-600"]);
 
 export const input = classNames([
   "pt-3",
@@ -61,3 +60,15 @@ export const buttonContainer = classNames([
 ]);
 
 export const description = classNames(["mt-2"]);
+
+export const sectionDuration = classNames([
+  "my-10 px-10 pt-10 border-t-2 border-fuchsia-600",
+]);
+
+export const availability = classNames([
+  "my-10 px-10 pt-10 border-t-2 border-fuchsia-600",
+]);
+
+export const buttonSection = classNames([
+  "my-10 px-10 pt-10 border-t-2 border-fuchsia-600",
+]);

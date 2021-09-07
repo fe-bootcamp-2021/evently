@@ -1,3 +1,5 @@
+import { useHistory } from "react-router-dom";
+import { Routes } from "../../constants/routes";
 import EventColors from "../EventColors/EventColors";
 import InputCKEditor from "../InputCKEditor/InputCKEditor";
 import Button from "../Button/Button";
@@ -15,9 +17,11 @@ import {
 } from "./GroupEventPage.style";
 
 export default function GroupEventFirstPage() {
+  const history = useHistory();
+
   return (
     <div className={containerOneOnOne}>
-      <div className={card}>
+      <div className={`${card} px-10`}>
         <h2 className={title}>Add Group Event</h2>
         <div className={eventItems}>
           <label className={label}>Event name *</label>
@@ -98,8 +102,13 @@ export default function GroupEventFirstPage() {
         </div>
 
         <div className={buttonContainer}>
+<<<<<<< HEAD
           <Button name={`Cancel `} onClick={console.log(1)}/>
           <Button name={`Next >>`} onClick={console.log(1)}/>
+=======
+          <Button name={`Cancel`} onClick={console.log(1)} />
+          <Button name={`Next >>`} className="ml-3" onClick={()=>{return history.push(Routes.oneOnOne1().path)}} />
+>>>>>>> dev
         </div>
       </div>
     </div>

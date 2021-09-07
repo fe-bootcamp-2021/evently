@@ -2,7 +2,6 @@ import classNames from "classnames/bind";
 
 export const containerOneOnOne = classNames([
   "min-h-screen",
-  "bg-gray-100",
   "p-0",
 ]);
 
@@ -14,7 +13,10 @@ export const card = classNames([
   "rounded-2xl",
   "border-t-8",
   "border-blue-800",
+<<<<<<< HEAD
   "px-10",
+=======
+>>>>>>> dev
   "py-8",
   "shadow-lg",
   "hover:shadow-2xl",

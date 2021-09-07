@@ -1,26 +1,36 @@
+import { BUTTON_OUTLINE, CUSTOM_HOURS, EXISTING_SCHEDULE } from "../../constants/constants";
 import Button from "../Button/Button";
+import WeeklyHours from "../WeeklyHours/WeeklyHours";
+import { availabilityContainer, scheduleContainer, scheduleTitle, weeklyHoursContainer } from "./EventTypeAvailability.style";
 
 const EventTypeAvailability = () => {
   return (
     <div>
-      <div class="flex">
-        <p class="flex-1">
-          How do you want to offer your availability for this event type?
-        </p>
-        <div class="w-80">
-          <p class="flex-1 text-purple-400">
-            Select one of your schedules or define custom hours specific to this
-            type of event.
-          </p>
+      <div className={availabilityContainer}>
+        <div className="w-2/3">
+          <p>How do you want to offer your availability for this event type?</p>
+          <Button
+            name={EXISTING_SCHEDULE}
+            variant={BUTTON_OUTLINE}
+          />
+          <Button
+            name={CUSTOM_HOURS}
+            className="ml-3"
+            variant={BUTTON_OUTLINE}
+          />
+          <p className="mt-8 mb-4"> Which schedule do you want to use?</p>
+
+          <select className={scheduleContainer}>
+            <option>Working hours</option>
+          </select>
+        </div>
+        <div className={scheduleTitle}>
+          Select one of your schedules or define custom hours specific to this
+          type of event.
         </div>
       </div>
-      <div class="flex">
-        <div class="flex-initial">
-          <Button name={"Use an existing schedule"} />
-        </div>
-        <div class="flex-initial">
-          <Button name={"Set custom hours"} />
-        </div>
+      <div className={weeklyHoursContainer}>
+       <WeeklyHours/>
       </div>
     </div>
   );

@@ -1,16 +1,12 @@
 import React from "react";
-import Login from "./components/LoginSign/LoginSign";
-import OneOnOne from "./components/OneOnOne/OneOnOne";
-import GroupEventFirstPage from "./components/GroupEventPage/GroupEventFirstPage";
-import Evently from "./components/Availability/ListView";
+import { useAuth } from "./contexts/AuthContext";
+import AuthenticatedApp from "./components/AuthenticatedApp/AuthenticatedApp";
+import UnAuthenticatedPage from "./pages/UnAuthenticatedPage/UnAuthenticated.page"
 
 export default function App() {
+  const { isAuthenticated } = useAuth();
+
   return (
-    <div className="App">
-      <Login />
-      <OneOnOne />
-      <GroupEventFirstPage/>
-      <Evently />
-    </div>
+    <>{isAuthenticated ? <AuthenticatedApp /> : <UnAuthenticatedPage />}</>
   );
 }

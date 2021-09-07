@@ -1,68 +1,60 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import classNames from "classnames/bind";
-import OneOnOne from "../OneOnOne/OneOnOne";
-import GroupEventFirstPage from "../GroupEventPage/GroupEventFirstPage";
+import Button from "../Button/Button";
+import { NavRoutes } from "../../constants/routes";
+import { useAuth } from "../../contexts/AuthContext";
+import { createButtonStyle, dropDownContainer, li } from "./Dropdown.style";
 
-export default function Dropdown() {
+export default function Dropdown({ buttonName }) {
+  const history = useHistory();
+  const { user } = useAuth();
+  const isDisabled = !user.emailVerified;
   const [show, setShow] = useState(false);
-
   let showFn = () => {
     setShow(!show);
     return show;
   };
+
   let dropDownMenu = classNames({
-    "w-44 ": true,
     "rounded-lg": true,
     "bg-white": true,
     "shadow-xl": true,
-    hidden: show,
-    block: !show,
+    hidden: !show,
+    block: show,
   });
 
+  const handlePath = (path) => (ev) => {
+    history.push(path);
+  };
+
   return (
-    <Router>
     <div>
-      <div>
-        <button
+      <div className={dropDownContainer}>
+        <Button
+          disabled={isDisabled}
+          name={buttonName}
           onClick={showFn}
-          className="mt-4 border-0 block bg-blue-600 bg-blue-600 text-gray-200 rounded-lg px-6 text-sm py-3 overflow-hidden focus:outline-none focus:border-white"
-        >
-          <div className="flex justify-between">
-            <span>Dashboard</span>
-            <svg
-              className="fill-current text-gray-200"
-              xmlns="http://www.w3.org/2000/svg"
-              height="24"
-              viewBox="0 0 24 24"
-              width="24"
-            >
-              <path d="M7 10l5 5 5-5z" />
-              <path d="M0 0h24v24H0z" fill="none" />
-            </svg>
-          </div>
-        </button>
+          variant=""
+          className={createButtonStyle}
+        />
 
         <div className={dropDownMenu}>
-          <Link
-            to="/oneOnOne"
-            className="block px-4 py-2 rounded-t-lg text-gray-800 hover:bg-blue-600 hover:text-white"
-          >
-            One-on-One
-          </Link>
-          <Link
-            to="groupMeeting"
-            className="block px-4 py-2 rounded-b-lg text-gray-800 hover:bg-blue-600 hover:text-white"
-          >
-            Group Meeting
-          </Link>
+          <ul>
+            {
+              <li
+                className={li}
+                onClick={handlePath(NavRoutes.oneOnOne().path)}
+              >
+                One-on-One
+              </li>
+              /*<li className={li} onClick={handlePath(Routes.group().path)}>
+              Group Meeting
+            </li> */
+            }
+          </ul>
         </div>
       </div>
-      <Switch>
-        <Route exact path='/oneOnOne' component={OneOnOne}/>
-        <Route exact path='/groupMeeting' component={GroupEventFirstPage}/>
-      </Switch>
     </div>
-    </Router>
   );
 }

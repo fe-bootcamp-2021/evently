@@ -1,21 +1,26 @@
 export default function Input({
-  autocomplete,
   id,
   name,
   type,
   className,
   placeholder,
+  onChange,
+  required,
+  checked,
+  value
 }) {
   return (
-    <div>
       <input
-        autocomplete={autocomplete}
         id={id}
         name={name}
         type={type}
+        value={value}
         className={className}
         placeholder={placeholder}
+        onChange={onChange}
+        required={required}
+        checked={checked}
+        value={value}
       />
-    </div>
   );
 }

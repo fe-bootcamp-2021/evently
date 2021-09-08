@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { nanoid } from "nanoid";
-import {eventTypes} from "../../constants/constants";
+import { eventTypes } from "../../constants/constants";
 import { NavRoutes } from "../../constants/routes";
 import { useAuth } from "../../contexts/AuthContext";
 import { addEvent } from "../../services/event.services";
@@ -36,7 +36,7 @@ export default function OneOnOneSecond({ firstPageInfo }) {
       return; // Must be an error
     }
 
-    let member = { date, startTime, endTime, id: nanoid() };
+    let member = { date, startTime, endTime, id: nanoid(),status:false,isBusy:false };
     setMembers([...members, member]);
   };
 
@@ -44,13 +44,12 @@ export default function OneOnOneSecond({ firstPageInfo }) {
     if (members.length === 0) {
       return; // Must be an error
     }
-    const memberInf = JSON.stringify(members);
 
     const event = {
       userId: user.uid,
       createdOn: formatDate(new Date()),
-      member: memberInf,
-      eventType:eventTypes.oneOnOne,
+      member: members,
+      eventType: eventTypes.oneOnOne,
     };
 
     const eventInfo = Object.assign(firstPageInfo, event);
@@ -82,7 +81,7 @@ export default function OneOnOneSecond({ firstPageInfo }) {
     setEndTime(event.target.value);
   };
 
-    const handleCancel = () => {
+  const handleCancel = () => {
     history.push(NavRoutes.home().path);
   };
 
@@ -90,8 +89,6 @@ export default function OneOnOneSecond({ firstPageInfo }) {
     <div className={containerOneOnOne}>
       <div className={`${card} px-10`}>
         <h2 className={title}>Add One-on-One Event</h2>
-
-        <div></div>
         <Input type={DATE} onChange={handleDate} className={inputStyle} />
         <Input type={TIME} onChange={handleStartTime} className={inputStyle} />
         <Input type={TIME} onChange={handleEndTime} className={inputStyle} />
@@ -103,8 +100,7 @@ export default function OneOnOneSecond({ firstPageInfo }) {
                 date={date}
                 startTime={startTime}
                 endTime={endTime}
-                id={id}
-                deleteEvent={deleteEvent}
+                onClick={deleteEvent(id)}
                 key={nanoid()}
               />
             );

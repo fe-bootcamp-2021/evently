@@ -61,6 +61,7 @@ export default function Home() {
                       type={eventType}
                       color={color}
                       link={link}
+                      id={el}
                     />
                   );
                 })

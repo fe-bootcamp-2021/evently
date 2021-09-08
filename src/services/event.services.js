@@ -41,3 +41,17 @@ export async function getEvents(id) {
     console.log(err);
   }
 }
+
+
+export async function getEvent(id) {
+  try {
+    return db
+      .ref(`event/${id}`)
+      .once("value")
+      .then((snapshot) => {
+        return snapshot.val();
+      });
+  } catch (err) {
+    console.log(err);
+  }
+}

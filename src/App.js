@@ -11,4 +11,5 @@ export default function App() {
   }
 
   return <>{user ? <AuthenticatedApp /> : <UnAuthenticatedPage />}</>;
+
 }

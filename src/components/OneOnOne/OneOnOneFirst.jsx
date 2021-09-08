@@ -30,7 +30,7 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
   const { user } = useAuth();
   const history = useHistory();
   const [eventName, setEventName] = useState("");
-  const [eventLink, setEventLink] = useState("");
+  //const [eventLink, setEventLink] = useState("");
   const [userprofile, setUserprofile] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
@@ -49,7 +49,7 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
 
   const handleNext = () => {
     const isValidEvtName = isValidEventName(eventName);
-    const isValidEvtLink = isValidEventLink(eventLink);
+    //const isValidEvtLink = isValidEventLink(eventLink);
     const isValidEvtAddress = isValidAddress(location);
     if (isValidEvtName && isValidEvtLink && isValidEvtAddress) {
       const eventId = nanoid();
@@ -58,7 +58,7 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
         description,
         location,
         title: eventName,
-        link: userprofile + eventLink,
+        //link: userprofile + eventLink,
         color: eventColor,
       };
       setFirstPageInfo(newEventInfo);
@@ -88,13 +88,13 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
     setLocation(value);
   };
 
-  const handleLink = (ev) => {
-    const value = ev.target.value;
-    isValidEventLink(value)
-      ? setIsValidEvtLink(true)
-      : setIsValidEvtLink(false);
-    setEventLink(value);
-  };
+  // const handleLink = (ev) => {
+  //   const value = ev.target.value;
+  //   isValidEventLink(value)
+  //     ? setIsValidEvtLink(true)
+  //     : setIsValidEvtLink(false);
+  //   setEventLink(value);
+  // };
 
   const handleCancel = () => {
     history.push(NavRoutes.home().path);
@@ -136,7 +136,7 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
             />
           </div>
 
-          <div className={eventItems}>
+          {/* <div className={eventItems}>
             <label className={label}>Event link *</label>
             <p className={`${label} mt-3`}>{userprofile}</p>
             <Input
@@ -150,7 +150,7 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
               message="Event link is required"
               isValid={isValidEvtLink}
             />
-          </div>
+          </div> */}
 
           <div className={eventItems}>
             <label className={label}>Description/Instructions</label>

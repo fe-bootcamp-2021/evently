@@ -53,15 +53,15 @@ export default function Home() {
           <div className={cardContainer}>
             {events
               ? Object.keys(events).map((el) => {
-                  const { title, minutes, eventType, color, link } = events[el];
+                  const { title, eventType, color, link } = events[el];
                   return (
                     <Card
                       key={nanoid()}
                       title={title}
-                      duration={minutes}
                       type={eventType}
                       color={color}
                       link={link}
+                      id={el}
                     />
                   );
                 })

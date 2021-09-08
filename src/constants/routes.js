@@ -2,6 +2,7 @@ import AccountPage from "../pages/Account/Account.page";
 import HomePage from "../pages/Home/Home.page";
 import Login from "../components/LoginSign/LoginSign";
 import SignUp from "../components/SignUp/SignUp";
+import Event from "../components/Event/Event";
 import UnAuthenticatedApp from "../components/UnAuthenticatedApp/UnAuthenticatedApp";
 import OneOnOne from "../components/OneOnOne/OneOnOne";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
@@ -18,6 +19,12 @@ export const Routes = {
     path: "/signup",
     text: "Sign Up",
     component: SignUp,
+  }),
+
+  event: (id=":id") => ({
+    path: `/event/${id}`,
+    text: "event",
+    component: Event,
   }),
 
   unAuthenticated: () => ({
@@ -50,5 +57,10 @@ export const NavRoutes = {
     path: "/oneOnOne",
     text: "One On One",
     component: OneOnOne,
+  }),
+  event: (id=":id") => ({
+    path: `/event/${id}`,
+    text: "event",
+    component: Event,
   }),
 };

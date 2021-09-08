@@ -1,8 +1,5 @@
 import classNames from "classnames/bind";
 
 export const container = classNames([
-    "w-full",
-    "bg-gray-100",
-    "m-2",
-    "p-2",
+    "w-full flex w-full m-1 p-2 border-b border-gray-200 bg-gray-50 hover:bg-gray-100"
 ]);

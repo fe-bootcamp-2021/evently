@@ -43,23 +43,26 @@ export function isValidMinutes(value) {
   return true;
 }
 
-export function checkForm(form) {
-  regular expression to match required date format
-  const re = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
+export function startdate(value) {
+  // regular expression to match required date format
+  const redate = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
 
-  if (form.startdate.value !== "" && !form.startdate.value.match(re)) {
-    // "Invalid date format: " 
-    form.startdate.focus();
+  if (value !== "" && !value.match(redate)) {
+    // "Invalid date format: "
+    // form.startdate.focus();
     return false;
   }
+  return true;
+}
 
+//starttime and endtime validation
+
+export function starttime(value) {
   // regular expression to match required time format
-  const re = /^\d{1,2}:\d{2}([ap]m)?$/;
-
-  if (form.starttime.value !== 
-    "" && !form.starttime.value.match(re)) {
-    // "Invalid time format: " 
-    form.starttime.focus();
+  const retime = /^\d{1,2}:\d{2}([ap]m)?$/;
+  if (value !== "" && !value.match(retime)) {
+    // "Invalid time format: "
+    // form.starttime.focus();
     return false;
   }
 

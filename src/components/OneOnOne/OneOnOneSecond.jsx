@@ -15,8 +15,9 @@ import {
   buttonContainer,
   sectionDuration,
   availability,
-  buttonSection
+  buttonSection,
 } from "./OneOnOne.style";
+import { startdate, starttime } from "../../helpers/validations";
 
 export default function OneOnOneSecond({
   setFirstPageInfo,
@@ -26,8 +27,15 @@ export default function OneOnOneSecond({
   const { user } = useAuth();
   const [dateRangeInfo, setDateRangeInfo] = useState({});
   const [minutes, setMinutes] = useState(60);
+  const [startDate, setStartDate] = useState();
+  const [startTime, setStartTime] = useState();
+  const [endTime, setEndTime] = useState();
 
   const handleNext = () => {
+    const isValidStartDate = startdate(startDate);
+    const isValidStartTime = starttime(startTime);
+    const isValidEndTime = starttime(endTime);
+
     const secondPageInfo = { dateRange: dateRangeInfo, minutes };
     const event = {
       eventType: eventTypes.oneOnOne,

@@ -1,28 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { nanoid } from "nanoid";
-import { Routes } from "./constants/routes";
+import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { AuthProvider } from "./contexts/AuthContext";
+import { ProvideAuth } from "./contexts/AuthContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
+    <ProvideAuth>
       <Router>
         <App />
-        <Switch>
-          {Object.values(Routes).map((fn) => {
-            const { path, component } = fn();
-            return (
-              <Route exact path={path} component={component} key={nanoid()} />
-            );
-          })}
-        </Switch>
       </Router>
-    </AuthProvider>
+    </ProvideAuth>
   </React.StrictMode>,
   document.getElementById("root")
 );

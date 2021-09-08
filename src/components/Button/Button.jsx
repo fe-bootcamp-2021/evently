@@ -5,28 +5,25 @@ import {
   buttonLink,
   buttonLink1,
 } from "./Button.style";
-
-const Button = ({ name, onClick, className, variant = buttonStyle }) => {
+const Button = ({ name, onClick, className, disabled,  variant = buttonStyle }) => {
   let styleBtn = buttonStyle;
   if (variant === "custom") styleBtn = "";
   else if (variant === "buttonOutline") styleBtn = buttonOutline;
   else if (variant === "link") styleBtn = buttonLink;
   else if (variant === "link1") styleBtn = buttonLink1;
-
   return (
     <button
       type="button"
       className={`${className} ${styleBtn}`}
       onClick={onClick}
+      disabled={disabled}
     >
       {name}
     </button>
   );
 };
-
 Button.protoTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func.isRequired,
 };
-
 export default Button;

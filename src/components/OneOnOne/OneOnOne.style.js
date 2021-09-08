@@ -31,7 +31,7 @@ export const eventItems = classNames(["relative", "z-0", "w-full", "mb-5"]);
 
 export const label = classNames(["text-gray-500"]);
 
-export const errorMessage = classNames(["text-sm", "text-red-600", "hidden"]);
+export const errorMessage = classNames(["text-sm", "text-red-600"]);
 
 export const input = classNames([
   "pt-3",
@@ -80,3 +80,27 @@ export const button = classNames([
 ]);
 
 export const description = classNames(["mt-2"]);
+
+export const sectionDuration = classNames([
+  "my-10 px-10 pt-10 border-t-2 border-fuchsia-600",
+]);
+
+export const availability = classNames([
+  "my-10 px-10 pt-10 border-t-2 border-fuchsia-600",
+]);
+
+export const buttonSection = classNames([
+  "my-10 px-10 pt-10 border-t-2 border-fuchsia-600",
+]);
+
+export const inputStyle = classNames([
+  "peer",
+  "placeholder-transparent",
+  "h-10",
+  "border-b-2",
+  "border-gray-300",
+  "text-gray-900",
+  "focus:outline-none",
+  "focus:borer-rose-600",
+  "m-5"
+]);

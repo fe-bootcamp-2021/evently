@@ -1,16 +1,23 @@
-export default function Duration() {
+import { TYPE_NUMBER } from "../../constants/constants";
+import Input from "../Input/Input";
+import { durationContainer } from "./Duration.style";
+
+export default function Duration({ minutes, setMinutes }) {
   return (
-    <div className="flex flex-wrap w-full">
+    <div className={durationContainer}>
       <div className="w-2/3">
-        <span classNameName="mt-2">Duration</span>
+        <span className="mt-2">Duration</span>
         <label className="block mt-2">
-          <select className="form-select block w-60 rounded">
-            <option>15 min</option>
-            <option>30 min</option>
-            <option>45 min</option>
-            <option>60 min</option>
-            <option>Custom</option>
-          </select>
+          <Input
+            type={TYPE_NUMBER}
+            name="name"
+            placeholder=" "
+            value={minutes}
+            required
+            className="ml-2 w-24 rounded"
+            onChange={(ev) => setMinutes(ev.target.value)}
+          />{" "}
+          &nbsp; mins
         </label>
       </div>
       <div className="w-1/3">

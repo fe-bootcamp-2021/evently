@@ -19,6 +19,7 @@ module.exports = {
       },
       colors: {
         custom: {
+          current:" rgb(30 64 175)",
           "orange-1": "rgb(255, 79, 0)",
           pink: "rgb(255, 117, 142)",
           purple: "rgb(229, 92, 255)",
@@ -33,12 +34,17 @@ module.exports = {
           "purple-1": "rgb(213, 128, 255)",
         },
       },
+      width: {
+        '80px': '80px',
+      }
     },
   },
   variants: {
     extend: {
       backgroundColor: ["checked"],
       borderColor: ["checked"],
+      flexWrap: ['hover', 'focus'],
+      overflow: ['hover', 'focus'],
     },
   },
   plugins: [require("@tailwindcss/forms")],

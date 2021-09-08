@@ -1,75 +1,106 @@
 import React from "react";
-import Navbar from "../Navbar/Navbar";
-import Button from "../Button/Button";
-import Input from "../Input/Input";
+import { Link } from "react-router-dom";
 import Image from "../../images/Ellipse96.svg";
 import Image2 from "../../images/Ellipse97.svg";
+import { Routes } from "../../constants/routes";
+import { logIn, signUp } from "../../constants/constants";
+import Button from "../Button/Button";
+import Input from "../Input/Input";
+import {
+  container,
+  contentContainer,
+  nav,
+  leftSide,
+  rightSide,
+  circle1,
+  circle2,
+  circle3,
+  circle4,
+  circle5,
+  input,
+  buttonStyle,
+  circleMin1,
+  circleMin2,
+  circleMin3,
+  circleMin4,
+  imgDiv1,
+  imgDiv2,
+  imgDiv3,
+  imgDiv4,
+  imgDiv5,
+  circle6,
+} from "./UnAuthenticatedApp.style";
 
 export default function UnAuthenticatedApp() {
   return (
-    <div className="mx-auto flex flex-col">
-        <div className="shadow-md">
-            <Navbar />
-        </div>
-      <div className="w-9/12 mx-auto flex justify-between items-center justify-center">
-        <div className="h-screen flex flex-col items-left justify-center">
-          <h1 className="text-6xl text-blue-900">
-            Plan Your Day <br /> Ahead
-          </h1>
-          <h2 className="mt-8 text-blue-900">
-            We will help you schedule meetings <br /> on each day.
-          </h2>
-          <div className="flex mt-4">
-            <Input
-              type="email"
-              autocomplete="on"
-              className="w-72 rounded-l-full p-4 border mr-0 text-blue-900 border-blue-900 bg-white outline-none"
-              placeholder="Enter Your Email"
-            />
+    <>
+      <div className={container}>
+        <div className={nav}>
+          <Link to={Routes.login().path}>
+            <Button name={logIn} variant="buttonOutline" className="m-1" />
+          </Link>
+          <Link to={Routes.signup().path}>
             <Button
-              name="Sign In"
-              className="bg-blue-800 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-r-full"
-              variant="custom"
+              name={signUp}
+              variant="buttonOutline"
+              className="m-1 mr-5"
             />
+          </Link>
+        </div>
+        <div className={contentContainer}>
+          <div className={leftSide}>
+            <h2 className="text-6xl text-blue-900">
+              Plan Your Day <br /> Ahead
+            </h2>
+            <h2 className="mt-8 text-blue-900">
+              We will help you schedule meetings <br /> on each day.
+            </h2>
+            <div className="flex mt-4">
+              <Input
+                type="email"
+                className={input}
+                placeholder="Enter Your Email"
+              />
+              <Button name={logIn} className={buttonStyle} variant="custom" />
+            </div>
+          </div>
+
+          <div className={rightSide}>
+            <div className={circle1}>
+              <div className={circleMin1}></div>
+            </div>
+            <div className={circle2}>
+              <div className={imgDiv1}>
+                <img src={Image} className="-inset-4" alt="" />
+              </div>
+              <div className={imgDiv2}>
+                <img src={Image2} className="top-5 right-12" alt="" />
+              </div>
+              <div className={imgDiv3}>
+                <img src={Image} className="inset-x-10 bottom-7" alt="" />
+              </div>
+            </div>
+            <div className={circle3}>
+              <div className={circleMin2}></div>
+              <div className={circleMin3}></div>
+            </div>
+
+            <div className={circle4}>
+              <div className={imgDiv4}>
+                <img src={Image2} className="w-14 h-14" alt="" />
+              </div>
+            </div>
+            <div className={circle5}>
+              <div className={circleMin4}></div>
+            </div>
+
+            <div className={circle6}></div>
+            <div className={imgDiv5}>
+              <img src={Image} className="w-28 h-28" alt="" />
+            </div>
           </div>
         </div>
-
-        <div className="flex items-center justify-center">
-                    <div className="rounded-full animate-spin relative border border-purple-900 w-144 h-144">
-                        <div className="rounded-full absolute bg-purple-900 ring-4 ring-purple-200 w-7 h-7 bottom-14 right-20"></div>
-                    </div>
-                    <div className="rounded-full z-20 absolute border border-purple-900 w-108 h-108">
-                        <div className="rounded-full absolute w-14 h-14 -inset-4">
-                            <img src={Image} className="-inset-4" />
-                        </div>
-                        <div className="rounded-full absolute w-14 h-14 top-5 right-12">
-                            <img src={Image2} className="top-5 right-12" />
-                        </div>
-                        <div className="rounded-full absolute w-14 h-14 inset-x-10 bottom-7">
-                            <img src={Image} className="inset-x-10 bottom-7" />
-                        </div>
-                    </div>
-                    <div className="rounded-full absolute animate-spin w-108 h-108">
-                        <div className="rounded-full absolute bg-purple-900 ring-4 ring-purple-200 w-7 h-7 top-0 right-0"></div>
-                        <div className="rounded-full absolute bg-purple-900 ring-4 ring-purple-200 w-7 h-7 inset-x-6 top-20"></div>  
-                    </div>
-
-
-                    <div className="rounded-full  absolute border border-purple-900 w-72 h-72">
-                        <div className="rounded-full z-20 absolute bottom-5 right-2">
-                            <img src={Image2} className="w-14 h-14" />
-                        </div>
-                    </div>
-                    <div className="rounded-full animate-spin absolute w-72 h-72">
-                        <div className="rounded-full absolute bg-purple-900 ring-4 ring-purple-200 w-7 h-7 bottom-10 left-4"></div>
-                    </div>
-
-                    <div className="rounded-full absolute border border-purple-900"></div>
-                    <div className="rounded-full absolute w-28 h-28">
-                        <img src={Image} className="w-28 h-28" />
-                    </div>  
-                </div>
       </div>
-    </div>
+    </>
   );
 }

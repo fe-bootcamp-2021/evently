@@ -1,49 +1,38 @@
-import Home from "../components/Home/Home";
-import Account from "../components/Account/Account";
+import AccountPage from "../pages/Account/Account.page";
+import HomePage from "../pages/Home/Home.page";
 import Login from "../components/LoginSign/LoginSign";
-import ErrorPage from "../components/ErrorPage/ErrorPage";
+import SignUp from "../components/SignUp/SignUp";
+import Event from "../components/Event/Event";
+import UnAuthenticatedApp from "../components/UnAuthenticatedApp/UnAuthenticatedApp";
 import OneOnOne from "../components/OneOnOne/OneOnOne";
-import OneOnOneSecond from "../components/OneOnOne/OneOnOneSecond";
-import GroupEventFirstPage from "../components/GroupEventPage/GroupEventFirstPage";
-import GroupEventSecondPage from "../components/GroupEventPage/GroupEventSecondPage";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
+import PageAboutUS from "../pages/AboutUS/PageAboutUS";
 
 export const Routes = {
-  home: () => ({
-    path: "/home",
-    text: "Home",
-    component: Home,
-  }),
-  // about: () => ({
-  //   path: "/about",
-  //   text: "About",
-  //   component: About,
-  // }),
-  logInSign: () => ({
-    path: "/logInSign",
-    text: "LogInSign",
+  login: () => ({
+    path: "/login",
+    text: "Log In",
     component: Login,
   }),
-  account: () => ({ path: "/account", text: "Account", component: Account }),
-  oneOnOne: () => ({
-    path: "/oneOnOne",
-    text: "One On One",
-    component: OneOnOne,
+
+  signup: () => ({
+    path: "/signup",
+    text: "Sign Up",
+    component: SignUp,
   }),
-  oneOnOne1: () => ({
-    path: "/oneOnOne2",
-    text: "One On One Second",
-    component: OneOnOneSecond,
+
+  event: (id=":id") => ({
+    path: `/event/${id}`,
+    text: "event",
+    component: Event,
   }),
-  group: () => ({
-    path: "/group",
-    text: "Group",
-    component: GroupEventFirstPage,
+
+  unAuthenticated: () => ({
+    path: "/",
+    text: "Info",
+    component: UnAuthenticatedApp,
   }),
-  group2: () => ({
-    path: "/group2",
-    text: "Group Second",
-    component: GroupEventSecondPage,
-  }),
+
   error: () => ({ path: "*", text: "", component: ErrorPage }),
 };
 
@@ -51,12 +40,27 @@ export const NavRoutes = {
   home: () => ({
     path: "/home",
     text: "Home",
-    component: Home,
+    component: HomePage,
   }),
-  account: () => ({ path: "/account", text: "Account", component: Account }),
-  logInSign: () => ({
-    path: "/logInSign",
-    text: "LogIn",
-    component: Login,
+  about: () => ({
+    path: "/about",
+    text: "About",
+    component: PageAboutUS,
+  }),
+
+  account: () => ({
+    path: "/account",
+    text: "Account",
+    component: AccountPage,
+  }),
+  oneOnOne: () => ({
+    path: "/oneOnOne",
+    text: "One On One",
+    component: OneOnOne,
+  }),
+  event: (id=":id") => ({
+    path: `/event/${id}`,
+    text: "event",
+    component: Event,
   }),
 };

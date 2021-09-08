@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import { useAuth } from "../../contexts/AuthContext";
 import { DeleteIcon, PlusIcon, MinusIcon } from "../Icons/Icons";
+import Input from "../Input/Input";
 import { container } from "./Member.style";
 
 export default function Member({
@@ -28,6 +29,20 @@ export default function Member({
         <p>
           <span className="text-blue-800 mr-2">End time:</span> {endTime}
         </p>
+        <p className="text-blue-800 mr-2">
+          First Name:
+        </p>
+        <Input
+          className="appearance-none block w-1/2 bg-grey-lighter text-grey-darker border border-red rounded  px-2 mb-3"
+          type="text"
+        />
+        <p className="text-blue-800 mr-2">
+          Last Name:
+        </p>
+        <Input
+          className="appearance-none block w-1/2 bg-grey-lighter text-grey-darker border border-red rounded px-2 mb-3"
+          type="text"
+        />
       </div>
       <div className="w-1/3 flex justify-end">
         {isBusy ? (

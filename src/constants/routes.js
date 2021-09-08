@@ -1,4 +1,4 @@
-import AccountPage from "../pages/Account/Account.page";
+import Account from "../components/Account/Account";
 import HomePage from "../pages/Home/Home.page";
 import Login from "../components/LoginSign/LoginSign";
 import SignUp from "../components/SignUp/SignUp";
@@ -51,7 +51,7 @@ export const NavRoutes = {
   account: () => ({
     path: "/account",
     text: "Account",
-    component: AccountPage,
+    component: Account,
   }),
   oneOnOne: () => ({
     path: "/oneOnOne",

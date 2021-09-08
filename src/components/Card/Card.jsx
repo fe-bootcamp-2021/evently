@@ -15,7 +15,7 @@ import {
   modalWindowContainer,
 } from "./Card.style";
 
-export default function Card({ title, duration, type, color, link }) {
+export default function Card({ title,  type, color, link }) {
   // eslint-disable-next-line
   const [emailValue, setEmailValue] = useState(null);
   const [eventColor, setEventColor] = useState(RadioColors()[0].id);
@@ -50,7 +50,7 @@ export default function Card({ title, duration, type, color, link }) {
         <div className="mt-4">
           <h1 className={titleStyle}>{title}</h1>
           <Button
-            name={`${duration} mins, ${type}`}
+            name={`${type}`}
             className={infoButton}
             variant="custom"
           />

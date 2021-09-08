@@ -6,6 +6,8 @@ import { getEvent, addEvent } from "../../services/event.services";
 import RadioColors from "../../constants/radioColors";
 import Member from "../Member/Member";
 import Button from "../Button/Button";
+import Navbar from "../Navbar/Navbar";
+import Loading from "../Loading/Loading";
 
 import {
   container,
@@ -63,50 +65,57 @@ export default function Event() {
     setMembers([...newMembers]);
   };
 
-  const deleteEvent =  (memberId) => (ev) => {
-      ev.stopPropagation();
-      const newMembers = members.filter((el) => memberId !== el.id);
-      setMembers([...newMembers]);
+  const deleteEvent = (memberId) => (ev) => {
+    ev.stopPropagation();
+    const newMembers = members.filter((el) => memberId !== el.id);
+    setMembers([...newMembers]);
+  };
+
+  if (members.length === 0) {
+    return <Loading />;
   }
 
   return (
-    <div className={container}>
-      <div className={`${card} px-10 border-${eventColor}`}>
-        <h2 className={title}>{event.title}</h2>
-        <div className="m-3">
-          <p className="text-blue-800 text-xl mr-2">Description:</p>
-          <p className="ml-5">
-            <span dangerouslySetInnerHTML={createMarkup()} />
-          </p>
-          <p className="text-blue-800 text-xl mr-2">Location:</p>
-          <p className="ml-5">{event.location}</p>
-        </div>
-        <div className="flex flex-wrap justify-center">
-          {members.map(({ date, startTime, endTime, id, status, isBusy }) => {
-            return (
-              <Member
-                date={date}
-                startTime={startTime}
-                endTime={endTime}
-                id={id}
-                key={nanoid()}
-                onClick={user?deleteEvent(id):chooseEvent(id)}
-                operation={status}
-                isBusy={isBusy}
-              />
-            );
-          })}
-        </div>
-        <section className={buttonSection}>
-          <div className={buttonContainer}>
-            <Button
-              name={user?`Save`:`Send`}
-              className="ml-3"
-              onClick={handleAcceptEvents}
-            />
+    <>
+      {user ? <Navbar /> : <></>}
+      <div className={container}>
+        <div className={`${card} px-10 border-${eventColor}`}>
+          <h2 className={title}>{event.title}</h2>
+          <div className="m-3">
+            <p className="text-blue-800 text-xl mr-2">Description:</p>
+            <p className="ml-5">
+              <span dangerouslySetInnerHTML={createMarkup()} />
+            </p>
+            <p className="text-blue-800 text-xl mr-2">Location:</p>
+            <p className="ml-5">{event.location}</p>
           </div>
-        </section>
+          <div className="flex flex-wrap justify-center">
+            {members.map(({ date, startTime, endTime, id, status, isBusy }) => {
+              return (
+                <Member
+                  date={date}
+                  startTime={startTime}
+                  endTime={endTime}
+                  id={id}
+                  key={nanoid()}
+                  onClick={user ? deleteEvent(id) : chooseEvent(id)}
+                  operation={status}
+                  isBusy={isBusy}
+                />
+              );
+            })}
+          </div>
+          <section className={buttonSection}>
+            <div className={buttonContainer}>
+              <Button
+                name={user ? `Save` : `Send`}
+                className="ml-3"
+                onClick={handleAcceptEvents}
+              />
+            </div>
+          </section>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -5,9 +5,11 @@ import { eventTypes } from "../../constants/constants";
 import { NavRoutes } from "../../constants/routes";
 import { useAuth } from "../../contexts/AuthContext";
 import { addEvent } from "../../services/event.services";
+import { isValidMemberDates } from "../../helpers/validations";
 import { formatDate } from "../../helpers/date";
 import { ADD_EVENT, ADD_MEMBER, DATE, TIME } from "../../constants/constants";
 import Button from "../Button/Button";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Input from "../Input/Input";
 import Member from "../Member/Member";
 import {
@@ -27,16 +29,31 @@ export default function OneOnOneSecond({ firstPageInfo }) {
   const [endTime, setEndTime] = useState();
   const [members, setMembers] = useState([]);
 
+  const [isValidValues, setIsValidValues] = useState(true);
+
   const addMember = () => {
     if (
       date === undefined ||
       startTime === undefined ||
       endTime === undefined
     ) {
-      return; // Must be an error
+      setIsValidValues(false);
+      return;
     }
 
-    let member = { date, startTime, endTime, id: nanoid(),status:false,isBusy:false };
+    if (!isValidMemberDates(date, startTime, endTime,members)) return false;
+
+
+
+    let member = {
+      date,
+      startTime,
+      endTime,
+      id: nanoid(),
+      status: false,
+      isBusy: false,
+    };
+    setIsValidValues(true);
     setMembers([...members, member]);
   };
 
@@ -93,6 +110,7 @@ export default function OneOnOneSecond({ firstPageInfo }) {
         <Input type={TIME} onChange={handleStartTime} className={inputStyle} />
         <Input type={TIME} onChange={handleEndTime} className={inputStyle} />
         <Button name={ADD_MEMBER} onClick={addMember} />
+        <ErrorMessage message="Select all fields" isValid={isValidValues} />
         <div className="flex flex-wrap justify-center">
           {members.map(({ date, startTime, endTime, id }) => {
             return (

@@ -85,7 +85,7 @@ export default function OneOnOneSecond({ firstPageInfo }) {
       } catch (err) {
         alert(err);
       }
-    } 
+    
   };
 
   const deleteEvent = (id) => (event) => {

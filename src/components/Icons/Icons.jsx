@@ -2,7 +2,7 @@ export function DeleteIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-20 w-20"
+      className="h-10 w-10"
       fill="none"
       viewBox="0 0 48 48"
       stroke="currentColor"
@@ -16,7 +16,7 @@ export function PlusIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-20 w-20"
+      className="h-10 w-10"
       fill="none"
       viewBox="0 0 48 48"
       stroke="currentColor"
@@ -30,7 +30,7 @@ export function MinusIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-20 w-20"
+      className="h-10 w-10"
       fill="none"
       viewBox="0 0 48 48"
       stroke="currentColor"

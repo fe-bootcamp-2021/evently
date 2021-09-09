@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { nanoid } from "nanoid";
 import { useAuth } from "../../contexts/AuthContext";
 import { getEvent, addEvent } from "../../services/event.services";
 import RadioColors from "../../constants/radioColors";
@@ -50,19 +49,7 @@ export default function Event() {
       return el;
     });
     addEvent({ ...event, member: updatedEvent, eventId });
-    window.location.reload(false);
-  };
-
-  const chooseEvent = (memberId) => (ev) => {
-    ev.stopPropagation();
-
-    const newMembers = members.map((el) => {
-      if (memberId === el.id) {
-        return { ...el, status: !el.status };
-      }
-      return el;
-    });
-    setMembers([...newMembers]);
+    setMembers([...updatedEvent]);
   };
 
   const deleteEvent = (memberId) => (ev) => {
@@ -90,17 +77,21 @@ export default function Event() {
             <p className="ml-5">{event.location}</p>
           </div>
           <div className="flex flex-wrap justify-center">
-            {members.map(({ date, startTime, endTime, id, status, isBusy }) => {
+            {members.map(({ date, startTime, endTime, id, status, isBusy ,memberFirstName,memberLastName}) => {
               return (
                 <Member
                   date={date}
                   startTime={startTime}
                   endTime={endTime}
                   id={id}
-                  key={nanoid()}
-                  onClick={user ? deleteEvent(id) : chooseEvent(id)}
+                  key={id}
+                  onClick={deleteEvent(id)}
                   operation={status}
                   isBusy={isBusy}
+                  members={members} 
+                  setMembers={setMembers}
+                  memberFirstName={memberFirstName}
+                  memberLastName={memberLastName}
                 />
               );
             })}

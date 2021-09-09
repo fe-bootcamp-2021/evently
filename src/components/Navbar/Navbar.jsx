@@ -25,7 +25,7 @@ export default function Navbar() {
  
 
   return (
-    <nav className={navContainer} onClick={() => window.scroll(0, 0)}>
+    <nav className={navContainer} onClick={() => window.scroll(0, 0)}> 
       <div className={logoContainer}>
         <Logo />
       </div>

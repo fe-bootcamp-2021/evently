@@ -72,3 +72,15 @@ export const availability = classNames([
 export const buttonSection = classNames([
   "my-10 px-10 pt-10 border-t-2 border-fuchsia-600",
 ]);
+
+export const inputStyle = classNames([
+  "peer",
+  "placeholder-transparent",
+  "h-10",
+  "border-b-2",
+  "border-gray-300",
+  "text-gray-900",
+  "focus:outline-none",
+  "focus:borer-rose-600",
+  "m-5"
+]);

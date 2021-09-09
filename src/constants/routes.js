@@ -1,11 +1,12 @@
-import AccountPage from "../pages/Account/Account.page";
+import Account from "../components/Account/Account";
 import HomePage from "../pages/Home/Home.page";
 import Login from "../components/LoginSign/LoginSign";
 import SignUp from "../components/SignUp/SignUp";
+import Event from "../components/Event/Event";
 import UnAuthenticatedApp from "../components/UnAuthenticatedApp/UnAuthenticatedApp";
 import OneOnOne from "../components/OneOnOne/OneOnOne";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
-import PageAboutUS from "../pages/AboutUS/PageAboutUS";
+import PageAboutUS from "../pages/AboutUS/PageAboutUs";
 
 export const Routes = {
   login: () => ({
@@ -18,6 +19,12 @@ export const Routes = {
     path: "/signup",
     text: "Sign Up",
     component: SignUp,
+  }),
+
+  event: (id=":id") => ({
+    path: `/event/${id}`,
+    text: "event",
+    component: Event,
   }),
 
   unAuthenticated: () => ({
@@ -44,11 +51,16 @@ export const NavRoutes = {
   account: () => ({
     path: "/account",
     text: "Account",
-    component: AccountPage,
+    component: Account,
   }),
   oneOnOne: () => ({
     path: "/oneOnOne",
     text: "One On One",
     component: OneOnOne,
+  }),
+  event: (id=":id") => ({
+    path: `/event/${id}`,
+    text: "event",
+    component: Event,
   }),
 };

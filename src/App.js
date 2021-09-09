@@ -1,12 +1,15 @@
 import React from "react";
 import { useAuth } from "./contexts/AuthContext";
 import AuthenticatedApp from "./components/AuthenticatedApp/AuthenticatedApp";
-import UnAuthenticatedPage from "./pages/UnAuthenticatedPage/UnAuthenticated.page"
+import UnAuthenticatedPage from "./pages/UnAuthenticatedPage/UnAuthenticated.page";
+import Loading from "./components/Loading/Loading";
 
 export default function App() {
-  const { isAuthenticated } = useAuth();
+  const { user } = useAuth();
 
-  return (
-    <>{isAuthenticated ? <AuthenticatedApp /> : <UnAuthenticatedPage />}</>
-  );
+  if (user === null) {
+    return <Loading />;
+  }
+
+  return <>{user ? <AuthenticatedApp /> : <UnAuthenticatedPage />}</>;
 }

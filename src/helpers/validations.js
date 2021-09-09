@@ -69,7 +69,6 @@ export function checkTime(value) {
 
   if (errorMsg !== "") {
     alert(errorMsg);
-    // field.focus();
     return false;
   }
 
@@ -85,6 +84,7 @@ export function checkDate(value) {
 
   const re = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
   let regs;
+
   if (value !== "") {
     if ((regs = value.match(re))) {
       if (regs[3] < minYear || regs[3] > maxYear) {
@@ -102,12 +102,39 @@ export function checkDate(value) {
       errorMsg = "Empty date not allowed!";
     }
 
-    if (errorMsg !== "") {
-      alert(errorMsg);
-      // field.focus();
-      return false;
-    }
+  if (errorMsg !== "") {
+    alert(errorMsg);
+    return false;
+  }
 
     return true;
   }
+}
+
+export function isValidMemberDates(date, start, end, members) {
+  if (date === undefined || start === undefined || end === undefined) {
+    return false;
+  }
+
+  const startDate = new Date(`${date}T${start}`);
+  const endDate = new Date(`${date}T${end}`);
+
+  if (startDate >= endDate) return false;
+
+  if (members.length > 0) {
+    const isValid = members.some(({ date, startTime, endTime }) => {
+      const startTM = new Date(`${date}T${startTime}`);
+      const endTM = new Date(`${date}T${endTime}`);
+      // const endDate = new Date(`${date}T${end}`);
+      if (
+        (startDate < startTM && endDate <= startTM) ||
+        (startDate >= endTM && endDate >= endTM)
+      )
+        return true;
+      return false;
+    });
+    console.log(isValid);
+    return isValid;
+  }
+  return true;
 }

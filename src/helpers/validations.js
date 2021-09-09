@@ -84,6 +84,7 @@ export function checkDate(value) {
 
   const re = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
   let regs;
+  
   if (value !== "") {
     if ((regs = value.match(re))) {
       if (regs[1] < 1 || regs[1] > 31) {

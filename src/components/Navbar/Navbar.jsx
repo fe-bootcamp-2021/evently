@@ -14,18 +14,15 @@ import {
 
 export default function Navbar() {
   const history = useHistory();
-  const { setUser, setIsAuthenticated} = useAuth()
+  const { signout } = useAuth();
 
   const handleNav = () => {
-    history.push(Routes.login().path)
-    setIsAuthenticated(false)
-    setUser(false)
+    signout();
+    history.push(Routes.login().path);
   };
 
- 
-
   return (
-    <nav className={navContainer} onClick={() => window.scroll(0, 0)}> 
+    <nav className={navContainer} onClick={() => window.scroll(0, 0)}>
       <div className={logoContainer}>
         <Logo />
       </div>
@@ -43,11 +40,7 @@ export default function Navbar() {
           </Link>
         </div>
         <div>
-          <li
-            className={buttonOutline}
-            key={nanoid()}
-            onClick={handleNav}
-          >
+          <li className={buttonOutline} key={nanoid()} onClick={handleNav}>
             Log Out
           </li>
         </div>

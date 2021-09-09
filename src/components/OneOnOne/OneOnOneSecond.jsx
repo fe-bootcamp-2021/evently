@@ -5,9 +5,11 @@ import { eventTypes } from "../../constants/constants";
 import { NavRoutes } from "../../constants/routes";
 import { useAuth } from "../../contexts/AuthContext";
 import { addEvent } from "../../services/event.services";
+import { isValidMemberDates } from "../../helpers/validations";
 import { formatDate } from "../../helpers/date";
 import { ADD_EVENT, ADD_MEMBER, DATE, TIME } from "../../constants/constants";
 import Button from "../Button/Button";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Input from "../Input/Input";
 import Member from "../Member/Member";
 import {
@@ -28,9 +30,11 @@ export default function OneOnOneSecond({ firstPageInfo }) {
   const [endTime, setEndTime] = useState();
   const [members, setMembers] = useState([]);
 
+  const [isValidValues, setIsValidValues] = useState(true);
   const [isValidStartTime, setIsValidStartTime] = useState(true);
   const [isValidEndTime, setIsValidEndTime] = useState(true);
   const [isValidDate, setIsValidDate] = useState(true);
+
 
   const addMember = () => {
     if (
@@ -38,8 +42,13 @@ export default function OneOnOneSecond({ firstPageInfo }) {
       startTime === undefined ||
       endTime === undefined
     ) {
-      return; // Must be an error
+      setIsValidValues(false);
+      return;
     }
+
+
+    if (!isValidMemberDates(date, startTime, endTime,members)) return false;
+
 
     let member = {
       date,
@@ -49,11 +58,14 @@ export default function OneOnOneSecond({ firstPageInfo }) {
       status: false,
       isBusy: false,
     };
+
+    setIsValidValues(true);
+
     setMembers([...members, member]);
   };
 
   const handleAddEvent = (ev) => {
-    if (isValidStartTime && isValidEndTime && isValidDate) {
+  
       if (members.length === 0) {
         return; // Must be an error
       }
@@ -73,11 +85,7 @@ export default function OneOnOneSecond({ firstPageInfo }) {
       } catch (err) {
         alert(err);
       }
-    } else {
-      isValidStartTime ? setIsValidStartTime(true) : setIsValidStartTime(false);
-      isValidEndTime ? setIsValidEndTime(true) : setIsValidEndTime(false);
-      isValidDate ? setIsValidDate(true) : setIsValidDate(false);
-    }
+    } 
   };
 
   const deleteEvent = (id) => (event) => {
@@ -125,6 +133,7 @@ export default function OneOnOneSecond({ firstPageInfo }) {
         <Input type={TIME} onChange={handleStartTime} className={inputStyle} />
         <Input type={TIME} onChange={handleEndTime} className={inputStyle} />
         <Button name={ADD_MEMBER} onClick={addMember} />
+        <ErrorMessage message="Select all fields" isValid={isValidValues} />
         <div className="flex flex-wrap justify-center">
           {members.map(({ date, startTime, endTime, id }) => {
             return (

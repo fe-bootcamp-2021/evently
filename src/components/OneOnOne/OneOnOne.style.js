@@ -59,26 +59,6 @@ export const buttonContainer = classNames([
   "mb-5",
 ]);
 
-export const button = classNames([
-  "w-1/4",
-  "px-6",
-  "py-3",
-  "mt-3",
-  "lg:text-lg",
-  "text-sm",
-  "text-white",
-  "transition-all",
-  "duration-150",
-  "ease-linear",
-  "rounded-lg",
-  "shadow",
-  "outline-none",
-  "bg-custom-purple-1",
-  "hover:bg-pink-600",
-  "hover:shadow-lg",
-  "focus:outline-none",
-]);
-
 export const description = classNames(["mt-2"]);
 
 export const sectionDuration = classNames([

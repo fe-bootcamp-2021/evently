@@ -1,12 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import Navbar from "../Navbar/Navbar";
-import Button from "../Button/Button";
 import Input from "../Input/Input";
 import Trash from "../../images/Icons/Trash.svg"
 
 
-export default function EventCard(status) {
+export default function EventCard() {
 
     let [date, setDate] = useState(new Date().toLocaleDateString('en-GB').toString());
     let [time, setTime] = useState(new Date().toLocaleTimeString('en-US').toString())
@@ -14,11 +12,7 @@ export default function EventCard(status) {
 
     return (
         <>
-            <div className="shadow-md">
-              <Navbar />
-            </div>
-
-            <div className="w-4/12 mx-auto flex flex-col border border-green-200 bg-gradient-to-t from-green-200 via-white to-white px-4 py-4 my-12">
+            <div className="w-4/12 mx-auto flex flex-col border border-red-200 bg-gradient-to-t from-red-200 via-white to-white px-4 py-4 my-12">
                 
                 <div className="flex justify-between">
                     <div className="text-blue-900">

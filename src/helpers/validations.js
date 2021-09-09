@@ -78,7 +78,7 @@ export function checkTime(value) {
 
 export function checkDate(value) {
   let allowBlank = true;
-  let minYear = 1902;
+  let minYear = new Date();
   let maxYear = new Date().getFullYear();
 
   let errorMsg = "";
@@ -87,11 +87,7 @@ export function checkDate(value) {
   let regs;
   if (value !== "") {
     if ((regs = value.match(re))) {
-      if (regs[1] < 1 || regs[1] > 31) {
-        errorMsg = "Invalid value for day: " + regs[1];
-      } else if (regs[2] < 1 || regs[2] > 12) {
-        errorMsg = "Invalid value for month: " + regs[2];
-      } else if (regs[3] < minYear || regs[3] > maxYear) {
+      if (regs[3] < minYear || regs[3] > maxYear) {
         errorMsg =
           "Invalid value for year: " +
           regs[3] +
@@ -99,19 +95,19 @@ export function checkDate(value) {
           minYear +
           " and " +
           maxYear;
+      } else {
+        errorMsg = "Invalid date format: " + value;
       }
-    } else {
-      errorMsg = "Invalid date format: " + value;
+    } else if (!allowBlank) {
+      errorMsg = "Empty date not allowed!";
     }
-  } else if (!allowBlank) {
-    errorMsg = "Empty date not allowed!";
-  }
 
-  if (errorMsg !== "") {
-    alert(errorMsg);
-    // field.focus();
-    return false;
-  }
+    if (errorMsg !== "") {
+      alert(errorMsg);
+      // field.focus();
+      return false;
+    }
 
-  return true;
+    return true;
+  }
 }

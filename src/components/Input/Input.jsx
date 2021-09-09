@@ -20,7 +20,6 @@ export default function Input({
         onChange={onChange}
         required={required}
         checked={checked}
-        value={value}
       />
   );
 }

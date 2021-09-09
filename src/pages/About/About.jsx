@@ -11,7 +11,7 @@ import {
   leadership,
   img,
   img1,
-} from "./PageAboutUS.style";
+} from "./About.style";
 
 export default function PageAboutUS() {
   return (

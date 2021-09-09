@@ -42,3 +42,76 @@ export function isValidMinutes(value) {
   if (isNaN(value) || Number(value) < 0 || Number(value) > 59) return false;
   return true;
 }
+
+export function checkTime(value) {
+  let errorMsg = "";
+
+  const re = /^(\d{1,2}):(\d{2})(:00)?([ap]m)?$/;
+  let regs;
+  if (value !== "") {
+    if ((regs = value.match(re))) {
+      if (regs[4]) {
+        if (regs[1] < 1 || regs[1] > 12) {
+          errorMsg = "Invalid value for hours: " + regs[1];
+        }
+      } else {
+        if (regs[1] > 23) {
+          errorMsg = "Invalid value for hours: " + regs[1];
+        }
+      }
+      if (!errorMsg && regs[2] > 59) {
+        errorMsg = "Invalid value for minutes: " + regs[2];
+      }
+    } else {
+      errorMsg = "Invalid time format: " + value;
+    }
+  }
+
+  if (errorMsg !== "") {
+    alert(errorMsg);
+    // field.focus();
+    return false;
+  }
+
+  return true;
+}
+
+export function checkDate(value) {
+  let allowBlank = true;
+  let minYear = 1902;
+  let maxYear = new Date().getFullYear();
+
+  let errorMsg = "";
+
+  const re = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
+  let regs;
+  if (value !== "") {
+    if ((regs = value.match(re))) {
+      if (regs[1] < 1 || regs[1] > 31) {
+        errorMsg = "Invalid value for day: " + regs[1];
+      } else if (regs[2] < 1 || regs[2] > 12) {
+        errorMsg = "Invalid value for month: " + regs[2];
+      } else if (regs[3] < minYear || regs[3] > maxYear) {
+        errorMsg =
+          "Invalid value for year: " +
+          regs[3] +
+          " - must be between " +
+          minYear +
+          " and " +
+          maxYear;
+      }
+    } else {
+      errorMsg = "Invalid date format: " + value;
+    }
+  } else if (!allowBlank) {
+    errorMsg = "Empty date not allowed!";
+  }
+
+  if (errorMsg !== "") {
+    alert(errorMsg);
+    // field.focus();
+    return false;
+  }
+
+  return true;
+}

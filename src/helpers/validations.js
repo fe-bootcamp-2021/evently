@@ -43,13 +43,13 @@ export function isValidMinutes(value) {
   return true;
 }
 
-export function checkTime(field) {
+export function checkTime(value) {
   let errorMsg = "";
 
   const re = /^(\d{1,2}):(\d{2})(:00)?([ap]m)?$/;
   let regs;
-  if (field.value !== "") {
-    if ((regs = field.value.match(re))) {
+  if (value !== "") {
+    if ((regs = value.match(re))) {
       if (regs[4]) {
         if (regs[1] < 1 || regs[1] > 12) {
           errorMsg = "Invalid value for hours: " + regs[1];
@@ -63,20 +63,20 @@ export function checkTime(field) {
         errorMsg = "Invalid value for minutes: " + regs[2];
       }
     } else {
-      errorMsg = "Invalid time format: " + field.value;
+      errorMsg = "Invalid time format: " + value;
     }
   }
 
   if (errorMsg !== "") {
     alert(errorMsg);
-    field.focus();
+    // field.focus();
     return false;
   }
 
   return true;
 }
 
-export function checkDate(field) {
+export function checkDate(value) {
   let allowBlank = true;
   let minYear = 1902;
   let maxYear = new Date().getFullYear();
@@ -85,8 +85,8 @@ export function checkDate(field) {
 
   const re = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
   let regs;
-  if (field.value !== "") {
-    if ((regs = field.value.match(re))) {
+  if (value !== "") {
+    if ((regs = value.match(re))) {
       if (regs[1] < 1 || regs[1] > 31) {
         errorMsg = "Invalid value for day: " + regs[1];
       } else if (regs[2] < 1 || regs[2] > 12) {
@@ -101,7 +101,7 @@ export function checkDate(field) {
           maxYear;
       }
     } else {
-      errorMsg = "Invalid date format: " + field.value;
+      errorMsg = "Invalid date format: " + value;
     }
   } else if (!allowBlank) {
     errorMsg = "Empty date not allowed!";
@@ -109,7 +109,7 @@ export function checkDate(field) {
 
   if (errorMsg !== "") {
     alert(errorMsg);
-    field.focus();
+    // field.focus();
     return false;
   }
 

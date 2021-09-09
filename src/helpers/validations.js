@@ -43,22 +43,18 @@ export function isValidMinutes(value) {
   return true;
 }
 
-// For example, when the date is checked, the return value, regs, is an array with elements 1 through 3 containing the day, month and year components of the input string. For the time check, the array returned includes the hour (pos 1), minutes (pos 2) and, optionally, the am/pm string (pos 3).
 export function checkTime(field) {
   let errorMsg = "";
 
-  // regular expression to match required time format
   const re = /^(\d{1,2}):(\d{2})(:00)?([ap]m)?$/;
   let regs;
   if (field.value !== "") {
     if ((regs = field.value.match(re))) {
       if (regs[4]) {
-        // 12-hour time format with am/pm
         if (regs[1] < 1 || regs[1] > 12) {
           errorMsg = "Invalid value for hours: " + regs[1];
         }
       } else {
-        // 24-hour time format
         if (regs[1] > 23) {
           errorMsg = "Invalid value for hours: " + regs[1];
         }
@@ -87,7 +83,6 @@ export function checkDate(field) {
 
   let errorMsg = "";
 
-  // regular expression to match required date format
   const re = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
   let regs;
   if (field.value !== "") {

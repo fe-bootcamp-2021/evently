@@ -6,7 +6,7 @@ import Event from "../components/Event/Event";
 import UnAuthenticatedApp from "../components/UnAuthenticatedApp/UnAuthenticatedApp";
 import OneOnOne from "../components/OneOnOne/OneOnOne";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
-import PageAboutUS from "../pages/AboutUS/PageAboutUs";
+import PageAboutUS from "../pages/About/About";
 
 export const Routes = {
   login: () => ({

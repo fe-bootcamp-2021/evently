@@ -20,6 +20,7 @@ import {
   buttonSection,
   buttonContainer,
 } from "./OneOnOne.style";
+import { checkTime, checkDate } from "../../helpers/validations";
 
 export default function OneOnOneSecond({ firstPageInfo }) {
   const { user } = useAuth();
@@ -30,6 +31,10 @@ export default function OneOnOneSecond({ firstPageInfo }) {
   const [members, setMembers] = useState([]);
 
   const [isValidValues, setIsValidValues] = useState(true);
+  const [isValidStartTime, setIsValidStartTime] = useState(true);
+  const [isValidEndTime, setIsValidEndTime] = useState(true);
+  const [isValidDate, setIsValidDate] = useState(true);
+
 
   const addMember = () => {
     if (
@@ -41,8 +46,8 @@ export default function OneOnOneSecond({ firstPageInfo }) {
       return;
     }
 
-    if (!isValidMemberDates(date, startTime, endTime,members)) return false;
 
+    if (!isValidMemberDates(date, startTime, endTime,members)) return false;
 
 
     let member = {
@@ -53,30 +58,34 @@ export default function OneOnOneSecond({ firstPageInfo }) {
       status: false,
       isBusy: false,
     };
+
     setIsValidValues(true);
+
     setMembers([...members, member]);
   };
 
-  const handleAddEvent = () => {
-    if (members.length === 0) {
-      return; // Must be an error
-    }
+  const handleAddEvent = (ev) => {
+  
+      if (members.length === 0) {
+        return; // Must be an error
+      }
 
-    const event = {
-      userId: user.uid,
-      createdOn: formatDate(new Date()),
-      member: members,
-      eventType: eventTypes.oneOnOne,
-    };
+      const event = {
+        userId: user.uid,
+        createdOn: formatDate(new Date()),
+        member: members,
+        eventType: eventTypes.oneOnOne,
+      };
 
-    const eventInfo = Object.assign(firstPageInfo, event);
+      const eventInfo = Object.assign(firstPageInfo, event);
 
-    try {
-      addEvent(eventInfo);
-      history.push(NavRoutes.home().path);
-    } catch (err) {
-      alert(err);
-    }
+      try {
+        addEvent(eventInfo);
+        history.push(NavRoutes.home().path);
+      } catch (err) {
+        alert(err);
+      }
+    } 
   };
 
   const deleteEvent = (id) => (event) => {
@@ -87,15 +96,29 @@ export default function OneOnOneSecond({ firstPageInfo }) {
   };
 
   const handleDate = (event) => {
-    setDate(event.target.value);
+    const value = event.target.value;
+    checkDate(value) ? setIsValidDate(true) : setIsValidDate(false);
+    if (isValidDate === true) {
+      setDate(event.target.value);
+    }
   };
 
   const handleStartTime = (event) => {
-    setStartTime(event.target.value);
+    const value = event.target.value;
+    checkTime(value) ? setIsValidStartTime(true) : setIsValidStartTime(false);
+
+    if (isValidStartTime === true) {
+      setStartTime(event.target.value);
+    }
   };
 
   const handleEndTime = (event) => {
-    setEndTime(event.target.value);
+    const value = event.target.value;
+    checkTime(value) ? setIsValidEndTime(true) : setIsValidEndTime(false);
+
+    if (isValidEndTime === true) {
+      setEndTime(event.target.value);
+    }
   };
 
   const handleCancel = () => {

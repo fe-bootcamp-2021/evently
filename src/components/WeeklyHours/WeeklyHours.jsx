@@ -3,6 +3,12 @@ import { nanoid } from "nanoid";
 import { useAuth } from "../../contexts/AuthContext";
 import { getUser } from "../../services/user.services/user.services";
 import { weekDays } from "../../constants/constants";
+import {
+  container,
+  weeklyHoursContainer,
+  availability,
+  dateOverride,
+} from "./WeeklyHours.style";
 
 export default function WeeklyHours() {
   const { user } = useAuth();
@@ -21,11 +27,10 @@ export default function WeeklyHours() {
   }, []);
 
   return (
-    <div className="flex flex-wrap w-11/12 mt-10">
-      {}
-      <div className="w-7/12 border-2 border-fuchsia-600 p-3">
+    <div className={container}>
+      <div className={weeklyHoursContainer}>
         <span className="font-semibold">WEEKLY HOURS</span>
-        <div className="flex w-full flex-wrap pt-3">
+        <div className={availability}>
           {weekDaysAvailability ? (
             weekDaysAvailability.map((el, ind) => {
               return (
@@ -44,7 +49,7 @@ export default function WeeklyHours() {
           )}
         </div>
       </div>
-      <div className="w-5/12 border-l-0 border-2 border-fuchsia-600 p-3">
+      <div className={dateOverride}>
         <span className="font-semibold">DATE OVERRIDES</span>
         <p className="mt-3">
           To override your hours on specific dates, update your schedule under

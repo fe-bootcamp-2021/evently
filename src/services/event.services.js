@@ -5,26 +5,21 @@ export function addEvent({
   eventId,
   title,
   location,
-  link,
   description,
   color,
-  dateRange,
-  minutes,
   createdOn,
+  member,
   eventType
-
 }) {
   try {
     db.ref(`/event/${eventId}`).set({
       userId,
       title,
       location,
-      link,
       description,
       color,
-      dateRange,
-      minutes,
       createdOn,
+      member,
       eventType
     });
   } catch (err) {
@@ -34,12 +29,28 @@ export function addEvent({
 
 export async function getEvents(id) {
   try {
-    return db.ref(`event`)
+    return db
+      .ref(`event`)
       .orderByChild("userId")
       .equalTo(id)
-      .once("value").then((snapshot) => {
+      .once("value")
+      .then((snapshot) => {
         return snapshot.val();
-      }) ;
+      });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
+export async function getEvent(id) {
+  try {
+    return db
+      .ref(`event/${id}`)
+      .once("value")
+      .then((snapshot) => {
+        return snapshot.val();
+      });
   } catch (err) {
     console.log(err);
   }

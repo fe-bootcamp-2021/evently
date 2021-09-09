@@ -95,3 +95,6 @@ export const buttonContainer = classNames([
   "w-full",
   "mb-5",
 ]);
+export const signUpStyle = classNames([
+  "underline text-custom-current hover:text-purple-700 cursor-pointer",
+]);

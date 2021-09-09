@@ -6,6 +6,14 @@ import Card from "../Card/Card";
 import Dropdown from "../Dropdown/Dropdown";
 import Button from "../Button/Button";
 import Navbar from "../Navbar/Navbar";
+import {
+  headContainer,
+  myMeeting,
+  leftSide,
+  subHeader,
+  content,
+  cardContainer
+} from "./Home.style";
 
 export default function Home() {
   const { user } = useAuth();
@@ -21,12 +29,12 @@ export default function Home() {
 
   return (
     <div className="h-screen">
-      <div className="max-w-lm h-48 inline-block flex flex-col mx-auto bg-white shadow-md items-center ">
+      <div className={headContainer}>
         <Navbar />
         <div className="w-9/12">
-          <div className="flex justify-between items-center">
-            <div className="flex flex-col justify-between items-left mb-4">
-              <h1 className="text-2xl text-blue-900 mb-4">My Meetings</h1>
+          <div className={subHeader}>
+            <div className={leftSide}>
+              <h2 className={myMeeting}>My Meetings</h2>
               <div className="flex mb-6">
                 <Button name="Event Types" variant="link" />
                 <Button name="Scheduled Events" variant="link" />
@@ -41,28 +49,25 @@ export default function Home() {
       </div>
 
       <div>
-        <div className="w-9/12 mt-6 mx-auto items-center">
-          <div className="grid 2xl:grid-cols-3 sm:grid-cols-2 gap-4 mt-10">
-            
-            {events ? (
-              Object.keys(events).map((el) => {
-                const { title, minutes, eventType, color, link } = events[el];
-                return (
-                  <Card
-                    key={nanoid()}
-                    title={title}
-                    duration={minutes}
-                    type={eventType}
-                    color={color}
-                    link={link}
-                  />
-                );
-              })
-            ) : (
-              isAccountVerified
-                ? "Congratulations now you can create an Event!"
-                : "Please verify your account to create an Event!"
-            )}
+        <div className={content}>
+          <div className={cardContainer}>
+            {events
+              ? Object.keys(events).map((el) => {
+                  const { title, eventType, color, link } = events[el];
+                  return (
+                    <Card
+                      key={nanoid()}
+                      title={title}
+                      type={eventType}
+                      color={color}
+                      link={link}
+                      id={el}
+                    />
+                  );
+                })
+              : isAccountVerified
+              ? "Congratulations now you can create an Event!"
+              : "Please verify your account to create an Event!"}
           </div>
         </div>
 

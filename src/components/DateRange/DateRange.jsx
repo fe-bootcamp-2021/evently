@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { convertDateToString } from "../../helpers/date";
+import { formatDate } from "../../helpers/date";
 import Button from "../Button/Button";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import { formatDate } from "../../helpers/date";
+import Input from "../Input/Input";
 
 export default function DataRange({ setDateRangeInfo }) {
   const [isShowRange, setIsShowRange] = useState(false);
@@ -16,7 +17,7 @@ export default function DataRange({ setDateRangeInfo }) {
   });
   const [calendarType, setCalendarType] = useState(1);
   const [days, setDays] = useState(60);
-  const [rangeType, setRangeType] = useState("1");
+  const [rangeType, setRangeType] = useState(1);
   const [eventDayType, setEventDayType] = useState(1);
   const [isValidDateDifference, setIsValidDateDifference] = useState(true);
 
@@ -34,19 +35,20 @@ export default function DataRange({ setDateRangeInfo }) {
 
   useEffect(() => {
     let dateRangeValues = {};
+    const rangeVal = Number(rangeType);
     dateRangeValues.type = rangeType;
 
-    if (rangeType === "1") {
+    if (rangeVal === 1) {
       dateRangeValues.value = { days, type: eventDayType };
 
       setIsShowRange(false);
-    } else if (rangeType === "2") {     
+    } else if (rangeVal === 2) {
       dateRangeValues.value = {
         start: formatDate(startValue.selectedDate),
         end: formatDate(endValue.selectedDate),
       };
       setIsShowRange(true);
-    } else if (rangeType === "3") {
+    } else if (rangeVal === 3) {
       setIsShowRange(false);
     }
 
@@ -84,22 +86,22 @@ export default function DataRange({ setDateRangeInfo }) {
           <div className="mt-2">
             <div className="mt-2">
               <label className="inline-flex items-center">
-                <input
+                <Input
                   type="radio"
                   name="dateRange"
                   value="1"
+                  required="required"
                   onChange={handleDateRange}
                   checked={rangeType === 1 ? "checked" : ""}
                 />
-                <input
+                <Input
                   type="number"
-                  name="name"
                   placeholder=" "
-                  value={days}
-                  required
-                  className="ml-2 w-16 rounded"
+                  required="required"
                   onChange={(ev) => setDays(ev.target.value)}
+                  className="ml-2 w-16 rounded"
                 />
+
                 <div className="ml-2">
                   <label className="block">
                     <select
@@ -115,54 +117,54 @@ export default function DataRange({ setDateRangeInfo }) {
               </label>
             </div>
             <div className="mt-2 flex">
-              <label className="">
-                <input
-                  type="radio"
-                  name="dateRange"
-                  value="2"
-                  onChange={handleDateRange}
-                  checked={rangeType === 2 ? "checked" : ""}
-                />
-                <span className="ml-2">Within a date range</span>
-                {isShowRange ? (
-                  <>
-                    <Button
-                      name={`${convertDateToString(startValue.selectedDate)}`}
-                      variant="buttonOutline"
-                      onClick={handleRange(1)}
-                      className="ml-5 mt-0 p-1"
+              <Input
+                type="radio"
+                name="dateRange"
+                value="2"
+                required="required"
+                onChange={handleDateRange}
+                checked={rangeType === 2 ? "checked" : ""}
+              />
+              <div className="ml-2">Within a date range</div>
+              {isShowRange ? (
+                <div>
+                  <Button
+                    name={`${convertDateToString(startValue.selectedDate)}`}
+                    variant="buttonOutline"
+                    onClick={handleRange(1)}
+                    className="ml-5 mt-0 p-1"
+                  />
+                  <Button
+                    name={`${convertDateToString(endValue.selectedDate)}`}
+                    variant="buttonOutline"
+                    onClick={handleRange(2)}
+                    className="ml-5 mt-0 p-1"
+                  />
+                  <ErrorMessage
+                    message="End date should be greater from start date."
+                    isValid={isValidDateDifference}
+                  />
+                  {isShowCalendar ? (
+                    <Calendar
+                      onChange={handleDate}
+                      value={calendarValue.selectedDate}
+                      className="mt-2"
                     />
-                    <Button
-                      name={`${convertDateToString(endValue.selectedDate)}`}
-                      variant="buttonOutline"
-                      onClick={handleRange(2)}
-                      className="ml-5 mt-0 p-1"
-                    />
-                    <ErrorMessage
-                      message="End date should be greater from start date."
-                      isValid={isValidDateDifference}
-                    />
-                    {isShowCalendar ? (
-                      <Calendar
-                        onChange={handleDate}
-                        value={calendarValue.selectedDate}
-                        className="mt-2"
-                      />
-                    ) : (
-                      <></>
-                    )}
-                  </>
-                ) : (
-                  <></>
-                )}
-              </label>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
             <div className="mt-2">
               <label className="inline-flex items-center">
-                <input
+                <Input
                   type="radio"
                   name="dateRange"
                   value="3"
+                  required="required"
                   onChange={handleDateRange}
                   checked={rangeType === 3 ? "checked" : ""}
                 />

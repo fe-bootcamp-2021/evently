@@ -7,15 +7,13 @@ export default function OneOnOne() {
   const [page, setPage] = useState(1);
 
   const [firstPageInfo, setFirstPageInfo] = useState({});
-  const [secondPageInfo, setSecondPageInfo] = useState({});
 
   return (
     <>
       <Navbar />
       {page === 2 ? (
         <OneOnOneSecond
-          setSecondPageInfo={setSecondPageInfo}
-          setFirstPageInfo={firstPageInfo}
+          firstPageInfo={firstPageInfo}
         />
       ) : (
         <OneOnOneFirst setFirstPageInfo={setFirstPageInfo} setPage={setPage} />

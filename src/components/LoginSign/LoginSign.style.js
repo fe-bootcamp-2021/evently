@@ -2,7 +2,6 @@ import classNames from "classnames/bind";
 
 export const containerLogin = classNames([
   "min-h-screen",
-  "bg-gray-100",
   "py-6",
   "flex",
   "flex-col",
@@ -20,10 +19,10 @@ export const containerBg2 = classNames([
   "absolute",
   "inset-0",
   "bg-gradient-to-r",
-  "from-blue-300",
-  "to-blue-600",
+  "from-blue-200",
+  "to-blue-900",
   "shadow-lg",
-  " transform",
+  "transform",
   "-skew-y-6",
   "sm:skew-y-0",
   "sm:-rotate-6",
@@ -34,15 +33,16 @@ export const containerBg3 = classNames([
   "px-8",
   "py-25",
   "bg-white",
-  "shadow-lg",
+  "shadow-xl",
   "sm:rounded-3xl",
   "sm:p-20",
 ]);
 export const containerForm = classNames(["max-w-lg", "mx-auto"]);
 export const titleLogin = classNames([
-  "text-2xl",
+  "text-4xl",
   "font-semibold",
   "justify-center",
+  "text-blue-900",
   "flex",
 ]);
 export const inputWrapper = classNames(["divide-y", "divide-gray-200"]);
@@ -96,5 +96,5 @@ export const buttonContainer = classNames([
   "mb-5",
 ]);
 export const signUpStyle = classNames([
-  "underline text-custom-current hover:text-purple-700 cursor-pointer",
+  "underline text-sm hover:text-purple-700 text-blue-600 cursor-pointer",
 ]);

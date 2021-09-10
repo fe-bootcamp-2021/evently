@@ -4,9 +4,10 @@ import { NavRoutes } from "../../constants/routes";
 import { isValidEmail } from "../../helpers/validation.helpers";
 import RadioColors from "../../constants/radioColors";
 import { getUrl } from "../../helpers/url.helpers";
-import { COPY_LINK, TEXT } from "../../constants/constants";
+import { COPY_LINK, TEXT,SHARE } from "../../constants/constants";
 import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
+import Input from "../Input/Input";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import {
   cardContainer,
@@ -14,10 +15,11 @@ import {
   titleStyle,
   infoButton,
   shareButton,
+  copyLinkButton,
   modalWindowContainer,
 } from "./Card.style";
 
-export default function Card({ title, type, color, id }) {
+export default function Card({ title, type, color, id,userEmail }) {
   const history = useHistory();
   // eslint-disable-next-line
   const [emailValue, setEmailValue] = useState(null);
@@ -66,11 +68,17 @@ export default function Card({ title, type, color, id }) {
           <span className={infoButton}>{type} </span>
           <hr className="mt-8 py-3" />
           <div className={buttonContainer}>
-            <Button
+          <Button
               name={COPY_LINK}
-              className={shareButton}
+              className={copyLinkButton}
               variant="custom"
               onClick={handleCopyLink}
+            />
+            <Button
+             name={SHARE}
+              className={shareButton}
+              variant="custom"
+              onClick={() => setShowModal(true)}
             />
           </div>
         </div>
@@ -79,14 +87,13 @@ export default function Card({ title, type, color, id }) {
         showModal={showModal}
         body={
           <>
-            <input
+          <Input
               type={TEXT}
-              name="name"
               placeholder=" "
-              required
+              required="required"
               className={modalWindowContainer}
-              onChange={handleEmail}
-            />
+              onChange={handleEmail}/>
+        
             <ErrorMessage
               message="Invalid email address"
               isValid={isValidEmailValue}
@@ -95,6 +102,9 @@ export default function Card({ title, type, color, id }) {
         }
         setShowModal={setShowModal}
         title="Input Email"
+        email={emailValue}
+        link={eventLink}
+        userEmail={userEmail}
       />
     </div>
   );

@@ -58,6 +58,7 @@ export default function Home() {
                     color={color}
                     link={link}
                     id={el}
+                    userEmail={user.email}
                   />
                 );
               })}

@@ -18,7 +18,7 @@ export const useAuth = () => {
 // Provider hook that creates auth object and handles state
 function useProvideAuth() {
   const [user, setUser] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   // Wrap any Firebase methods we want to use making sure ...
   // ... to save the user to state.
   const signin = (email, password) => {
@@ -26,7 +26,7 @@ function useProvideAuth() {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((response) => {
-        setIsAuthenticated(true)
+        setIsAuthenticated(true);
         setUser(response.user);
         return response.user;
       });
@@ -52,16 +52,20 @@ function useProvideAuth() {
       .createUserWithEmailAndPassword(email, password)
       .then((response) => {
         response.user.sendEmailVerification();
-        addUser({ email, password, uid: response.user.uid,
+        addUser({
+          email,
+          password,
+          uid: response.user.uid,
           birthday,
           endHour,
           firstName,
           gender,
           lastName,
           startHour,
-          weekDayAvailability, });
+          weekDayAvailability,
+        });
         setUser(response.user);
-        setIsAuthenticated(true)
+        setIsAuthenticated(true);
         return response.user;
       });
   };

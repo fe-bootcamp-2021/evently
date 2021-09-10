@@ -4,9 +4,11 @@ import AuthenticatedApp from "./components/AuthenticatedApp/AuthenticatedApp";
 import UnAuthenticatedPage from "./pages/UnAuthenticatedPage/UnAuthenticated.page";
 
 export default function App() {
-  const { isAuthenticated } = useAuth();
+  const { user } = useAuth();
 
-  return (
-    <>{isAuthenticated ? <AuthenticatedApp /> : <UnAuthenticatedPage />}</>
-  );
+  if (user === null) {
+    return <p>Loading...</p>;
+  }
+
+  return <>{user ? <AuthenticatedApp /> : <UnAuthenticatedPage />}</>;
 }

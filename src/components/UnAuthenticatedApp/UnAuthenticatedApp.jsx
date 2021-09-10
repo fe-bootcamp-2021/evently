@@ -30,22 +30,31 @@ import {
   imgDiv5,
   circle6,
 } from "./UnAuthenticatedApp.style";
+import Logo from "../Logo/Logo";
+
 
 export default function UnAuthenticatedApp() {
   return (
     <>
       <div className={container}>
-        <div className={nav}>
-          <Link to={Routes.login().path}>
-            <Button name={logIn} variant="buttonOutline" className="m-1" />
-          </Link>
-          <Link to={Routes.signup().path}>
-            <Button
-              name={signUp}
-              variant="buttonOutline"
-              className="m-1 mr-5"
-            />
-          </Link>
+        <div>
+                    <div className={nav}>
+            <div className="w-1/3 pl-2 flex items-center">
+              <Logo />
+            </div>
+            <div className="w-2/3 flex justify-end">
+              <Link to={Routes.login().path}>
+                <Button name={logIn} variant="buttonOutline" className="m-1" />
+              </Link>
+              <Link to={Routes.signup().path}>
+                <Button
+                  name={signUp}
+                  variant="buttonOutline"
+                  className="m-1 mr-5"
+                />
+              </Link>
+            </div>
+          </div>
         </div>
         <div className={contentContainer}>
           <div className={leftSide}>
@@ -55,14 +64,6 @@ export default function UnAuthenticatedApp() {
             <h2 className="mt-8 text-blue-900">
               We will help you schedule meetings <br /> on each day.
             </h2>
-            <div className="flex mt-4">
-              <Input
-                type="email"
-                className={input}
-                placeholder="Enter Your Email"
-              />
-              <Button name={logIn} className={buttonStyle} variant="custom" />
-            </div>
           </div>
 
           <div className={rightSide}>
@@ -71,13 +72,13 @@ export default function UnAuthenticatedApp() {
             </div>
             <div className={circle2}>
               <div className={imgDiv1}>
-                <img src={Image} className="-inset-4" alt="" />
+                 <img src={Image} className="-inset-4" alt="" /> 
               </div>
               <div className={imgDiv2}>
-                <img src={Image2} className="top-5 right-12" alt="" />
+                 <img src={Image2} className="top-5 right-12" alt="" /> 
               </div>
               <div className={imgDiv3}>
-                <img src={Image} className="inset-x-10 bottom-7" alt="" />
+                 <img src={Image} className="inset-x-10 bottom-7" alt="" /> 
               </div>
             </div>
             <div className={circle3}>
@@ -87,7 +88,7 @@ export default function UnAuthenticatedApp() {
 
             <div className={circle4}>
               <div className={imgDiv4}>
-                <img src={Image2} className="w-14 h-14" alt="" />
+                 <img src={Image2} className="w-14 h-14" alt="" />
               </div>
             </div>
             <div className={circle5}>
@@ -96,7 +97,7 @@ export default function UnAuthenticatedApp() {
 
             <div className={circle6}></div>
             <div className={imgDiv5}>
-              <img src={Image} className="w-28 h-28" alt="" />
+              <img src={Image} className="w-28 h-28" alt="" /> 
             </div>
           </div>
         </div>

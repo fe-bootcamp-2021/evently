@@ -11,6 +11,7 @@ export default function Dropdown({ buttonName }) {
   const { user } = useAuth();
   const isDisabled = !user.emailVerified;
   const [show, setShow] = useState(false);
+
   let showFn = () => {
     setShow(!show);
     return show;

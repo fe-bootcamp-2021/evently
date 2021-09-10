@@ -46,17 +46,19 @@ export default function Event() {
     let isValidInfo = true;
     const path = history.location.pathname;
     const eventId = path.replace("/event/", "");
-    const updatedEvent = members.map((el) => {
+    const updatedEvent = members.map((el) => {console.log(el)
       if (el.status) {
-        if (el.memberFirstName !== "" && el.memberLastName !== "")
+        if (el.memberFirstName !== "" && el.memberLastName !== "") {
+          isValidInfo = true;
           return { ...el, isBusy: true };
-        else {
+        } else {
           setErrorDates(true);
           isValidInfo = false;
           return el;
         }
+      } else {
+        return { ...el, memberFirstName: "", memberLastName: "" };
       }
-      return el;
     });
     if (isValidInfo) {
       addEvent({ ...event, member: updatedEvent, eventId });

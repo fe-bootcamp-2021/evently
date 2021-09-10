@@ -35,10 +35,6 @@ export default function Home() {
           <div className={subHeader}>
             <div className={leftSide}>
               <h2 className={myMeeting}>My Meetings</h2>
-              <div className="flex mb-6">
-                <Button name="Event Types" variant="link" />
-                <Button name="Scheduled Events" variant="link" />
-              </div>
             </div>
 
             <div className="h-36">

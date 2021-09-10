@@ -4,13 +4,7 @@ export const container = classNames(["mx-auto flex flex-col"]);
 export const contentContainer = classNames([
   "w-9/12 mx-auto flex justify-between items-center justify-center",
 ]);
-
-
-
 export const nav = classNames(["shadow-md flex w-full"]);
-
-
-
 export const leftSide = classNames([
   "h-screen flex flex-col items-left justify-center",
 ]);

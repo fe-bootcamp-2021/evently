@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { NavRoutes } from "../../constants/routes";
-import { isValidEmail } from "../../helpers/validations";
+import { isValidEmail } from "../../helpers/validation.helpers";
 import RadioColors from "../../constants/radioColors";
 import { getUrl } from "../../helpers/url.helpers";
 import { COPY_LINK, TEXT } from "../../constants/constants";

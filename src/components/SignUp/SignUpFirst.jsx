@@ -4,8 +4,8 @@ import {
   isValidEmail,
   isValidPassword,
   isEmptyString,
-} from "../../helpers/validations";
-import { convertDateToString, formatDate } from "../../helpers/date";
+} from "../../helpers/validation.helpers";
+import { convertDateToString, formatDate } from "../../helpers/date.helpers.";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Button from "../Button/Button";
 import {

@@ -1,12 +1,12 @@
 import Account from "../components/Account/Account";
-import HomePage from "../pages/Home/Home.page";
+import Home from "../components/Home/Home";
 import Login from "../components/LoginSign/LoginSign";
 import SignUp from "../components/SignUp/SignUp";
 import Event from "../components/Event/Event";
-import UnAuthenticatedApp from "../components/UnAuthenticatedApp/UnAuthenticatedApp";
+import UnAuthenticated from "../components/UnAuthenticated/UnAuthenticated";
 import OneOnOne from "../components/OneOnOne/OneOnOne";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
-import PageAboutUS from "../pages/About/About";
+import About from "../components/About/About";
 
 export const Routes = {
   login: () => ({
@@ -30,7 +30,7 @@ export const Routes = {
   unAuthenticated: () => ({
     path: "/",
     text: "Info",
-    component: UnAuthenticatedApp,
+    component: UnAuthenticated,
   }),
 
   error: () => ({ path: "*", text: "", component: ErrorPage }),
@@ -40,12 +40,12 @@ export const NavRoutes = {
   home: () => ({
     path: "/home",
     text: "Home",
-    component: HomePage,
+    component: Home,
   }),
   about: () => ({
     path: "/about",
     text: "About",
-    component: PageAboutUS,
+    component: About,
   }),
 
   account: () => ({

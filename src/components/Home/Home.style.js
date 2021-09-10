@@ -13,3 +13,4 @@ export const cardContainer = classNames([
   "grid 2xl:grid-cols-3 sm:grid-cols-2 gap-4 mt-10",
 ]);
 export const message = classNames(["text-5xl text-blue-900"])
+

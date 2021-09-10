@@ -8,6 +8,7 @@ import {
 import { convertDateToString, formatDate } from "../../helpers/date.helpers.";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Button from "../Button/Button";
+import Input from "../Input/Input";
 import {
   containerSignUp,
   card,
@@ -121,13 +122,12 @@ export default function SignUpFirst({ setFirstPageInfo, setPage }) {
           <h2 className={title}>Registration</h2>
           <div className={items}>
             <label className={label}>Enter your email to get started *</label>
-            <input
+            <Input
               type="text"
               placeholder=" "
-              required
+              required="required"
               className={input}
               onChange={handleEmail}
-              autoComplete="off"
             />
             <ErrorMessage
               message="Invalid email address"
@@ -136,13 +136,12 @@ export default function SignUpFirst({ setFirstPageInfo, setPage }) {
           </div>
           <div className={items}>
             <label className={label}>Password *</label>
-            <input
+            <Input
               type="password"
               placeholder=" "
-              required
+              required="required"
               className={input}
               onChange={handlePassword}
-              autoComplete="off"
             />
             <ErrorMessage
               message="Password should be minimum eight characters, at least one letter and one number"
@@ -151,13 +150,14 @@ export default function SignUpFirst({ setFirstPageInfo, setPage }) {
           </div>
           <div className={items}>
             <label className={label}>First Name *</label>
-            <input
+            <Input
               type="text"
               placeholder=" "
               onChange={handleFirstName}
               className={input}
-              required
+              required="required"
             />
+
             <ErrorMessage
               message="First name is required"
               isValid={isValidFirstName}
@@ -165,11 +165,11 @@ export default function SignUpFirst({ setFirstPageInfo, setPage }) {
           </div>
           <div className={items}>
             <label className={label}>Last Name *</label>
-            <input
+            <Input
               type="text"
               placeholder=" "
               onChange={handleLastName}
-              required
+              required="required"
               className={input}
             />
             <ErrorMessage
@@ -179,21 +179,21 @@ export default function SignUpFirst({ setFirstPageInfo, setPage }) {
           </div>
           <div className={items}>
             <label className={label}>Birthday*</label>
-            <input
+            <Input
               type="text"
               placeholder=" "
-              required
+              required="required"
               className={input}
               value={birthdayString}
               onClick={handleBirthday}
-              onChange={(ev)=>setBirthdayString(birthdayString)}
+              onChange={() => setBirthdayString(birthdayString)}
             />
             <ErrorMessage
               message="Birthday is required"
               isValid={isValidBirthday}
             />
             <Calendar
-              className={`mt-2 ${isCalendar ? "" : "hidden"}`}
+              className={`mt-2 w-80 border p-2 ${isCalendar ? "" : "hidden"}`}
               onChange={handleDate}
             />
           </div>

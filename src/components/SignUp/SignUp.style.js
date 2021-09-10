@@ -1,7 +1,7 @@
 import classNames from "classnames/bind";
 
 export const containerSignUp = classNames(["min-h-screen", "p-0", "sm:p-12"]);
-
+export const nav = classNames(["shadow-md flex w-full justify-end"]);
 export const card = classNames([
   "mx-auto",
   "w-2/3",
@@ -32,21 +32,7 @@ export const items = classNames(["relative", "z-0", "w-full", "mb-5"]);
 export const label = classNames(["text-gray-500"]);
 
 export const input = classNames([
-  "pt-3",
-  "pb-2",
-  "block",
-  "w-full",
-  "px-0",
-  "mt-0",
-  "border-gray-500",
-  "bg-transparent",
-  "border-0",
-  "border-b-2",
-  "appearance-none",
-  "focus:outline-none",
-  "focus:ring-0",
-  "focus:border-black",
-  "border-gray-200",
+  "appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3",
 ]);
 
 export const buttonContainer = classNames([

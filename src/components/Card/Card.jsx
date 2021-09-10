@@ -42,9 +42,9 @@ export default function Card({ title, type, color, id }) {
     navigator.clipboard.writeText(eventLink);
   };
 
-  const handleOpenEvent = ()=>{
-    history.push(NavRoutes.event(id).path)
-  }
+  const handleOpenEvent = () => {
+    history.push(NavRoutes.event(id).path);
+  };
 
   const handleEmail = (ev) => {
     const value = ev.target.value;
@@ -61,21 +61,29 @@ export default function Card({ title, type, color, id }) {
           <Button variant="custom" />
         </div>
         <div className="mt-4">
-          <h1 className={titleStyle} onClick={handleOpenEvent}>{title}</h1>
+          <h1 className={titleStyle} onClick={handleOpenEvent}>
+            {title}
+          </h1>
           <span className={infoButton}>{type} </span>
           <hr className="mt-8 py-3" />
           <div className={buttonContainer}>
-            <Button
+            {/* <Button
               name={COPY_LINK}
               className={copyLinkButton}
               variant="custom"
               onClick={handleCopyLink}
-            />
-            <Button
+            /> */}
+            {/* <Button
               name={SHARE}
               className={shareButton}
               variant="custom"
               onClick={() => setShowModal(true)}
+            /> */}
+            <Button
+              name={COPY_LINK}
+              className={shareButton}
+              variant="custom"
+              onClick={handleCopyLink}
             />
           </div>
         </div>

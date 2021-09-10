@@ -4,7 +4,6 @@ import { useAuth } from "../../contexts/AuthContext";
 import { getEvents } from "../../services/event.services";
 import Card from "../Card/Card";
 import Dropdown from "../Dropdown/Dropdown";
-import Button from "../Button/Button";
 import Navbar from "../Navbar/Navbar";
 import {
   headContainer,
@@ -12,7 +11,8 @@ import {
   leftSide,
   subHeader,
   content,
-  cardContainer
+  cardContainer,
+  message
 } from "./Home.style";
 
 export default function Home() {
@@ -45,28 +45,33 @@ export default function Home() {
       </div>
 
       <div>
-        <div className={content}>
-          <div className={cardContainer}>
-            {events
-              ? Object.keys(events).map((el) => {
-                  const { title, eventType, color, link } = events[el];
-                  return (
-                    <Card
-                      key={nanoid()}
-                      title={title}
-                      type={eventType}
-                      color={color}
-                      link={link}
-                      id={el}
-                    />
-                  );
-                })
-              : isAccountVerified
-              ? "Congratulations now you can create an Event!"
-              : "Please verify your account to create an Event!"}
-          </div>
-        </div>
-
+      <div className={content}>
+          {events ? (
+            <div className={cardContainer}>
+              {Object.keys(events).map((el) => {
+                const { title, eventType, color, link } = events[el];
+                return (
+                  <Card
+                    key={nanoid()}
+                    title={title}
+                    type={eventType}
+                    color={color}
+                    link={link}
+                    id={el}
+                  />
+                );
+              })}
+            </div>
+          ) : isAccountVerified ? (
+            <div className={message}>
+              Congratulations now you can create an Event!
+            </div>
+          ) : (
+            <div className={message}>
+              Please verify your account to create an Event!
+            </div>
+          )}
+       </div>
         <div className="-mt-24 w-9/12"></div>
       </div>
     </div>

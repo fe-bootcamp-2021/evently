@@ -17,8 +17,6 @@ import {
   circle3,
   circle4,
   circle5,
-  input,
-  buttonStyle,
   circleMin1,
   circleMin2,
   circleMin3,

@@ -5,21 +5,23 @@ export default function Input({
   className,
   placeholder,
   onChange,
+  onClick,
   required,
   checked,
-  value
+  value,
 }) {
   return (
-      <input
-        id={id}
-        name={name}
-        type={type}
-        value={value}
-        className={className}
-        placeholder={placeholder}
-        onChange={onChange}
-        required={required}
-        checked={checked}
-      />
+    <input
+      id={id}
+      name={name}
+      type={type}
+      value={value}
+      className={className}
+      placeholder={placeholder}
+      onChange={onChange}
+      onClick={onClick}
+      required={required}
+      checked={checked}
+    />
   );
 }

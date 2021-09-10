@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, } from "react";
 import { useHistory } from "react-router-dom";
 import { nanoid } from "nanoid";
-import { useAuth } from "../../contexts/AuthContext";
 import { NavRoutes } from "../../constants/routes";
 import RadioColors from "../../constants/radioColors";
-import {next, cancel} from "../../constants/constants";
-import { getUrl } from "../../helpers/url.helpers";
-import {
-  isValidEventName,
-  isValidEventLink,
-  isValidAddress,
-} from "../../helpers/validations";
+import { next, cancel } from "../../constants/constants";
+import { isValidEventName, isValidAddress } from "../../helpers/validation.helpers";
 import EventColors from "../EventColors/EventColors";
 import Button from "../Button/Button";
 import InputCKEditor from "../InputCKEditor/InputCKEditor";
@@ -27,11 +21,8 @@ import {
 } from "./OneOnOne.style";
 
 export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
-  const { user } = useAuth();
   const history = useHistory();
   const [eventName, setEventName] = useState("");
-  const [eventLink, setEventLink] = useState("");
-  const [userprofile, setUserprofile] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
   const [eventColor, setEventColor] = useState(RadioColors()[0].id);
@@ -40,16 +31,8 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
   const [isValidEvtLocation, setIsValidEvtLocation] = useState(true);
   const [isValidEvtLink, setIsValidEvtLink] = useState(true);
 
-  useEffect(() => {
-    const url = getUrl();
-    const userName = user.email.slice(0, user.email.indexOf("@"));
-    const eventUrl = `${url}/${userName}/`;
-    setUserprofile(eventUrl);
-  }, []);
-
   const handleNext = () => {
     const isValidEvtName = isValidEventName(eventName);
-    const isValidEvtLink = isValidEventLink(eventLink);
     const isValidEvtAddress = isValidAddress(location);
     if (isValidEvtName && isValidEvtLink && isValidEvtAddress) {
       const eventId = nanoid();
@@ -58,7 +41,6 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
         description,
         location,
         title: eventName,
-        link: userprofile + eventLink,
         color: eventColor,
       };
       setFirstPageInfo(newEventInfo);
@@ -86,14 +68,6 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
       ? setIsValidEvtLocation(true)
       : setIsValidEvtLocation(false);
     setLocation(value);
-  };
-
-  const handleLink = (ev) => {
-    const value = ev.target.value;
-    isValidEventLink(value)
-      ? setIsValidEvtLink(true)
-      : setIsValidEvtLink(false);
-    setEventLink(value);
   };
 
   const handleCancel = () => {
@@ -133,22 +107,6 @@ export default function OneOnOneFirst({ setFirstPageInfo, setPage }) {
             <ErrorMessage
               message="Event location is required"
               isValid={isValidEvtLocation}
-            />
-          </div>
-
-          <div className={eventItems}>
-            <label className={label}>Event link *</label>
-            <p className={`${label} mt-3`}>{userprofile}</p>
-            <Input
-              type="text"
-              placeholder={" "}
-              required="required"
-              className={input}
-              onChange={handleLink}
-            />
-            <ErrorMessage
-              message="Event link is required"
-              isValid={isValidEvtLink}
             />
           </div>
 

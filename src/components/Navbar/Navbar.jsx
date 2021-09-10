@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import { nanoid } from "nanoid";
 import { NavRoutes, Routes } from "../../constants/routes";
 import { useAuth } from "../../contexts/AuthContext"; //
 import Logo from "../Logo/Logo";
@@ -14,15 +13,12 @@ import {
 
 export default function Navbar() {
   const history = useHistory();
-  const { setUser, setIsAuthenticated} = useAuth()
+  const { signout } = useAuth();
 
   const handleNav = () => {
-    history.push(Routes.login().path)
-    setIsAuthenticated(false)
-    setUser(false)
+    signout();
+    history.push(Routes.login().path);
   };
-
- 
 
   return (
     <nav className={navContainer} onClick={() => window.scroll(0, 0)}>
@@ -31,7 +27,7 @@ export default function Navbar() {
       </div>
 
       <ul className={menu}>
-        <div className="">
+        <div className="mr-10">
           <Link className={title} to={NavRoutes.home().path}>
             {NavRoutes.home().text}{" "}
           </Link>
@@ -43,11 +39,7 @@ export default function Navbar() {
           </Link>
         </div>
         <div>
-          <li
-            className={buttonOutline}
-            key={nanoid()}
-            onClick={handleNav}
-          >
+          <li className={buttonOutline} onClick={handleNav}>
             Log Out
           </li>
         </div>

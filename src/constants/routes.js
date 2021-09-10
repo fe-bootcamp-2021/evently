@@ -1,11 +1,12 @@
-import AccountPage from "../pages/Account/Account.page";
-import HomePage from "../pages/Home/Home.page";
+import Account from "../components/Account/Account";
+import Home from "../components/Home/Home";
 import Login from "../components/LoginSign/LoginSign";
 import SignUp from "../components/SignUp/SignUp";
-import UnAuthenticatedApp from "../components/UnAuthenticatedApp/UnAuthenticatedApp";
+import Event from "../components/Event/Event";
+import UnAuthenticated from "../components/UnAuthenticated/UnAuthenticated";
 import OneOnOne from "../components/OneOnOne/OneOnOne";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
-import PageAboutUS from "../pages/AboutUS/PageAboutUS";
+import About from "../components/About/About";
 
 export const Routes = {
   login: () => ({
@@ -20,10 +21,16 @@ export const Routes = {
     component: SignUp,
   }),
 
+  event: (id=":id") => ({
+    path: `/event/${id}`,
+    text: "event",
+    component: Event,
+  }),
+
   unAuthenticated: () => ({
     path: "/",
     text: "Info",
-    component: UnAuthenticatedApp,
+    component: UnAuthenticated,
   }),
 
   error: () => ({ path: "*", text: "", component: ErrorPage }),
@@ -33,22 +40,27 @@ export const NavRoutes = {
   home: () => ({
     path: "/home",
     text: "Home",
-    component: HomePage,
+    component: Home,
   }),
   about: () => ({
     path: "/about",
     text: "About",
-    component: PageAboutUS,
+    component: About,
   }),
 
   account: () => ({
     path: "/account",
     text: "Account",
-    component: AccountPage,
+    component: Account,
   }),
   oneOnOne: () => ({
     path: "/oneOnOne",
     text: "One On One",
     component: OneOnOne,
+  }),
+  event: (id=":id") => ({
+    path: `/event/${id}`,
+    text: "event",
+    component: Event,
   }),
 };

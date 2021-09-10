@@ -24,6 +24,7 @@ export default function DataRange({ setDateRangeInfo }) {
   useEffect(() => {
     let dateRangeValues = { days, type: eventDayType };
     setDateRangeInfo(dateRangeValues);
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

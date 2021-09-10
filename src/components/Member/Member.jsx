@@ -44,23 +44,34 @@ export default function Member({
     ev.stopPropagation();
     if (firstName !== "" && lastName !== "") {
       const newMembers = members.map((el) => {
+        const currentStatus = el.status;
+
         if (memberId === el.id) {
           return {
             ...el,
             status: !el.status,
-            memberFirstName: firstName,
-            memberLastName: lastName,
+            memberFirstName: currentStatus ? "" : firstName,
+            memberLastName: currentStatus ? "" : lastName,
           };
+        } else {
+          if (!currentStatus) {
+            return {
+              ...el,
+              memberFirstName: "",
+              memberLastName: "",
+            };
+          }
         }
         return el;
       });
       setMembers([...newMembers]);
-    }
-    else{
+    } else {
       isEmptyString(firstName)
-      ? setIsValidFirstName(true)
-      : setIsValidFirstName(false);
-      isEmptyString(lastName) ? setIsValidLastName(true) : setIsValidLastName(false);
+        ? setIsValidFirstName(true)
+        : setIsValidFirstName(false);
+      isEmptyString(lastName)
+        ? setIsValidLastName(true)
+        : setIsValidLastName(false);
     }
   };
 
@@ -101,7 +112,7 @@ export default function Member({
 
         <div className="flex flex-col ">
           <div className="mt-4 flex flex-col">
-            {memberFirstName ? (
+            {memberFirstName && isBusy ? (
               <span className="text-blue-900">{`First Name: ${memberFirstName}`}</span>
             ) : (
               <>
@@ -120,7 +131,7 @@ export default function Member({
             )}
           </div>
           <div className="mt-4 flex flex-col">
-            {memberLastName ? (
+            {memberLastName && isBusy ? (
               <span className="text-blue-900">{`Last Name: ${memberLastName}`}</span>
             ) : (
               <>

@@ -1,4 +1,4 @@
-import { db } from "../services/base";
+import { db } from "../libs/firebase.libs";
 
 export function addEvent({
   userId,
@@ -9,7 +9,7 @@ export function addEvent({
   color,
   createdOn,
   member,
-  eventType
+  eventType,
 }) {
   try {
     db.ref(`/event/${eventId}`).set({
@@ -20,7 +20,7 @@ export function addEvent({
       color,
       createdOn,
       member,
-      eventType
+      eventType,
     });
   } catch (err) {
     console.log(err);
@@ -41,7 +41,6 @@ export async function getEvents(id) {
     console.log(err);
   }
 }
-
 
 export async function getEvent(id) {
   try {

@@ -1,6 +1,5 @@
 import Button from "../Button/Button";
 import Input from "../Input/Input";
-import Navbar from "../Navbar/Navbar";
 import Time from "../../images/Icons/Time.svg"
 import Location from "../../images/Icons/Location.svg"
 

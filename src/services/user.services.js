@@ -1,4 +1,4 @@
-import { db } from "../base";
+import { db } from "../libs/firebase.libs";
 
 export const addUser = ({
   email,
@@ -32,15 +32,18 @@ export const updateProfile = (uid, { description }) => {
   });
 };
 
-export const getUser = (id)=>{console.log(id)
+export const getUser = (id) => {
+  console.log(id);
   try {
-    return db.ref(`users`)
+    return db
+      .ref(`users`)
       .orderByChild("uid")
       .equalTo(id)
-      .once("value").then((snapshot) => {
+      .once("value")
+      .then((snapshot) => {
         return snapshot.val();
-      }) ;
+      });
   } catch (err) {
     console.log(err);
   }
-}
+};

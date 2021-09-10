@@ -44,12 +44,7 @@ export default function Account() {
             <div className="absolute top-0 right-3 ">
               <label className="flex flex-col items-center w-8 h-8 absolute top-0 right-4 rounded-full bg-white text-blue-900 border border-blue-900 cursor-pointer hover:bg-blue-700 hover:text-white">
                 <span className="text-base leading-normal">+</span>
-                <input
-                  type="file"
-                  id="upload-button"
-                  style={{ display: "none" }}
-                  onChange={handleChange}
-                />
+                <Input type="file" onChange={handleChange} className="hidden" />
               </label>
             </div>
           </div>
@@ -59,10 +54,7 @@ export default function Account() {
           <h1 className="text-3xl mb-6 text-blue-900">Account Settings</h1>
           <div className="-mx-3 md:flex mb-6">
             <div className="md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                for="grid-first-name"
-              >
+              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
                 First Name
               </label>
               <Input
@@ -76,10 +68,7 @@ export default function Account() {
               </p>
             </div>
             <div className="md:w-1/2 px-3">
-              <label
-                className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                for="grid-last-name"
-              >
+              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
                 Last Name
               </label>
               <Input
@@ -92,10 +81,7 @@ export default function Account() {
           </div>
           <div className="-mx-3 md:flex mb-6">
             <div className="md:w-full px-3">
-              <label
-                className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                for="grid-password"
-              >
+              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
                 Password
               </label>
               <Input
@@ -111,10 +97,7 @@ export default function Account() {
           </div>
           <div className="-mx-3 md:flex mb-6">
             <div className="md:w-full px-3">
-              <label
-                className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                for="grid-password"
-              >
+              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
                 E-mail
               </label>
               <Input

@@ -1,5 +1,10 @@
 import classNames from "classnames/bind";
 
 export const container = classNames([
-    "w-full flex w-full m-1 p-2 border-b border-gray-200hover:bg-gray-100"
+  "w-2/3 mx-auto flex flex-col border border-red-200 bg-gradient-to-t from-red-200 via-white to-white px-4 py-4 my-4",
+]);
+
+export const red = classNames(["border-red-200 bg-gradient-to-t from-red-200"]);
+export const green = classNames([
+  "border-green-200 bg-gradient-to-t from-green-200",
 ]);

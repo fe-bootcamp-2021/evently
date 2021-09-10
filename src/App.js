@@ -1,8 +1,8 @@
 import React from "react";
 import { useAuth } from "./contexts/AuthContext";
 import AuthenticatedApp from "./components/AuthenticatedApp/AuthenticatedApp";
-import UnAuthenticatedPage from "./pages/UnAuthenticatedPage/UnAuthenticated.page";
 import Loading from "./components/Loading/Loading";
+import UnAuthenticatedApp from "./components/UnAuthenticatedApp/UnAuthenticatedApp";
 
 export default function App() {
   const { user } = useAuth();
@@ -11,5 +11,5 @@ export default function App() {
     return <Loading />;
   }
 
-  return <>{user ? <AuthenticatedApp /> : <UnAuthenticatedPage />}</>;
+  return <>{user ? <AuthenticatedApp /> : <UnAuthenticatedApp />}</>;
 }

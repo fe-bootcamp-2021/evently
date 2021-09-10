@@ -22,6 +22,7 @@ export default function Event() {
   const [event, setEvent] = useState({});
   const [members, setMembers] = useState([]);
   const [eventColor, setEventColor] = useState(RadioColors()[0].id);
+  const [errorDates, setErrorDates] = useState(false);
 
   useEffect(() => {
     const path = history.location.pathname;
@@ -42,14 +43,27 @@ export default function Event() {
   }
 
   const handleAcceptEvents = () => {
+    let isValidInfo = true;
     const path = history.location.pathname;
     const eventId = path.replace("/event/", "");
-    const updatedEvent = members.map((el) => {
-      if (el.status) return { ...el, isBusy: true };
-      return el;
+    const updatedEvent = members.map((el) => {console.log(el)
+      if (el.status) {
+        if (el.memberFirstName !== "" && el.memberLastName !== "") {
+          isValidInfo = true;
+          return { ...el, isBusy: true };
+        } else {
+          setErrorDates(true);
+          isValidInfo = false;
+          return el;
+        }
+      } else {
+        return { ...el, memberFirstName: "", memberLastName: "" };
+      }
     });
-    addEvent({ ...event, member: updatedEvent, eventId });
-    setMembers([...updatedEvent]);
+    if (isValidInfo) {
+      addEvent({ ...event, member: updatedEvent, eventId });
+      setMembers([...updatedEvent]);
+    }
   };
 
   const deleteEvent = (memberId) => (ev) => {
@@ -77,24 +91,35 @@ export default function Event() {
             <p className="ml-5">{event.location}</p>
           </div>
           <div className="flex flex-wrap justify-center">
-            {members.map(({ date, startTime, endTime, id, status, isBusy ,memberFirstName,memberLastName}) => {
-              return (
-                <Member
-                  date={date}
-                  startTime={startTime}
-                  endTime={endTime}
-                  id={id}
-                  key={id}
-                  onClick={deleteEvent(id)}
-                  operation={status}
-                  isBusy={isBusy}
-                  members={members} 
-                  setMembers={setMembers}
-                  memberFirstName={memberFirstName}
-                  memberLastName={memberLastName}
-                />
-              );
-            })}
+            {members.map(
+              ({
+                date,
+                startTime,
+                endTime,
+                id,
+                status,
+                isBusy,
+                memberFirstName,
+                memberLastName,
+              }) => {
+                return (
+                  <Member
+                    date={date}
+                    startTime={startTime}
+                    endTime={endTime}
+                    id={id}
+                    key={id}
+                    onClick={deleteEvent(id)}
+                    operation={status}
+                    isBusy={isBusy}
+                    members={members}
+                    setMembers={setMembers}
+                    memberFirstName={memberFirstName}
+                    memberLastName={memberLastName}
+                  />
+                );
+              }
+            )}
           </div>
           <section className={buttonSection}>
             <div className={buttonContainer}>

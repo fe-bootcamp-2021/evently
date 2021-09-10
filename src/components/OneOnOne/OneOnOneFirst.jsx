@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 import { NavRoutes } from "../../constants/routes";
 import RadioColors from "../../constants/radioColors";
 import { next, cancel } from "../../constants/constants";
-import { isValidEventName, isValidAddress } from "../../helpers/validations";
+import { isValidEventName, isValidAddress } from "../../helpers/validation.helpers";
 import EventColors from "../EventColors/EventColors";
 import Button from "../Button/Button";
 import InputCKEditor from "../InputCKEditor/InputCKEditor";

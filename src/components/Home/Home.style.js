@@ -12,3 +12,4 @@ export const content = classNames(["w-9/12 mt-6 mx-auto items-center"]);
 export const cardContainer = classNames([
   "grid 2xl:grid-cols-3 sm:grid-cols-2 gap-4 mt-10",
 ]);
+export const message = classNames(["text-5xl text-blue-900"]);

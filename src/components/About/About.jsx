@@ -2,7 +2,6 @@ import React from "react";
 import arev from "../../assets/images/arev.jpg";
 import tigran from "../../assets/images/tigran.jpg";
 import Navbar from "../../components/Navbar/Navbar";
-//import AboutUsFooter from "./AboutUsFooter/AboutUsFooter";
 import { Background } from "./Background/Background";
 import {
   navContainer,
@@ -88,7 +87,6 @@ export default function PageAboutUS() {
         </div>
       </div>
       <Background />
-      {/* <AboutUsFooter /> */}
     </>
   );
 }

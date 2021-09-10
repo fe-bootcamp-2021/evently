@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { useAuth } from "../../contexts/AuthContext";
-import { isEmptyString } from "../../helpers/validations";
+import { isEmptyString } from "../../helpers/validation.helpers";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { DeleteIcon, PlusIcon, MinusIcon } from "../Icons/Icons";
 import Input from "../Input/Input";

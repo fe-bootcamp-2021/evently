@@ -5,8 +5,8 @@ import { eventTypes } from "../../constants/constants";
 import { NavRoutes } from "../../constants/routes";
 import { useAuth } from "../../contexts/AuthContext";
 import { addEvent } from "../../services/event.services";
-import { isValidMemberDates } from "../../helpers/validations";
-import { formatDate } from "../../helpers/date";
+import { isValidMemberDates } from "../../helpers/validation.helpers";
+import { formatDate } from "../../helpers/date.helpers.";
 import { ADD_EVENT, ADD_MEMBER, DATE, TIME } from "../../constants/constants";
 import Button from "../Button/Button";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
@@ -20,7 +20,7 @@ import {
   buttonSection,
   buttonContainer,
 } from "./OneOnOne.style";
-import { checkTime, checkDate } from "../../helpers/validations";
+import { checkTime, checkDate } from "../../helpers/validation.helpers";
 
 export default function OneOnOneSecond({ firstPageInfo }) {
   const { user } = useAuth();

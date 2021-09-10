@@ -4,7 +4,7 @@ import { NavRoutes } from "../../constants/routes";
 import { isValidEmail } from "../../helpers/validations";
 import RadioColors from "../../constants/radioColors";
 import { getUrl } from "../../helpers/url.helpers";
-import { COPY_LINK, SHARE, TEXT } from "../../constants/constants";
+import { COPY_LINK, TEXT } from "../../constants/constants";
 import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
@@ -12,7 +12,6 @@ import {
   cardContainer,
   buttonContainer,
   titleStyle,
-  copyLinkButton,
   infoButton,
   shareButton,
   modalWindowContainer,
@@ -67,18 +66,6 @@ export default function Card({ title, type, color, id }) {
           <span className={infoButton}>{type} </span>
           <hr className="mt-8 py-3" />
           <div className={buttonContainer}>
-            {/* <Button
-              name={COPY_LINK}
-              className={copyLinkButton}
-              variant="custom"
-              onClick={handleCopyLink}
-            /> */}
-            {/* <Button
-              name={SHARE}
-              className={shareButton}
-              variant="custom"
-              onClick={() => setShowModal(true)}
-            /> */}
             <Button
               name={COPY_LINK}
               className={shareButton}

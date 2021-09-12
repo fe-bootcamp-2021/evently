@@ -3,27 +3,27 @@ const RadioColors = () => {
     {
       id: 1,
       name: "colors",
-      classNames: "blue-500",
+      classNames: "bg-blue-500",
     },
     {
       id: 2,
       name: "colors",
-      classNames: "purple-500",
+      classNames: "bg-purple-500",
     },
     {
       id: 3,
       name: "colors",
-      classNames: "green-400",
+      classNames: "bg-green-400",
     },
     {
       id: 4,
       name: "colors",
-      classNames: "yellow-500",
+      classNames: "bg-yellow-500",
     },
     {
       id: 5,
       name: "colors",
-      classNames: "red-500",
+      classNames: "bg-red-500",
     },
   ];
 

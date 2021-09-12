@@ -32,7 +32,7 @@ export default function Event() {
       const member = result?.member;
       setMembers(member);
       const evtColors = RadioColors().filter((el) => el.id === result?.color);
-      const evtColor = evtColors[0]?.classNames;
+      const evtColor = evtColors[0]?.borderColor;
       setEventColor(evtColor);
       setEvent(result);
     });
@@ -80,7 +80,7 @@ export default function Event() {
     <>
       {user ? <Navbar /> : <></>}
       <div className={container}>
-        <div className={`${card} px-10 border-${eventColor}`}>
+        <div className={`${card} px-10 ${eventColor}`}>
           <h2 className={title}>{event.title}</h2>
           <div className="m-3">
             <p className="text-blue-800 text-xl mr-2">Description:</p>

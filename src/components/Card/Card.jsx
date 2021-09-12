@@ -30,7 +30,7 @@ export default function Card({ title, type, color, id,userEmail }) {
 
   useEffect(() => {
     const evtColors = RadioColors().filter((el) => el.id === color);
-    const evtColor = evtColors[0]?.classNames;
+    const evtColor = evtColors[0]?.borderColor;
     setEventColor(evtColor);
     // eslint-disable-next-line
 

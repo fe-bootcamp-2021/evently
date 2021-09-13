@@ -4,16 +4,22 @@ import Navbar from "../Navbar/Navbar";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import { useAuth } from "../../contexts/AuthContext";
-import { getUser, addUser } from "../../services/user.services";
-
+import {
+  getUser,
+  addUser,
+  getImage,
+  addImage,
+} from "../../services/user.services";
+import { storage } from "../../libs/firebase.libs";
 
 export default function Account() {
-  const [image, setImage] = useState({ preview: "", raw: "" });
+  const [image, setImage] = useState();
   const [newUser, setNewUser] = useState({});
   const { user } = useAuth();
   const id = user?.uid;
   useEffect(() => {
     getUser(id).then((response) => setNewUser(response[id]));
+    getImage(id).then(url => setImage(prev => ({...prev, preview: url })))
   }, []);
 
   const handleChange = (e) => {
@@ -25,9 +31,14 @@ export default function Account() {
     }
   };
 
-  const handleUpdateUser = () => {
-    addUser(newUser);
+  const handleUpload = (e) => {
+    e.preventDefault();
+    addImage(id, image, setImage);
   };
+
+  async function handleUpdateUser() {
+    addUser(newUser);
+  }
 
   return (
     <>
@@ -36,10 +47,10 @@ export default function Account() {
       </div>
 
       <div className="w-8/12 mx-auto h-screen flex justify-around my-12">
-        <div>
+        <form onSubmit={handleUpload}>
           <div className="border border-blue-900 relative rounded-full">
             <label>
-              {image.preview ? (
+              {image ? (
                 <img
                   className="w-56 h-56 rounded-full object-cover object-center"
                   src={image.preview}
@@ -61,7 +72,8 @@ export default function Account() {
               </label>
             </div>
           </div>
-        </div>
+          <button name="Upload">Upload</button>
+        </form>
 
         <div className=" flex flex-col my-2 ml-2">
           <h1 className="text-3xl mb-6 text-blue-900">Account Settings</h1>

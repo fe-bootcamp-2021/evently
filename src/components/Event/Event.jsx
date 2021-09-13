@@ -14,6 +14,12 @@ import {
   title,
   buttonSection,
   buttonContainer,
+  infoWrapper,
+  divContainer,
+  description,
+  pContainer,
+  location,
+  eventLocation,
 } from "./Event.style";
 
 export default function Event() {
@@ -46,7 +52,8 @@ export default function Event() {
     let isValidInfo = true;
     const path = history.location.pathname;
     const eventId = path.replace("/event/", "");
-    const updatedEvent = members.map((el) => {console.log(el)
+    const updatedEvent = members.map((el) => {
+      console.log(el);
       if (el.status) {
         if (el.memberFirstName !== "" && el.memberLastName !== "") {
           isValidInfo = true;
@@ -82,15 +89,16 @@ export default function Event() {
       <div className={container}>
         <div className={`${card} px-10 ${eventColor}`}>
           <h2 className={title}>{event.title}</h2>
-          <div className="m-3">
-            <p className="text-blue-800 text-xl mr-2">Description:</p>
-            <p className="ml-5">
+          <div className={divContainer}>
+            <p className={description}>Description:</p>
+            <p className={pContainer}>
               <span dangerouslySetInnerHTML={createMarkup()} />
             </p>
-            <p className="text-blue-800 text-xl mr-2">Location:</p>
-            <p className="ml-5">{event.location}</p>
+            <p className={location}>Location:</p>
+            <p className={eventLocation}>{event.location}</p>
           </div>
-          <div className="flex flex-wrap justify-center">
+
+          <div className={infoWrapper}>
             {members.map(
               ({
                 date,
@@ -103,6 +111,8 @@ export default function Event() {
                 memberLastName,
               }) => {
                 return (
+                  // className={infoWrapper}
+
                   <Member
                     date={date}
                     startTime={startTime}

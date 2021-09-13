@@ -3,7 +3,7 @@ import classNames from "classnames/bind";
 export const modalContainer = classNames([
   "justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none",
 ]);
-export const content = classNames(["relative w-auto my-6 mx-auto max-w-3xl"]);
+export const content = classNames(["relative w-auto my-6 mx-auto max-w-3xl border border-gray-500 shadow-2xl"]);
 export const headerContainer = classNames([
   "border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none",
 ]);

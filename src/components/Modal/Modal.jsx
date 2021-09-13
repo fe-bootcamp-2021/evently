@@ -1,4 +1,7 @@
 import React from "react";
+import emailjs from "emailjs-com";
+import { init } from "emailjs-com";
+import { userId, serviceId, templateId } from "../../libs/emailjs.libs";
 import Button from "../Button/Button";
 import {
   content,
@@ -11,7 +14,37 @@ import {
   modalFooterStyle,
 } from "./Modal.style";
 
-export default function Modal({ showModal, setShowModal, title, body }) {
+init(userId);
+
+export default function Modal({
+  showModal,
+  setShowModal,
+  title,
+  body,
+  email,
+  link,
+  userEmail
+}) {
+  const handleSendEmail = () => {
+    const templateParams = {
+      link,
+      toEmail:email,
+      userEmail
+    };
+
+    emailjs
+      .send(serviceId, templateId, templateParams, userId)
+      .then(
+        function (response) {
+          setShowModal(false);
+          //console.log("SUCCESS!", response.status, response.text);
+        },
+        function (error) {
+          console.log("FAILED...", error);
+        }
+      );
+  };
+
   return (
     <>
       {showModal ? (
@@ -37,7 +70,7 @@ export default function Modal({ showModal, setShowModal, title, body }) {
                   <Button onClick={() => setShowModal(false)} name={`Close`} />
                   <Button
                     className="ml-2 px-5"
-                    onClick={() => setShowModal(false)}
+                    onClick={handleSendEmail}
                     name={`Send`}
                   />
                 </div>

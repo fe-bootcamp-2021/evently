@@ -1,31 +1,26 @@
-import { db } from "../services/base";
+import { db } from "../libs/firebase.libs";
 
 export function addEvent({
   userId,
   eventId,
   title,
   location,
-  link,
   description,
   color,
-  dateRange,
-  minutes,
   createdOn,
-  eventType
-
+  member,
+  eventType,
 }) {
   try {
     db.ref(`/event/${eventId}`).set({
       userId,
       title,
       location,
-      link,
       description,
       color,
-      dateRange,
-      minutes,
       createdOn,
-      eventType
+      member,
+      eventType,
     });
   } catch (err) {
     console.log(err);
@@ -34,12 +29,27 @@ export function addEvent({
 
 export async function getEvents(id) {
   try {
-    return db.ref(`event`)
+    return db
+      .ref(`event`)
       .orderByChild("userId")
       .equalTo(id)
-      .once("value").then((snapshot) => {
+      .once("value")
+      .then((snapshot) => {
         return snapshot.val();
-      }) ;
+      });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function getEvent(id) {
+  try {
+    return db
+      .ref(`event/${id}`)
+      .once("value")
+      .then((snapshot) => {
+        return snapshot.val();
+      });
   } catch (err) {
     console.log(err);
   }

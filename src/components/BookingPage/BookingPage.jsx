@@ -1,6 +1,5 @@
 import Button from "../Button/Button";
 import Input from "../Input/Input";
-import Navbar from "../Navbar/Navbar";
 import Time from "../../images/Icons/Time.svg"
 import Location from "../../images/Icons/Location.svg"
 
@@ -9,7 +8,6 @@ export default function BookingPage() {
         <div className="h-screen">
             
             <div className="max-w-lm inline-block flex flex-col mx-auto bg-white shadow-md items-center ">
-                <Navbar />
             </div>
 
             <section class="container my-8 w-9/12 max-w-lm mx-auto">

@@ -4,7 +4,7 @@ export const container = classNames(["mx-auto flex flex-col"]);
 export const contentContainer = classNames([
   "w-9/12 mx-auto flex justify-between items-center justify-center",
 ]);
-export const nav = classNames(["shadow-md flex justify-end"]);
+export const nav = classNames(["shadow-md flex w-full"]);
 export const leftSide = classNames([
   "h-screen flex flex-col items-left justify-center",
 ]);
@@ -47,7 +47,7 @@ export const circleMin4 = classNames([
 ]);
 export const imgDiv1 = classNames(["rounded-full absolute w-14 h-14 -inset-4"]);
 export const imgDiv2 = classNames([
-  "rounded-full absolute w-14 h-14 top-5 right-12",
+  "rounded-full absolute w-14 h-14 top-5 right-12 ",
 ]);
 export const imgDiv3 = classNames([
   "rounded-full absolute w-14 h-14 inset-x-10 bottom-7",

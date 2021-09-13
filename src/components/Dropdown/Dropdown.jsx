@@ -11,6 +11,7 @@ export default function Dropdown({ buttonName }) {
   const { user } = useAuth();
   const isDisabled = !user.emailVerified;
   const [show, setShow] = useState(false);
+
   let showFn = () => {
     setShow(!show);
     return show;
@@ -41,17 +42,12 @@ export default function Dropdown({ buttonName }) {
 
         <div className={dropDownMenu}>
           <ul>
-            {
-              <li
-                className={li}
-                onClick={handlePath(NavRoutes.oneOnOne().path)}
-              >
-                One-on-One
-              </li>
-              /*<li className={li} onClick={handlePath(Routes.group().path)}>
-              Group Meeting
-            </li> */
-            }
+            <li className={li} onClick={handlePath(NavRoutes.oneOnOne().path)}>
+              One-on-One
+            </li>
+            {/* <li className={li} onClick={handlePath(NavRoutes.membership().path)}>
+              {NavRoutes.membership().text}
+            </li> */}
           </ul>
         </div>
       </div>

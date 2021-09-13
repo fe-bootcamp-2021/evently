@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 import { useAuth } from "../../contexts/AuthContext";
 import { weekDays } from "../../constants/constants";
 import { NavRoutes } from "../../constants/routes";
-import { isValidHours, isValidMinutes } from "../../helpers/validations";
+import { isValidHours, isValidMinutes } from "../../helpers/validation.helpers";
 import Button from "../Button/Button";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import {

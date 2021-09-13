@@ -1,5 +1,6 @@
 export const logIn = "Log In";
 export const signUp = "Sign Up";
+export const home = "Home";
 export const next = "Next >>";
 export const cancel = "Cancel";
 export const TYPE_NUMBER = "number"

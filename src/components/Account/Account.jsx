@@ -3,10 +3,15 @@ import { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function Account() {
   const [image, setImage] = useState({ preview: "", raw: "" });
 
+  const user = useAuth()
+  const  fff = () => {
+console.log(user)
+  }
   const handleChange = (e) => {
     if (e.target.files.length) {
       setImage({
@@ -109,9 +114,10 @@ export default function Account() {
             </div>
           </div>
 
-          <Button name="Save" />
+          <Button name="Save"  onClick= {fff} />
         </div>
       </div>
     </>
   );
 }
+

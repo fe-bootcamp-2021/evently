@@ -1,4 +1,5 @@
 import { db } from "../libs/firebase.libs";
+import { storage } from "../libs/firebase.libs";
 
 export const addUser = ({
   email,
@@ -33,7 +34,6 @@ export const updateProfile = (uid, { description }) => {
 };
 
 export const getUser = (id) => {
-
   try {
     return db
       .ref(`users`)
@@ -41,10 +41,30 @@ export const getUser = (id) => {
       .equalTo(id)
       .once("value")
       .then((snapshot) => {
-        console.log(snapshot)
+        console.log(snapshot);
         return snapshot.val();
       });
   } catch (err) {
     console.log(err);
   }
+};
+
+export const addImage = (id, image, setImage) => {
+  const ref = storage.ref(`/${id}/photo.jpg`);
+  const uploadTask = ref.put(image.raw);
+  uploadTask.on("state_changed", console.log, console.error, () => {
+    ref.getDownloadURL().then((url) => {
+      setImage((prevObject) => ({ ...prevObject, preview: url }));
+    });
+  });
+};
+export const getImage = (id) => {
+  return (
+    storage
+      .ref(`/${id}/photo.jpg`)
+      .getDownloadURL()
+      .then((url) => {
+        return url;
+      })
+  );
 };

@@ -4,16 +4,26 @@ import Navbar from "../Navbar/Navbar";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import { useAuth } from "../../contexts/AuthContext";
-import { getUser, addUser } from "../../services/user.services";
-
+import {
+  getUser,
+  addUser,
+  getImage,
+  addImage,
+} from "../../services/user.services";
+import { UPLOAD } from "../../constants/constants";
 
 export default function Account() {
-  const [image, setImage] = useState({ preview: "", raw: "" });
+  const [image, setImage] = useState();
   const [newUser, setNewUser] = useState({});
   const { user } = useAuth();
   const id = user?.uid;
   useEffect(() => {
-    getUser(id).then((response) => setNewUser(response[id]));
+    getUser(id).then((response) => {
+      let birthday = response[id].birthday.split(" ");
+      response[id].birthday = birthday[0];
+      setNewUser(response[id]);
+    });
+    getImage(id).then((url) => setImage((prev) => ({ ...prev, preview: url })));
   }, []);
 
   const handleChange = (e) => {
@@ -25,9 +35,13 @@ export default function Account() {
     }
   };
 
-  const handleUpdateUser = () => {
-    addUser(newUser);
+  const handleUpload = (e) => {
+    addImage(id, image, setImage);
   };
+
+  async function handleUpdateUser() {
+    addUser(newUser);
+  }
 
   return (
     <>
@@ -39,7 +53,7 @@ export default function Account() {
         <div>
           <div className="border border-blue-900 relative rounded-full">
             <label>
-              {image.preview ? (
+              {image ? (
                 <img
                   className="w-56 h-56 rounded-full object-cover object-center"
                   src={image.preview}
@@ -61,6 +75,7 @@ export default function Account() {
               </label>
             </div>
           </div>
+          <Button name={UPLOAD} onClick={handleUpload} />
         </div>
 
         <div className=" flex flex-col my-2 ml-2">
@@ -100,6 +115,16 @@ export default function Account() {
               />
             </div>
           </div>
+          <Input
+            className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
+            id="grid-first-name"
+            type="text"
+            value={newUser?.birthday}
+            placeholder=""
+            onChange={(ev) => {
+              return setNewUser({ ...newUser, birthday: ev.target.value });
+            }}
+          />
           <div className="-mx-3 md:flex mb-6">
             <div className="md:w-full px-3">
               <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">

@@ -13,7 +13,6 @@ import {
   title,
   items,
   label,
-  input,
   buttonContainer,
 } from "./SignUp.style";
 

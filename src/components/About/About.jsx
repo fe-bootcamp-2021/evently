@@ -25,9 +25,9 @@ export default function PageAboutUS() {
       </div>
       <div className={about}>
         <p>
-          "COME MEETING" will help you better plan your day.
+          "Evently" will help you better plan your day.
           <br /> We are glad to help you. You can arrange group or individual
-          meetings with the help of "COME MEETING".
+          meetings with the help of "Evently".
           <br /> Our team believes anything is possible.
         </p>
 

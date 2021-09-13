@@ -4,6 +4,7 @@ import Image from "../../images/Ellipse96.svg";
 import Image2 from "../../images/Ellipse97.svg";
 import { Routes } from "../../constants/routes";
 import { logIn, signUp } from "../../constants/constants";
+import { useAuth } from "../../contexts/AuthContext";
 import Button from "../Button/Button";
 import Logo from "../Logo/Logo";
 import {
@@ -28,8 +29,18 @@ import {
   imgDiv5,
   circle6,
 } from "./UnAuthenticated.style";
+import Input from "../Input/Input";
+import { input } from "../SignUp/SignUp.style";
+import { buttonStyle } from "../Button/Button.style";
 
 export default function UnAuthenticatedApp() {
+
+  const {signInWithGmail} = useAuth()
+
+  const handleClick = () => {
+    return signInWithGmail()
+  }
+
   return (
     <>
       <div className={container}>
@@ -58,6 +69,14 @@ export default function UnAuthenticatedApp() {
             <h2 className="mt-8 text-blue-900">
               We will help you schedule meetings <br /> on each day.
             </h2>
+            <div className="flex mt-4">
+              <Input
+                type="email"
+                className={input}
+                placeholder="Enter Your Email"
+              />
+              <Button name={logIn} className={buttonStyle} variant="custom" onClick={handleClick}/>
+            </div>
           </div>
 
           <div className={rightSide}>

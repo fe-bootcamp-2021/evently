@@ -53,7 +53,6 @@ export default function Event() {
     const path = history.location.pathname;
     const eventId = path.replace("/event/", "");
     const updatedEvent = members.map((el) => {
-      console.log(el);
       if (el.status) {
         if (el.memberFirstName !== "" && el.memberLastName !== "") {
           isValidInfo = true;

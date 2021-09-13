@@ -1,11 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
+import { useAuth } from "../../contexts/AuthContext";
+import {
+  getUser,
+  addUser,
+  getImage,
+  addImage,
+  getGmailUser,
+} from "../../services/user.services";
+import { UPLOAD } from "../../constants/constants";
 
 export default function Account() {
-  const [image, setImage] = useState({ preview: "", raw: "" });
+  const [image, setImage] = useState();
+  const [newUser, setNewUser] = useState({});
+  const { user, gmailUser } = useAuth();
+  const id = user?.uid;
+  useEffect(() => {
+    if (gmailUser) {
+      getGmailUser(id).then((user) => {
+        setNewUser(user[id])
+        setImage((prev) => ({...prev, preview: user[id].photoURL}))
+      })
+    } else {
+      getUser(id).then((response) => {
+        let birthday = response[id].birthday.split(" ");
+        response[id].birthday = birthday[0];
+        setNewUser(response[id]);
+      });
+      getImage(id).then((url) =>
+        setImage((prev) => ({ ...prev, preview: url }))
+      );
+    }
+  }, []);
 
   const handleChange = (e) => {
     if (e.target.files.length) {
@@ -15,6 +44,14 @@ export default function Account() {
       });
     }
   };
+
+  const handleUpload = (e) => {
+    addImage(id, image, setImage);
+  };
+
+  async function handleUpdateUser() {
+    addUser(newUser);
+  }
 
   return (
     <>
@@ -26,7 +63,7 @@ export default function Account() {
         <div>
           <div className="border border-blue-900 relative rounded-full">
             <label>
-              {image.preview ? (
+              {image ? (
                 <img
                   className="w-56 h-56 rounded-full object-cover object-center"
                   src={image.preview}
@@ -48,6 +85,7 @@ export default function Account() {
               </label>
             </div>
           </div>
+          <Button name={UPLOAD} onClick={handleUpload} />
         </div>
 
         <div className=" flex flex-col my-2 ml-2">
@@ -61,7 +99,11 @@ export default function Account() {
                 className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
                 id="grid-first-name"
                 type="text"
+                value={newUser?.firstName}
                 placeholder=""
+                onChange={(ev) => {
+                  return setNewUser({ ...newUser, firstName: ev.target.value });
+                }}
               />
               <p className="text-red text-xs italic">
                 Please fill out this field.
@@ -75,10 +117,24 @@ export default function Account() {
                 className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
                 id="grid-last-name"
                 type="text"
+                value={newUser?.lastName}
                 placeholder=""
+                onChange={(ev) => {
+                  return setNewUser({ ...newUser, lastName: ev.target.value });
+                }}
               />
             </div>
           </div>
+          <Input
+            className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
+            id="grid-first-name"
+            type="text"
+            value={newUser?.birthday}
+            placeholder=""
+            onChange={(ev) => {
+              return setNewUser({ ...newUser, birthday: ev.target.value });
+            }}
+          />
           <div className="-mx-3 md:flex mb-6">
             <div className="md:w-full px-3">
               <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
@@ -89,6 +145,10 @@ export default function Account() {
                 id="grid-password"
                 type="password"
                 placeholder="******************"
+                value={newUser?.password}
+                onChange={(ev) => {
+                  return setNewUser({ ...newUser, password: ev.target.value });
+                }}
               />
               <p className="text-grey-dark text-xs italic">
                 Make it as long and as crazy as you'd like
@@ -102,14 +162,16 @@ export default function Account() {
               </label>
               <Input
                 className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
-                id="grid-password"
-                type="text"
-                placeholder="E-mail"
+                type="email"
+                value={newUser?.email}
+                onChange={(ev) => {
+                  return setNewUser({ ...newUser, email: ev.target.value });
+                }}
               />
             </div>
           </div>
 
-          <Button name="Save" />
+          <Button name="Save" onClick={handleUpdateUser} />
         </div>
       </div>
     </>

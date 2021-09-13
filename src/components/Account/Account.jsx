@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import { useAuth } from "../../contexts/AuthContext";
+import { getUser, addUser } from "../../services/user.services";
+
 
 export default function Account() {
   const [image, setImage] = useState({ preview: "", raw: "" });
+  const [newUser, setNewUser] = useState({});
+  const { user } = useAuth();
+  const id = user?.uid;
+  useEffect(() => {
+    getUser(id).then((response) => setNewUser(response[id]));
+  }, []);
 
-  const user = useAuth()
-  const  fff = () => {
-console.log(user)
-  }
   const handleChange = (e) => {
     if (e.target.files.length) {
       setImage({
@@ -19,6 +23,10 @@ console.log(user)
         raw: e.target.files[0],
       });
     }
+  };
+
+  const handleUpdateUser = () => {
+    addUser(newUser);
   };
 
   return (
@@ -66,7 +74,11 @@ console.log(user)
                 className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
                 id="grid-first-name"
                 type="text"
+                value={newUser?.firstName}
                 placeholder=""
+                onChange={(ev) => {
+                  return setNewUser({ ...newUser, firstName: ev.target.value });
+                }}
               />
               <p className="text-red text-xs italic">
                 Please fill out this field.
@@ -80,7 +92,11 @@ console.log(user)
                 className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
                 id="grid-last-name"
                 type="text"
+                value={newUser?.lastName}
                 placeholder=""
+                onChange={(ev) => {
+                  return setNewUser({ ...newUser, lastName: ev.target.value });
+                }}
               />
             </div>
           </div>
@@ -94,6 +110,10 @@ console.log(user)
                 id="grid-password"
                 type="password"
                 placeholder="******************"
+                value={newUser?.password}
+                onChange={(ev) => {
+                  return setNewUser({ ...newUser, password: ev.target.value });
+                }}
               />
               <p className="text-grey-dark text-xs italic">
                 Make it as long and as crazy as you'd like
@@ -107,17 +127,18 @@ console.log(user)
               </label>
               <Input
                 className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
-                id="grid-password"
-                type="text"
-                placeholder="E-mail"
+                type="email"
+                value={newUser?.email}
+                onChange={(ev) => {
+                  return setNewUser({ ...newUser, email: ev.target.value });
+                }}
               />
             </div>
           </div>
 
-          <Button name="Save"  onClick= {fff} />
+          <Button name="Save" onClick={handleUpdateUser} />
         </div>
       </div>
     </>
   );
 }
-

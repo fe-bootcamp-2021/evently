@@ -28,7 +28,7 @@ export default function Modal({
   const handleSendEmail = () => {
     const templateParams = {
       link,
-      email,
+      toEmail:email,
       userEmail
     };
 

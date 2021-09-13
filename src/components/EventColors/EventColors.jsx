@@ -12,7 +12,6 @@ export default function EventColors({ selected, setSelected }) {
     <div className={containerRadioBtn}>
       {RadioColors().map(({ id, name, bgColor }) => {
         const colorEvent = `${radio} ${bgColor} checked:bg-${bgColor}`;
-        console.log(colorEvent)
         const checked = selected === id ? "checked" : "";
         return (
           <Input

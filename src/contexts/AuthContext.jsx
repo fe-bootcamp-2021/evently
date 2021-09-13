@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect, createContext } from "react";
-import { VERSEL_LINK } from "../constants/constants";
+import firebase from "firebase/app";
+import { provider } from "../libs/firebase.libs";
 import { app } from "../libs/firebase.libs";
 import { addUser } from "../services/user.services";
 
@@ -19,6 +20,7 @@ export const useAuth = () => {
 // Provider hook that creates auth object and handles state
 function useProvideAuth() {
   const [user, setUser] = useState(null);
+  const [gmailUser, setGmailUser] = useState(null)
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   // Wrap any Firebase methods we want to use making sure ...
   // ... to save the user to state.
@@ -34,8 +36,20 @@ function useProvideAuth() {
   };
 
   const signInWithGmail = () => {
-    return app.auth().signInWithEmailLink();
+    return firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then(function (result) {
+        // const token = result.credential.accessToken;
+        const user = result.user;
+        setUser(user)
+        setGmailUser(true)
+        return user;
+      });
   };
+  const loginWithGmail = () => {
+    return firebase.auth().signInWithRedirect(provider)
+  }
 
   const signup = ({
     email,
@@ -72,6 +86,7 @@ function useProvideAuth() {
   };
 
   const signout = () => {
+    setGmailUser(false)
     return app
       .auth()
       .signOut()
@@ -107,8 +122,10 @@ function useProvideAuth() {
     const unsubscribe = app.auth().onAuthStateChanged((user) => {
       if (user) {
         setUser(user);
+        setGmailUser(true)
       } else {
         setUser(false);
+        setGmailUser(false)
       }
     });
     // Cleanup subscription on unmount
@@ -118,6 +135,7 @@ function useProvideAuth() {
   // Return the user object and auth methods
   return {
     user,
+    gmailUser,
     isAuthenticated,
     setIsAuthenticated,
     setUser,
@@ -127,5 +145,6 @@ function useProvideAuth() {
     sendPasswordResetEmail,
     confirmPasswordReset,
     signInWithGmail,
+    loginWithGmail
   };
 }

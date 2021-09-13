@@ -2,6 +2,7 @@ import { db } from "../libs/firebase.libs";
 import { storage } from "../libs/firebase.libs";
 
 export const addUser = ({
+  emailVerified,
   email,
   password,
   uid,
@@ -24,7 +25,42 @@ export const addUser = ({
     lastName,
     startHour,
     weekDayAvailability,
+    emailVerified,
   });
+};
+
+export const addGmailUser = ({
+  uid,
+  email,
+  emailVerified,
+  displayName,
+  photoURL,
+}) => {
+  const [firstName, lastName] = displayName.split(" ");
+
+  return db.ref(`/users/${uid}`).set({
+    uid,
+    email,
+    emailVerified,
+    firstName,
+    lastName,
+    photoURL,
+  });
+};
+
+export const getGmailUser = (id) => {
+  try {
+    return db
+      .ref(`users`)
+      .orderByChild("uid")
+      .equalTo(id)
+      .once("value")
+      .then((snapshot) => {
+        return snapshot.val();
+      });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const updateProfile = (uid, { description }) => {
@@ -41,7 +77,6 @@ export const getUser = (id) => {
       .equalTo(id)
       .once("value")
       .then((snapshot) => {
-        console.log(snapshot);
         return snapshot.val();
       });
   } catch (err) {
@@ -59,12 +94,12 @@ export const addImage = (id, image, setImage) => {
   });
 };
 export const getImage = (id) => {
-  return (
-    storage
-      .ref(`/${id}/photo.jpg`)
-      .getDownloadURL()
-      .then((url) => {
-        return url;
-      })
-  );
+  return storage
+    .ref(`/${id}/photo.jpg`)
+    .getDownloadURL()
+    .then((url) => {
+      return url;
+    });
 };
+
+

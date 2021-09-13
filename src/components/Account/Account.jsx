@@ -9,21 +9,31 @@ import {
   addUser,
   getImage,
   addImage,
+  getGmailUser,
 } from "../../services/user.services";
 import { UPLOAD } from "../../constants/constants";
 
 export default function Account() {
   const [image, setImage] = useState();
   const [newUser, setNewUser] = useState({});
-  const { user } = useAuth();
+  const { user, gmailUser } = useAuth();
   const id = user?.uid;
   useEffect(() => {
-    getUser(id).then((response) => {
-      let birthday = response[id].birthday.split(" ");
-      response[id].birthday = birthday[0];
-      setNewUser(response[id]);
-    });
-    getImage(id).then((url) => setImage((prev) => ({ ...prev, preview: url })));
+    if (gmailUser) {
+      getGmailUser(id).then((user) => {
+        setNewUser(user[id])
+        setImage((prev) => ({...prev, preview: user[id].photoURL}))
+      })
+    } else {
+      getUser(id).then((response) => {
+        let birthday = response[id].birthday.split(" ");
+        response[id].birthday = birthday[0];
+        setNewUser(response[id]);
+      });
+      getImage(id).then((url) =>
+        setImage((prev) => ({ ...prev, preview: url }))
+      );
+    }
   }, []);
 
   const handleChange = (e) => {

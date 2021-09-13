@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { EMAIL, EMAIL_ADDRESS, logIn, PASSWORD, signUp, TEXT } from "../../constants/constants";
+import {
+  EMAIL,
+  EMAIL_ADDRESS,
+  logIn,
+  PASSWORD,
+  signUp,
+  TEXT,
+} from "../../constants/constants";
 import { useAuth } from "../../contexts/AuthContext";
 import { NavRoutes, Routes } from "../../constants/routes";
 import Button from "../Button/Button";
@@ -18,7 +25,7 @@ import {
 
 export let Child = () => {
   const history = useHistory();
-  const { signin } = useAuth();
+  const { signin, loginWithGmail } = useAuth();
   const [name, setName] = useState(signUp);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -32,9 +39,12 @@ export let Child = () => {
   const handleSignIn = () => {
     return signin(email, password)
       .then((res) => {
-        history.push(NavRoutes.home().path);
+        res(history.push(NavRoutes.home().path));
       })
-      .catch((e) => alert(e.message));
+      .catch(() => {
+        history.push(NavRoutes.home().path);
+        loginWithGmail();
+      });
   };
 
   function handleEmail(event) {
@@ -75,10 +85,7 @@ export let Child = () => {
             <label className={emailPassLabel}>Password</label>
           </div>
           <div>
-            <span
-              className={signUpStyle}
-              onClick={handleSign}
-            >
+            <span className={signUpStyle} onClick={handleSign}>
               {name}
             </span>
           </div>

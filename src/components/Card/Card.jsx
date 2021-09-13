@@ -4,7 +4,7 @@ import { NavRoutes } from "../../constants/routes";
 import { isValidEmail } from "../../helpers/validation.helpers";
 import RadioColors from "../../constants/radioColors";
 import { getUrl } from "../../helpers/url.helpers";
-import { COPY_LINK, TEXT,SHARE } from "../../constants/constants";
+import { COPY_LINK, TEXT, SHARE } from "../../constants/constants";
 import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
 import Input from "../Input/Input";
@@ -18,8 +18,18 @@ import {
   copyLinkButton,
   modalWindowContainer,
 } from "./Card.style";
+import { DeleteIcon } from "../Icons/Icons";
+import { deleteEvent } from "../../services/event.services";
 
-export default function Card({ title, type, color, id,userEmail }) {
+export default function Card({
+  title,
+  type,
+  color,
+  id,
+  userEmail,
+  homeState,
+  setHomeState,
+}) {
   const history = useHistory();
   // eslint-disable-next-line
   const [emailValue, setEmailValue] = useState(null);
@@ -54,12 +64,19 @@ export default function Card({ title, type, color, id,userEmail }) {
       : setIsValidEmailValue(false);
     setEmailValue(value);
   };
+  async function handleDelete() {
+    await deleteEvent(id);
+    setHomeState(homeState + 1);
+  }
 
   return (
     <div>
       <div className={cardContainer(eventColor)}>
         <div className={buttonContainer}>
           <Button variant="custom" />
+        </div>
+        <div onClick={handleDelete}>
+          <DeleteIcon />
         </div>
         <div className="mt-4">
           <h1 className={titleStyle} onClick={handleOpenEvent}>
@@ -68,14 +85,14 @@ export default function Card({ title, type, color, id,userEmail }) {
           <span className={infoButton}>{type} </span>
           <hr className="mt-8 py-3" />
           <div className={buttonContainer}>
-          <Button
+            <Button
               name={COPY_LINK}
               className={copyLinkButton}
               variant="custom"
               onClick={handleCopyLink}
             />
             <Button
-             name={SHARE}
+              name={SHARE}
               className={shareButton}
               variant="custom"
               onClick={() => setShowModal(true)}
@@ -87,13 +104,14 @@ export default function Card({ title, type, color, id,userEmail }) {
         showModal={showModal}
         body={
           <>
-          <Input
+            <Input
               type={TEXT}
               placeholder=" "
               required="required"
               className={modalWindowContainer}
-              onChange={handleEmail}/>
-        
+              onChange={handleEmail}
+            />
+
             <ErrorMessage
               message="Invalid email address"
               isValid={isValidEmailValue}

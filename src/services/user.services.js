@@ -33,6 +33,7 @@ export const updateProfile = (uid, { description }) => {
 };
 
 export const getUser = (id) => {
+
   try {
     return db
       .ref(`users`)
@@ -40,6 +41,7 @@ export const getUser = (id) => {
       .equalTo(id)
       .once("value")
       .then((snapshot) => {
+        console.log(snapshot)
         return snapshot.val();
       });
   } catch (err) {

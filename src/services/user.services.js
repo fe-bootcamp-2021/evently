@@ -33,7 +33,6 @@ export const updateProfile = (uid, { description }) => {
 };
 
 export const getUser = (id) => {
-  console.log(id);
   try {
     return db
       .ref(`users`)

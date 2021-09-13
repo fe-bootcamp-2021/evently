@@ -64,7 +64,7 @@ export default function OneOnOneSecond({ firstPageInfo }) {
     setMembers([...members, member]);
   };
 
-  const handleAddEvent = (ev) => {
+  const handleAddEvent = () => {
   
       if (members.length === 0) {
         return; // Must be an error

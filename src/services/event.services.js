@@ -54,3 +54,13 @@ export async function getEvent(id) {
     console.log(err);
   }
 }
+
+// Remove the event by id field from the document
+
+export async function deleteEvent(id) {
+  try {
+    return db.ref(`event/${id}`).remove();
+  } catch (err) {
+    console.log(err);
+  }
+}

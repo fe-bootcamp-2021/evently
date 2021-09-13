@@ -12,20 +12,22 @@ import {
   subHeader,
   content,
   cardContainer,
-  message
+  message,
 } from "./Home.style";
 
 export default function Home() {
   const { user } = useAuth();
   const userId = user?.uid;
   const [events, setEvents] = useState({});
+  const [homeState, setHomeState] = useState(1);
   const isAccountVerified = user.emailVerified;
 
   useEffect(() => {
     getEvents(userId).then((result) => {
       setEvents(result);
     });
-  }, []);
+    // eslint-disable-next-line
+  }, [homeState]);
 
   return (
     <div className="h-screen">
@@ -45,7 +47,7 @@ export default function Home() {
       </div>
 
       <div>
-      <div className={content}>
+        <div className={content}>
           {events ? (
             <div className={cardContainer}>
               {Object.keys(events).map((el) => {
@@ -59,6 +61,8 @@ export default function Home() {
                     link={link}
                     id={el}
                     userEmail={user.email}
+                    homeState={homeState}
+                    setHomeState={setHomeState}
                   />
                 );
               })}
@@ -72,7 +76,7 @@ export default function Home() {
               Please verify your account to create an Event!
             </div>
           )}
-       </div>
+        </div>
         <div className="-mt-24 w-9/12"></div>
       </div>
     </div>

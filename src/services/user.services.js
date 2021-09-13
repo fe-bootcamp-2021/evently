@@ -50,7 +50,7 @@ export const getUser = (id) => {
 };
 
 export const addImage = (id, image, setImage) => {
-  const ref = storage.ref(`/${id}/${image.raw.name}`);
+  const ref = storage.ref(`/${id}/photo.jpg`);
   const uploadTask = ref.put(image.raw);
   uploadTask.on("state_changed", console.log, console.error, () => {
     ref.getDownloadURL().then((url) => {

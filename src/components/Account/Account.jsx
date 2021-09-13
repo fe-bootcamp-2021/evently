@@ -10,7 +10,7 @@ import {
   getImage,
   addImage,
 } from "../../services/user.services";
-import { storage } from "../../libs/firebase.libs";
+import { UPLOAD } from "../../constants/constants";
 
 export default function Account() {
   const [image, setImage] = useState();
@@ -18,8 +18,12 @@ export default function Account() {
   const { user } = useAuth();
   const id = user?.uid;
   useEffect(() => {
-    getUser(id).then((response) => setNewUser(response[id]));
-    getImage(id).then(url => setImage(prev => ({...prev, preview: url })))
+    getUser(id).then((response) => {
+      let birthday = response[id].birthday.split(" ");
+      response[id].birthday = birthday[0];
+      setNewUser(response[id]);
+    });
+    getImage(id).then((url) => setImage((prev) => ({ ...prev, preview: url })));
   }, []);
 
   const handleChange = (e) => {
@@ -32,7 +36,6 @@ export default function Account() {
   };
 
   const handleUpload = (e) => {
-    e.preventDefault();
     addImage(id, image, setImage);
   };
 
@@ -47,7 +50,7 @@ export default function Account() {
       </div>
 
       <div className="w-8/12 mx-auto h-screen flex justify-around my-12">
-        <form onSubmit={handleUpload}>
+        <div>
           <div className="border border-blue-900 relative rounded-full">
             <label>
               {image ? (
@@ -72,8 +75,8 @@ export default function Account() {
               </label>
             </div>
           </div>
-          <button name="Upload">Upload</button>
-        </form>
+          <Button name={UPLOAD} onClick={handleUpload} />
+        </div>
 
         <div className=" flex flex-col my-2 ml-2">
           <h1 className="text-3xl mb-6 text-blue-900">Account Settings</h1>
@@ -112,6 +115,16 @@ export default function Account() {
               />
             </div>
           </div>
+          <Input
+            className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
+            id="grid-first-name"
+            type="text"
+            value={newUser?.birthday}
+            placeholder=""
+            onChange={(ev) => {
+              return setNewUser({ ...newUser, birthday: ev.target.value });
+            }}
+          />
           <div className="-mx-3 md:flex mb-6">
             <div className="md:w-full px-3">
               <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">

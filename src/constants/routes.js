@@ -21,7 +21,7 @@ export const Routes = {
     component: SignUp,
   }),
 
-  event: (id=":id") => ({
+  event: (id = ":id") => ({
     path: `/event/${id}`,
     text: "event",
     component: Event,
@@ -38,7 +38,7 @@ export const Routes = {
 
 export const NavRoutes = {
   home: () => ({
-    path: "/home",
+    path: "/",
     text: "Home",
     component: Home,
   }),
@@ -58,7 +58,7 @@ export const NavRoutes = {
     text: "One On One",
     component: OneOnOne,
   }),
-  event: (id=":id") => ({
+  event: (id = ":id") => ({
     path: `/event/${id}`,
     text: "event",
     component: Event,

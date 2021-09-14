@@ -84,7 +84,7 @@ function useProvideAuth() {
         setUser(response.user);
         setIsAuthenticated(true);
         return response.user;
-      }).catch((e) => console.log(e));
+      }).catch((e) => e );
   };
 
   const signout = () => {

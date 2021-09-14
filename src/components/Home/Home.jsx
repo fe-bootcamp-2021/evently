@@ -14,6 +14,7 @@ import {
   cardContainer,
   message,
 } from "./Home.style";
+import { updateProfile } from "../../services/user.services";
 
 export default function Home() {
   const { user } = useAuth();
@@ -23,6 +24,7 @@ export default function Home() {
   const isAccountVerified = user.emailVerified;
 
   useEffect(() => {
+    updateProfile(userId, isAccountVerified)
     getEvents(userId).then((result) => {
       setEvents(result);
     });

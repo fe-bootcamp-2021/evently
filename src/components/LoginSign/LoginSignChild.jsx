@@ -42,9 +42,9 @@ export let Child = () => {
         res(history.push(NavRoutes.home().path));
       })
       .catch(() => {
-        history.push(NavRoutes.home().path);
         loginWithGmail();
-      });
+        history.push(NavRoutes.home().path);
+      }).catch((e) =>  e)
   };
 
   function handleEmail(event) {

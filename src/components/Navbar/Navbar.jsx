@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { NavRoutes, Routes } from "../../constants/routes";
-import { useAuth } from "../../contexts/AuthContext"; //
+import { useAuth } from "../../contexts/AuthContext"; 
 import Logo from "../Logo/Logo";
 import {
   buttonOutline,

@@ -35,12 +35,11 @@ export default function Modal({
     emailjs
       .send(serviceId, templateId, templateParams, userId)
       .then(
-        function (response) {
+        function () {
           setShowModal(false);
-          //console.log("SUCCESS!", response.status, response.text);
         },
-        function (error) {
-          console.log("FAILED...", error);
+        function () {
+          return "FAILED..."
         }
       );
   };

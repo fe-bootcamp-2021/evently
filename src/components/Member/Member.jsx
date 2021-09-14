@@ -1,11 +1,18 @@
 import React, { useState } from "react";
+import { FIRST_NAME, LAST_NAME, TEXT } from "../../constants/constants";
 
 import { useAuth } from "../../contexts/AuthContext";
 import { isEmptyString } from "../../helpers/validation.helpers";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { DeleteIcon, PlusIcon, MinusIcon } from "../Icons/Icons";
 import Input from "../Input/Input";
-import { container, red, green } from "./Member.style";
+import {
+  container,
+  red,
+  green,
+  memberContainer,
+  firstNameInputField,
+} from "./Member.style";
 
 export default function Member({
   date,
@@ -96,7 +103,7 @@ export default function Member({
             ) : (
               <div
                 onClick={user ? onClick : chooseEvent(id, firstName, lastName)}
-                className="w-4 mr-5 transform hover:text-purple-500 hover:scale-110 cursor-pointer"
+                className={memberContainer}
               >
                 {user ? (
                   <DeleteIcon />
@@ -117,9 +124,9 @@ export default function Member({
             ) : (
               <>
                 <Input
-                  className="border border-blue-200 outline-none px-2 py-1 rounded"
-                  placeholder="First Name"
-                  type="text"
+                  className={firstNameInputField}
+                  placeholder={FIRST_NAME}
+                  type={TEXT}
                   onChange={handleFirstName}
                   value={firstName}
                 />
@@ -136,9 +143,9 @@ export default function Member({
             ) : (
               <>
                 <Input
-                  className="border border-blue-200 outline-none px-2 py-1 rounded"
-                  placeholder="Last Name"
-                  type="text"
+                  className={firstNameInputField}
+                  placeholder={LAST_NAME}
+                  type={TEXT}
                   onChange={handleLastName}
                   value={lastName}
                 />

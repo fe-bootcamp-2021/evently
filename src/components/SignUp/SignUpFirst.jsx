@@ -18,6 +18,7 @@ import {
   input,
   buttonContainer,
 } from "./SignUp.style";
+import { BIRTHDAY_ERROR_MESSAGE, FIRST_NAME_ERROR_MESSAGE, LAST_NAME_ERROR_MESSAGE, PASSWORD, PASSWORD_ERROR_MESSAGE, TEXT } from "../../constants/constants";
 
 export default function SignUpFirst({ setFirstPageInfo, setPage }) {
   const [emailValue, setEmailValue] = useState(null);
@@ -123,7 +124,7 @@ export default function SignUpFirst({ setFirstPageInfo, setPage }) {
           <div className={items}>
             <label className={label}>Enter your email to get started *</label>
             <Input
-              type="text"
+              type={TEXT}
               placeholder=" "
               required="required"
               className={input}
@@ -137,21 +138,21 @@ export default function SignUpFirst({ setFirstPageInfo, setPage }) {
           <div className={items}>
             <label className={label}>Password *</label>
             <Input
-              type="password"
+              type={PASSWORD}
               placeholder=" "
               required="required"
               className={input}
               onChange={handlePassword}
             />
             <ErrorMessage
-              message="Password should be minimum eight characters, at least one letter and one number"
+              message={PASSWORD_ERROR_MESSAGE}
               isValid={isValidPasswordValue}
             />
           </div>
           <div className={items}>
             <label className={label}>First Name *</label>
             <Input
-              type="text"
+              type={TEXT}
               placeholder=" "
               onChange={handleFirstName}
               className={input}
@@ -159,28 +160,28 @@ export default function SignUpFirst({ setFirstPageInfo, setPage }) {
             />
 
             <ErrorMessage
-              message="First name is required"
+              message={FIRST_NAME_ERROR_MESSAGE}
               isValid={isValidFirstName}
             />
           </div>
           <div className={items}>
             <label className={label}>Last Name *</label>
             <Input
-              type="text"
+              type={TEXT}
               placeholder=" "
               onChange={handleLastName}
               required="required"
               className={input}
             />
             <ErrorMessage
-              message="Last name is required"
+              message={LAST_NAME_ERROR_MESSAGE}
               isValid={isValidLastName}
             />
           </div>
           <div className={items}>
             <label className={label}>Birthday*</label>
             <Input
-              type="text"
+              type={TEXT}
               placeholder=" "
               required="required"
               className={input}
@@ -189,7 +190,7 @@ export default function SignUpFirst({ setFirstPageInfo, setPage }) {
               onChange={() => setBirthdayString(birthdayString)}
             />
             <ErrorMessage
-              message="Birthday is required"
+              message={BIRTHDAY_ERROR_MESSAGE}
               isValid={isValidBirthday}
             />
             <Calendar

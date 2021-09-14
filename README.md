@@ -2,7 +2,7 @@
 
 ## For visit site click here:
 
-# [Evently page](https://evently-jaov1xonx-evently-production.vercel.app/)
+# [Evently page](https://evently-beryl.vercel.app/)
 
 **About Evently**
 

@@ -1,4 +1,4 @@
-![](src/images/logo_last.svg)
+![](src/images/eventlyLogo.svg)
 
 ## For visit site click here:
 

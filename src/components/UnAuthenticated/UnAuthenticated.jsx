@@ -28,10 +28,11 @@ import {
   imgDiv4,
   imgDiv5,
   circle6,
+  buttonStyle,
+  input
 } from "./UnAuthenticated.style";
 import Input from "../Input/Input";
-import { input } from "../SignUp/SignUp.style";
-import { buttonStyle } from "../Button/Button.style";
+
 
 export default function UnAuthenticatedApp() {
 
@@ -56,7 +57,7 @@ export default function UnAuthenticatedApp() {
               <Button
                 name={signUp}
                 variant="buttonOutline"
-                className="m-1 mr-5"
+                className="m-2 mr-5"
               />
             </Link>
           </div>
@@ -75,7 +76,7 @@ export default function UnAuthenticatedApp() {
                 className={input}
                 placeholder="Enter Your Email"
               />
-              <Button name={logIn} className={buttonStyle} variant="custom" onClick={handleClick}/>
+              <Button name={logIn} className={buttonStyle} onClick={handleClick} variant="custom" />
             </div>
           </div>
 

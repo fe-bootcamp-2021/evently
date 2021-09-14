@@ -27,3 +27,9 @@ export const green = classNames([
   "bg-gradient-to-t",
   "from-green-200",
 ]);
+export const memberContainer = classNames([
+  "w-4 mr-5 transform hover:text-purple-500 hover:scale-110 cursor-pointer",
+]);
+export const firstNameInputField = classNames([
+  "border border-blue-200 outline-none px-2 py-1 rounded",
+]);

@@ -2,7 +2,6 @@ import { db } from "../libs/firebase.libs";
 import { storage } from "../libs/firebase.libs";
 
 export const addUser = ({
-  emailVerified,
   email,
   password,
   uid,
@@ -13,6 +12,7 @@ export const addUser = ({
   lastName,
   startHour,
   weekDayAvailability,
+  emailVerified,
 }) => {
   return db.ref(`/users/${uid}`).set({
     email,
@@ -63,10 +63,10 @@ export const getGmailUser = (id) => {
   }
 };
 
-export const updateProfile = (uid, { description }) => {
-  return db.ref("/users/").child(uid).update({
-    description,
-  });
+export const updateProfile = (uid, emailVerified) => {
+  return db.ref("/users/").child(uid).update(
+    {emailVerified}
+  ).then((res) => console.log(res));
 };
 
 export const getUser = (id) => {
@@ -99,7 +99,7 @@ export const getImage = (id) => {
     .getDownloadURL()
     .then((url) => {
       return url;
-    });
+    }).catch((e) => console.log(e));
 };
 
 

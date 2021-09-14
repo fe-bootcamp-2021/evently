@@ -125,7 +125,6 @@ export function isValidMemberDates(date, start, end, members) {
     const isValid = members.some(({ date, startTime, endTime }) => {
       const startTM = new Date(`${date}T${startTime}`);
       const endTM = new Date(`${date}T${endTime}`);
-      // const endDate = new Date(`${date}T${end}`);
       if (
         (startDate < startTM && endDate <= startTM) ||
         (startDate >= endTM && endDate >= endTM)
@@ -133,7 +132,6 @@ export function isValidMemberDates(date, start, end, members) {
         return true;
       return false;
     });
-    console.log(isValid);
     return isValid;
   }
   return true;

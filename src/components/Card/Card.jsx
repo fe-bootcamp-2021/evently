@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { NavRoutes } from "../../constants/routes";
 import { isValidEmail } from "../../helpers/validation.helpers";
+import { deleteEvent } from "../../services/event.services";
 import RadioColors from "../../constants/radioColors";
 import { getUrl } from "../../helpers/url.helpers";
 import { COPY_LINK, TEXT, SHARE } from "../../constants/constants";
@@ -9,6 +10,7 @@ import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
 import Input from "../Input/Input";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import { DeleteIcon } from "../Icons/Icons";
 import {
   cardContainer,
   buttonContainer,
@@ -18,8 +20,6 @@ import {
   copyLinkButton,
   modalWindowContainer,
 } from "./Card.style";
-import { DeleteIcon } from "../Icons/Icons";
-import { deleteEvent } from "../../services/event.services";
 
 export default function Card({
   title,
@@ -42,11 +42,11 @@ export default function Card({
     const evtColors = RadioColors().filter((el) => el.id === color);
     const evtColor = evtColors[0]?.borderColor;
     setEventColor(evtColor);
-    // eslint-disable-next-line
-
+    
     const url = getUrl();
     const eventUrl = `${url}${NavRoutes.event(id).path}`;
     setEventLink(eventUrl);
+    // eslint-disable-next-line
   }, []);
 
   const handleCopyLink = () => {

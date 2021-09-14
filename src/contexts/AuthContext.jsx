@@ -78,11 +78,13 @@ function useProvideAuth() {
           lastName,
           startHour,
           weekDayAvailability,
+          emailVerified: response.user.emailVerified
         });
+        setGmailUser(false)
         setUser(response.user);
         setIsAuthenticated(true);
         return response.user;
-      });
+      }).catch((e) => e );
   };
 
   const signout = () => {
@@ -122,7 +124,6 @@ function useProvideAuth() {
     const unsubscribe = app.auth().onAuthStateChanged((user) => {
       if (user) {
         setUser(user);
-        setGmailUser(true)
       } else {
         setUser(false);
         setGmailUser(false)

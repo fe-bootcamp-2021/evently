@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import { useAuth } from "../../contexts/AuthContext";
+import { updateProfile } from "../../services/user.services";
 import { getEvents } from "../../services/event.services";
 import Card from "../Card/Card";
 import Dropdown from "../Dropdown/Dropdown";
@@ -23,6 +24,7 @@ export default function Home() {
   const isAccountVerified = user.emailVerified;
 
   useEffect(() => {
+    updateProfile(userId, isAccountVerified)
     getEvents(userId).then((result) => {
       setEvents(result);
     });

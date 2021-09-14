@@ -44,7 +44,10 @@ export default function Card({
     setEventColor(evtColor);
     
     const url = getUrl();
+    console.log(url)
     const eventUrl = `${url}${NavRoutes.event(id).path}`;
+    console.log(url)
+    console.log(NavRoutes.event(id).path)
     setEventLink(eventUrl);
     // eslint-disable-next-line
   }, []);

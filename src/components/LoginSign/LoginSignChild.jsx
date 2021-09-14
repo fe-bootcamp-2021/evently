@@ -25,7 +25,7 @@ import {
 
 export let Child = () => {
   const history = useHistory();
-  const { signin, loginWithGmail } = useAuth();
+  const { signin } = useAuth();
   const [name, setName] = useState(signUp);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -41,10 +41,10 @@ export let Child = () => {
       .then((res) => {
         res(history.push(NavRoutes.home().path));
       })
-      .catch(() => {
-        loginWithGmail();
-        history.push(NavRoutes.home().path);
-      }).catch((e) =>  e)
+      .catch((e ) => {
+        // loginWithGmail();
+        console.log(e)
+      })
   };
 
   function handleEmail(event) {

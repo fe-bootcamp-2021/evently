@@ -28,6 +28,7 @@ export default function Event() {
   const [event, setEvent] = useState({});
   const [members, setMembers] = useState([]);
   const [eventColor, setEventColor] = useState(RadioColors()[0].id);
+  // eslint-disable-next-line
   const [errorDates, setErrorDates] = useState(false);
 
   useEffect(() => {
@@ -42,6 +43,7 @@ export default function Event() {
       setEventColor(evtColor);
       setEvent(result);
     });
+    // eslint-disable-next-line
   }, []);
 
   function createMarkup() {

@@ -28,6 +28,11 @@ export const PAGE_VERIFIED = "Page was verified!";
 export const PAGE_NOT_VERIFIED = "Page not verified!";
 export const DEFAULT_ACCOUNT_PICTURE_URL =
   "https://static.wixstatic.com/media/b17c62_326cef80bf1b44dd956aca581b0530f7~mv2.jpg/v1/crop/x_235,y_0,w_1069,h_1069/fill/w_544,h_544,al_c,q_80,usm_0.66_1.00_0.01/kemptons-blank-profile-picture.webp";
+export const PASSWORD_ERROR_MESSAGE =
+  "Password should be minimum eight characters, at least one letter and one number";
+export const FIRST_NAME_ERROR_MESSAGE = "First name is required";
+export const LAST_NAME_ERROR_MESSAGE = "Last name is required";
+export const BIRTHDAY_ERROR_MESSAGE = "Birthday is required"
 export const weekDays = {
   0: "SUN",
   1: "MON",

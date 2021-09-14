@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import { useAuth } from "../../contexts/AuthContext";
+import { updateProfile } from "../../services/user.services";
 import { getEvents } from "../../services/event.services";
 import Card from "../Card/Card";
 import Dropdown from "../Dropdown/Dropdown";
@@ -14,7 +15,6 @@ import {
   cardContainer,
   message,
 } from "./Home.style";
-import { updateProfile } from "../../services/user.services";
 
 export default function Home() {
   const { user } = useAuth();

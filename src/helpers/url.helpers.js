@@ -1,8 +1,6 @@
-import { NavRoutes } from "../constants/routes";
-
 export function getUrl() {
-  const url = window.location.href;
-  const urlName = url.replace(NavRoutes.home().path, "");
-
-  return urlName;
+  const protocol = window.location.protocol;
+  const host = window.location.host;
+  const url = `${protocol}//${host}`;
+  return url;
 }

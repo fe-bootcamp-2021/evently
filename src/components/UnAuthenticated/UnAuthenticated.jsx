@@ -29,9 +29,8 @@ import {
   imgDiv5,
   circle6,
   buttonStyle,
-  input
 } from "./UnAuthenticated.style";
-import Input from "../Input/Input";
+
 
 
 export default function UnAuthenticatedApp() {
@@ -71,12 +70,7 @@ export default function UnAuthenticatedApp() {
               We will help you schedule meetings <br /> on each day.
             </h2>
             <div className="flex mt-4">
-              <Input
-                type="email"
-                className={input}
-                placeholder="Enter Your Email"
-              />
-              <Button name={logIn} className={buttonStyle} onClick={handleClick} variant="custom" />
+              <Button name="Sign Up With Gmail" className={buttonStyle} onClick={handleClick} variant="custom" />
             </div>
           </div>
 

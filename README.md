@@ -2,7 +2,7 @@
 
 ## For visit site click here:
 
-# [Evently page](https://evently2021.vercel.app/)
+# [Evently page](https://evently-e9tc082a2-come-meeting.vercel.app/)
 
 **About Evently**
 

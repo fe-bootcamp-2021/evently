@@ -41,7 +41,7 @@ export default function PageAboutUS() {
             <img className={img} src={tigran} alt="Tigran Khanaghyan" />
             <div className="text-center">
               <h6>Tigran Khanaghyan</h6>
-              <h5>Team brain</h5>
+              <h5>Team member</h5>
             </div>
           </div>
           <div className="text-center mt-36 space-y-3">

@@ -100,7 +100,7 @@ export default function Event() {
           </div>
 
           <div className={infoWrapper}>
-            {members.map(
+            {members?members.map(
               ({
                 date,
                 startTime,
@@ -130,7 +130,7 @@ export default function Event() {
                   />
                 );
               }
-            )}
+            ):<span>No hours for submit</span>}
           </div>
           <section className={buttonSection}>
             <div className={buttonContainer}>
